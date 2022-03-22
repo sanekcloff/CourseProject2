@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
 {
-    class DeleteChoiceViewModel : ViewModel
+    class DeleteChoiceViewModel
     {
         //public RelayCommand DeleteStudentViewCommand { get; set; }
         //public RelayCommand DeleteGroupViewCommand { get; set; }

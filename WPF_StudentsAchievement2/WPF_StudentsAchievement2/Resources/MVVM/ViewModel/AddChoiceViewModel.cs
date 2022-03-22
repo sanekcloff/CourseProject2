@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
 {
-    class AddChoiceViewModel:ViewModel
+    class AddChoiceViewModel
     {
         #region
 

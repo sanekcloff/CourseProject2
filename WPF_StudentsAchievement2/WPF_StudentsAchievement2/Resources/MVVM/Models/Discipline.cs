@@ -5,16 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPF_StudentsAchievement2.Resources.MVVM.Model
+namespace WPF_StudentsAchievement2.Resources.MVVM.Models
 {
-    public class Group
+    public class Discipline
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public string GroupName { get; set; }
-        [Required]
-        public int Course { get; set; }
-
+        [MaxLength(50)]
+        public string DisciplineName { get; set; }
     }
 }

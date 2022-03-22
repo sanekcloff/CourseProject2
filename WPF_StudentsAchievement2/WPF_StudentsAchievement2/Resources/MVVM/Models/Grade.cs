@@ -5,19 +5,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
-namespace WPF_StudentsAchievement2.Resources.MVVM.Model
+namespace WPF_StudentsAchievement2.Resources.MVVM.Models
 {
     public class Grade
     {
         [Key]
         public int Id { get; set; }
         [Required]
+        public int? StudentId { get; set; }
         [ForeignKey("StudentId")]
-        public Student StudentId { get; set; }
+        public Student Student { get; set; }
         [Required]
+        public int? DisciplineId { get; set; }
         [ForeignKey("DisciplineId")]
-        public Discipline DisciplineId { get; set; }
+        public Discipline Discipline { get; set; }
         [Required]
         public int GradeValue { get; set; }
         [Required]

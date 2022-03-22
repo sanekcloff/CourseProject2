@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
 {
-    class AddDisciplineViewModel : ViewModel
+    class AddDisciplineViewModel
     {
     }
 }
