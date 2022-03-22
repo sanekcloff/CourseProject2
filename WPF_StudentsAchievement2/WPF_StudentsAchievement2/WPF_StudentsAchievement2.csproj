@@ -53,8 +53,4 @@
     <Resource Include="Resources\Images\Logo.png" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>
