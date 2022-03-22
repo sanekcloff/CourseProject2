@@ -12,8 +12,8 @@ using WPF_StudentsAchievement2.Resources.MVVM.Models.Data;
 namespace WPF_StudentsAchievement2.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220322143139_Initil")]
-    partial class Initil
+    [Migration("20220322172853_NewMig4")]
+    partial class NewMig4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,14 +37,40 @@ namespace WPF_StudentsAchievement2.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.HasKey("Id");
+
+                    b.ToTable("Disciplines");
+                });
+
+            modelBuilder.Entity("WPF_StudentsAchievement2.Resources.MVVM.Models.Grade", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DisciplineId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int>("GradeValue")
+                        .HasColumnType("int");
+
                     b.Property<int?>("StudentId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DisciplineId");
+
                     b.HasIndex("StudentId");
 
-                    b.ToTable("Disciplines");
+                    b.ToTable("Grades");
                 });
 
             modelBuilder.Entity("WPF_StudentsAchievement2.Resources.MVVM.Models.Group", b =>
@@ -103,7 +129,8 @@ namespace WPF_StudentsAchievement2.Migrations
 
                     b.Property<string>("StudentFirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("StudentLastName")
                         .IsRequired()
@@ -112,7 +139,8 @@ namespace WPF_StudentsAchievement2.Migrations
 
                     b.Property<string>("StudentMiddleName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -121,11 +149,23 @@ namespace WPF_StudentsAchievement2.Migrations
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("WPF_StudentsAchievement2.Resources.MVVM.Models.Discipline", b =>
+            modelBuilder.Entity("WPF_StudentsAchievement2.Resources.MVVM.Models.Grade", b =>
                 {
-                    b.HasOne("WPF_StudentsAchievement2.Resources.MVVM.Models.Student", null)
-                        .WithMany("Disciplines")
-                        .HasForeignKey("StudentId");
+                    b.HasOne("WPF_StudentsAchievement2.Resources.MVVM.Models.Discipline", "Discipline")
+                        .WithMany()
+                        .HasForeignKey("DisciplineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WPF_StudentsAchievement2.Resources.MVVM.Models.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Discipline");
+
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("WPF_StudentsAchievement2.Resources.MVVM.Models.Student", b =>
@@ -137,11 +177,6 @@ namespace WPF_StudentsAchievement2.Migrations
                         .IsRequired();
 
                     b.Navigation("Group");
-                });
-
-            modelBuilder.Entity("WPF_StudentsAchievement2.Resources.MVVM.Models.Student", b =>
-                {
-                    b.Navigation("Disciplines");
                 });
 #pragma warning restore 612, 618
         }

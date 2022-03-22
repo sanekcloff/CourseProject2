@@ -16,14 +16,14 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.Models
         [MaxLength(50)]
         public string StudentLastName { get; set; }
         [Required]
+        [MaxLength(50)]
         public string StudentFirstName { get; set; }
         [Required]
+        [MaxLength(50)]
         public string StudentMiddleName { get; set; }
         [Required]
         public int? GroupId { get; set; }
         [ForeignKey("GroupId")]
         public Group Group { get; set; }
-
-        public List<Discipline> Disciplines { get; set; }
     }
 }
