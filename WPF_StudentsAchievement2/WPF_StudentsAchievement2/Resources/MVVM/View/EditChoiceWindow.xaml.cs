@@ -12,40 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WPF_StudentsAchievement_Project.Resources.MVVM.View
+namespace WPF_StudentsAchievement2.Resources.MVVM.View
 {
-    /// <summary>
-    /// Логика взаимодействия для EditChoiceWindow.xaml
-    /// </summary>
     public partial class EditChoiceWindow : Window
     {
         public EditChoiceWindow()
         {
             InitializeComponent();
-        }
-        private void MovingWindow(object sender, RoutedEventArgs e)
-        {
-            if (Mouse.LeftButton == MouseButtonState.Pressed)
-            {
-                this.DragMove();
-            }
-        }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            WorkWindow workWindow = new WorkWindow();
-            this.Close();
-            workWindow.Show();
-        }
-
-        private void HideButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

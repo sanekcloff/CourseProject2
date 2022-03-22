@@ -1,11 +1,11 @@
-﻿<Window x:Class="WPF_StudentsAchievement_Project.Resources.MVVM.View.DeleteChoiceWindow"
+﻿<Window x:Class="WPF_StudentsAchievement2.Resources.MVVM.View.DeleteChoiceWindow"
         Icon="/Resources/Images/Logo.png"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_StudentsAchievement_Project.Resources.MVVM.View"
-        xmlns:viewModel="clr-namespace:WPF_StudentsAchievement_Project.Resources.MVVM.ViewModel"
+        xmlns:local="clr-namespace:WPF_StudentsAchievement2.Resources.MVVM.View"
+        xmlns:viewModel="clr-namespace:WPF_StudentsAchievement2.Resources.MVVM.ViewModel"
         mc:Ignorable="d"
         Title="DeleteChoiceWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Window.DataContext>
@@ -23,7 +23,6 @@
                 <Button Name="BackButton"
                         Grid.Row="3"
                         HorizontalAlignment="Left" 
-                        Click="BackButton_Click"
                         Style="{StaticResource DeleteBackButton}"/>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -31,8 +30,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Border Background="#8B0000"
-                            Grid.RowSpan="2"
-                            MouseDown="MovingWindow">
+                            Grid.RowSpan="2">
                         <TextBlock Name="ActionTextBlock"
                                    Text="УДАЛИТЬ"
                                    HorizontalAlignment="Center"
@@ -46,11 +44,11 @@
                             HorizontalAlignment="Right">
                         <Button Name="HideButton"
                             Width="25"
-                            Style="{StaticResource HideButton}" Click="HideButton_Click">
+                            Style="{StaticResource HideButton}">
                         </Button>
                         <Button Name="ExitButton"
                             Width="25"
-                            Style="{StaticResource ExitButton}" Click="ExitButton_Click">
+                            Style="{StaticResource ExitButton}">
                         </Button>
                     </StackPanel>
                 </Grid>

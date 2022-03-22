@@ -1,10 +1,10 @@
-﻿<Window x:Class="WPF_StudentsAchievement_Project.Resources.MVVM.View.RegistrationWindow"
+﻿<Window x:Class="WPF_StudentsAchievement2.Resources.MVVM.View.RegistrationWindow"
         Icon="\Resources\Images\Logo.png"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_StudentsAchievement_Project.Resources.MVVM.View"
+        xmlns:local="clr-namespace:WPF_StudentsAchievement2.Resources.MVVM.View"
         mc:Ignorable="d"
         Title="RegistrationWindow" Height="450" Width="300"
         WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
@@ -19,7 +19,7 @@
             <RowDefinition Height="0.15*"/>
         </Grid.RowDefinitions>
 
-        <Border Background="PaleVioletRed" MouseDown="MovingWindow">
+        <Border Background="PaleVioletRed">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -30,12 +30,12 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Column="1"
-                        Grid.Row="0"
+                            Grid.Row="0"
                             Orientation="Horizontal"
                             HorizontalAlignment="Right">
                     <Button Name="ExitButton"
                             Width="25"
-                            Style="{StaticResource ExitButton}" Click="ExitButton_Click">
+                            Style="{StaticResource ExitButton}">
                     </Button>
                 </StackPanel>
             </Grid>
@@ -71,16 +71,13 @@
                 Background="PaleVioletRed"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center" 
-                Click="RegistrationButton_Click"
                 Style="{StaticResource StartWindosButtonsMain}"/>
         <Button Name="LoginButton"
                 Grid.Row="6"
                 Content="Войти"
                 Margin="100,7,100,7"
                 Opacity="1" 
-                Click="LoginButton_Click"
                 Background="PaleVioletRed"
                 Style="{StaticResource StartWindosButtonsAlt}"/>
-
     </Grid>
 </Window>
