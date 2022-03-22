@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
 {
-    class EditChoiceViewModel
+    class EditChoiceViewModel : ViewModel
     {
         //public RelayCommand EditStudentViewCommand { get; set; }
         //public RelayCommand EditGroupViewCommand { get; set; }

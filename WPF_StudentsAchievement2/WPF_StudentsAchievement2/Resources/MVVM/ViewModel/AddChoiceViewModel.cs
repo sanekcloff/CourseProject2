@@ -9,8 +9,11 @@ using System.Windows.Input;
 
 namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
 {
-    class AddChoiceViewModel
+    class AddChoiceViewModel:ViewModel
     {
+        #region
+
+        #endregion
         //public RelayCommand AddStudentViewCommand { get; set; }
         //public RelayCommand AddGroupViewCommand { get; set; }
         //public RelayCommand AddDisciplineViewCommand { get; set; }
