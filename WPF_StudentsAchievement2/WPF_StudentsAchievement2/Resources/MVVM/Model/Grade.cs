@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace WPF_StudentsAchievement2.Resources.MVVM.Model
 {
-    public class Grades
+    public class Grade
     {
         [Key]
         public int Id { get; set; }
         [Required]
         [ForeignKey("StudentId")]
-        public Students StudentId { get; set; }
+        public Student StudentId { get; set; }
         [Required]
         [ForeignKey("DisciplineId")]
-        public Disciplines DisciplineId { get; set; }
+        public Discipline DisciplineId { get; set; }
         [Required]
-        public int Grade { get; set; }
+        public int GradeValue { get; set; }
         [Required]
         public DateOnly Date { get; set; }
     }

@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 
 namespace WPF_StudentsAchievement2.Resources.MVVM.Model
 {
-    public class Groups
+    public class Discipline
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [Required]
-        public string GroupName { get; set; }
-        [Required]
-        public int Course { get; set; }
-
+        public string DisciplineName { get; set; }
     }
 }

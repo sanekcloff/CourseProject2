@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WPF_StudentsAchievement2.Resources.MVVM.Model
 {
-    public class Students
+    public class Student
     {
         [Key]
         public int Id{ get; set; }
@@ -20,6 +20,6 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.Model
         public string MiddleName { get; set; }
         [Required]
         [ForeignKey("GroupId")]
-        public Groups GroupId { get; set; }
+        public Group GroupId { get; set; }
     }
 }

@@ -9,6 +9,11 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.Model.Data
 {
     public class ApplicationContext:DbContext
     {
+        public DbSet<Discipline> Disciplines;
+        public DbSet<Grade> Grades;
+        public DbSet<Group> Groups;
+        public DbSet<Student> Students;
+        public DbSet<Register> Registers;
         public ApplicationContext()
         {
             Database.EnsureCreated();
