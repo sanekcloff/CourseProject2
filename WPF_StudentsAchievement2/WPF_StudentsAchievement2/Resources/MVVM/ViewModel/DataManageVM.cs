@@ -16,53 +16,47 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
     {
         //все Студенты
         private List<Student> allStudents = DataWorker.GetAllStudents();
-        public List<Student> AllStudent
+        public List<Student> AllStudents
         {
-            get { return allStudent; }
+            get { return allStudents; }
             set
             {
-                allStudent = value;
-                NotifyPropertyChanged("AllDepartments");
+                allStudents = value;
+                NotifyPropertyChanged("AllStudents");
             }
         }
-        //все отделы
-        private List<Department> allDepartments = DataWorker.GetAllDepartments();
-        public List<Department> AllDepartments
+        //все Дисциплины
+        private List<Discipline> allDisciplines = DataWorker.GetAllDisciplines();
+        public List<Discipline> AllDisciplines
         {
-            get { return allDepartments; }
+            get { return allDisciplines; }
             set
             {
-                allDepartments = value;
-                NotifyPropertyChanged("AllDepartments");
+                allDisciplines = value;
+                NotifyPropertyChanged("AllDisciplines");
+            }
+        }
+        //все Группы
+        private List<Group> allGroups = DataWorker.GetAllGroups();
+        public List<Group> AllGroups
+        {
+            get { return allGroups; }
+            set
+            {
+                allGroups = value;
+                NotifyPropertyChanged("AllGroupss");
             }
         }
 
-        //все позиции
-        private List<Position> allPositions = DataWorker.GetAllPositions();
-        public List<Position> AllPositions
+        //все Оценки
+        private List<Grade> allGrades = DataWorker.GetAllGrades();
+        public List<Grade> AllGrades
         {
-            get
-            {
-                return allPositions;
-            }
+            get { return allGrades; }
             private set
             {
-                allPositions = value;
-                NotifyPropertyChanged("AllPositions");
-            }
-        }
-        //все сотрудники
-        private List<User> allUsers = DataWorker.GetAllUsers();
-        public List<User> AllUsers
-        {
-            get
-            {
-                return allUsers;
-            }
-            private set
-            {
-                allUsers = value;
-                NotifyPropertyChanged("AllUsers");
+                allGrades = value;
+                NotifyPropertyChanged("AllGrades");
             }
         }
 

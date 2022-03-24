@@ -281,41 +281,76 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.Models
             }
             return result;
         }
-
-        //получение позиции по id позитиции
-        public static Position GetPositionById(int id)
+        //получение студента по id студента
+        public static Student GetStudentById(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                Student student = db.Students.FirstOrDefault(st => st.Id == id);
+                return student;
+            }
+        }
+        //получение дисциплины по id дисциплины
+        public static Discipline GetDisciplineById(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                Discipline discipline = db.Disciplines.FirstOrDefault(dis => dis.Id == id);
+                return discipline;
+            }
+        }
+        //получение оценки по id оценки
+        public static Grade GetGradeById(int id)
         {
             using(ApplicationContext db = new ApplicationContext())
             {
-                Position pos = db.Positions.FirstOrDefault(p => p.Id == id);
-                return pos;
+                Grade grade = db.Grades.FirstOrDefault(grd => grd.Id == id);
+                return grade;
             }
         }
-        //получение отдела по id отдела
-        public static Department GetDepartmentById(int id)
+        //получение группы по id группы
+        public static Group GetGroupById(int id)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                Department pos = db.Departments.FirstOrDefault(p => p.Id == id);
-                return pos;
+                Group group = db.Groups.FirstOrDefault(grp => grp.Id == id);
+                return group;
             }
         }
-        //получение всех пользователей по id позиции
-        public static List<User> GetAllUsersByPositionId(int id)
+        //получение всех студентов по id группы
+        public static List<Student> GetAllStudentsByGroupId(int id)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                List<User> users = (from user in GetAllUsers() where user.PositionId == id select user).ToList();
-                return users;
+                List<Student> students = (from student in GetAllStudents() where student.GroupId == id select student).ToList();
+                return students;
             }
         }
-        //получение всех позиций по id отдела
-        public static List<Position> GetAllPositionsByDepartmentId(int id)
+        //получение всех оценок по id дисциплины
+        public static List<Grade> GetAllGradesByDisciplineId(int id)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                List<Position> positions = (from position in GetAllPositions() where position.DepartmentId == id select position).ToList();
-                return positions;
+                List<Grade> grades = (from grade in GetAllGrades() where grade.DisciplineId == id select grade).ToList();
+                return grades;
+            }
+        }
+        //получение всех оценок по id студента
+        public static List<Grade> GetAllGradesByStudentId(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                List<Grade> grades = (from grade in GetAllGrades() where grade.StudentId == id select grade).ToList();
+                return grades;
+            }
+        }
+        //получение всех оценок по id студента
+        public static List<Grade> GetAllGradesByStudentAndDisciplineId(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                List<Grade> grades = (from grade in GetAllGrades() where grade.StudentId == id && grade.DisciplineId == id select grade).ToList();
+                return grades;
             }
         }
     }
