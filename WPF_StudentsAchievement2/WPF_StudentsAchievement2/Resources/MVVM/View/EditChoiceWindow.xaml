@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:WPF_StudentsAchievement2.Resources.MVVM.View"
         xmlns:viewModel="clr-namespace:WPF_StudentsAchievement2.Resources.MVVM.ViewModel"
         mc:Ignorable="d"
+        x:Name="EditWindow"
         Title="EditChoiceWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Window.DataContext>
         <viewModel:EditChoiceViewModel/>
@@ -20,10 +21,12 @@
                     <RowDefinition/>
                     <RowDefinition Height="0.1*"/>
                 </Grid.RowDefinitions>
-                <Button Name="BackButton"
+                <!--<Button Name="BackButton"
                         Grid.Row="3"
                         HorizontalAlignment="Left"
-                        Style="{StaticResource EditBackButton}"/>
+                        Style="{StaticResource EditBackButton}"
+                        Command="{Binding OpenWorkWindow}"
+                        CommandParameter="{Binding ElementName=EditWindow}"/>-->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -44,11 +47,11 @@
                             HorizontalAlignment="Right">
                         <Button Name="HideButton"
                             Width="25"
-                            Style="{StaticResource HideButton}">
+                            Style="{StaticResource HideButton}" Click="HideButton_Click">
                         </Button>
                         <Button Name="ExitButton"
                             Width="25"
-                            Style="{StaticResource ExitButton}">
+                            Style="{StaticResource ExitButton}" Click="ExitButton_Click">
                         </Button>
                     </StackPanel>
                 </Grid>

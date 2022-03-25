@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_StudentsAchievement2.Resources.MVVM.View"
         mc:Ignorable="d"
+        x:Name="MainWorkWindow"
         Title="WorkWindow" Height="450" Width="800"
         WindowStartupLocation="CenterScreen" WindowStyle="None"  ResizeMode="NoResize"
         xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
@@ -37,20 +38,20 @@
                             HorizontalAlignment="Right">
                         <Button Name="HideButton"
                             Width="25"
-                            Style="{StaticResource HideButton}">
+                            Style="{StaticResource HideButton}" Click="HideButton_Click">
                         </Button>
                         <Button Name="ExitButton"
                             Width="25"
-                            Style="{StaticResource ExitButton}">
+                            Style="{StaticResource ExitButton}" Click="ExitButton_Click">
                         </Button>
                     </StackPanel>
                 </Grid>
             </Border>
 
-
-            <DataGrid Name="InfoDataGrid"
+            <ListView x:Name="GradeInfoListView"
                       Grid.Row="1"
-                      Background="LightGray"/>
+                      Background="LightGray"
+                      ItemsSource="{Binding AllGrades}"/>
         </Grid>
 
         <Grid Grid.Column="0">
@@ -98,13 +99,19 @@
                         VerticalAlignment="Center">
                 <Button Name="AddButton"
                         Content="ДОБАВИТЬ"
-                        Style="{StaticResource WorkWindowButton}"/>
+                        Style="{StaticResource WorkWindowButton}"
+                        Command="{Binding OpenAddChoiceWindow}"
+                        CommandParameter="{Binding ElementName=MainWorkWindow}"/>
                 <Button Name="EditButton"
                         Content="РЕДАКТИРОВАТЬ"
-                        Style="{StaticResource WorkWindowButton}"/>
+                        Style="{StaticResource WorkWindowButton}"
+                        Command="{Binding OpenEditChoiceWindow}"
+                        CommandParameter="{Binding ElementName=MainWorkWindow}"/>
                 <Button Name="DeleteButton"
                         Content="УДАЛИТЬ"
-                        Style="{StaticResource WorkWindowButton}"/>
+                        Style="{StaticResource WorkWindowButton}"
+                        Command="{Binding OpenDeleteChoiceWindow}"
+                        CommandParameter="{Binding ElementName=MainWorkWindow}"/>
             </StackPanel>
         </Grid>
         

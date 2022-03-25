@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_StudentsAchievement2.Resources.MVVM.ViewModel;
 
 namespace WPF_StudentsAchievement2.Resources.MVVM.View
 {
@@ -20,6 +21,12 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.View
         public LoginWindow()
         {
             InitializeComponent();
+            DataContext = new DataManageVM();
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

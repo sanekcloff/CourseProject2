@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_StudentsAchievement2.Resources.MVVM.ViewModel;
 
 namespace WPF_StudentsAchievement2.Resources.MVVM.View
 {
@@ -19,6 +20,22 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.View
         public DeleteChoiceWindow()
         {
             InitializeComponent();
+            DataContext = new DataManageVM();
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void HideButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

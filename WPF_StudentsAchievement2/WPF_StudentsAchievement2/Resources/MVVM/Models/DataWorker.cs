@@ -132,19 +132,26 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.Models
             }
         }
         //создать пользователя
-        public static string CreateUser(string login,string passsword)
+        public static bool CheckAuthUser(string login,string password)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                return db.Registers.Any(el => el.Password == password && el.Login == login);
+            }
+        }
+        public static string CreateUser(string login,string password)
         {
             string result = "Уже существует";
             using (ApplicationContext db = new ApplicationContext())
             {
                 //check the user is exist
-                bool checkIsExist = db.Registers.Any(el => el.Password == passsword && el.Login==login );
+                bool checkIsExist = db.Registers.Any(el => el.Password == password && el.Login==login );
                 if (!checkIsExist)
                 {
                     Register newUser = new Register
                     {
                         Login = login,
-                        Password = passsword,
+                        Password = password,
                     };
                     db.Registers.Add(newUser);
                     db.SaveChanges();

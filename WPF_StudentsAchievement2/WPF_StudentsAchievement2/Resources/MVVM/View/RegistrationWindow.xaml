@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:WPF_StudentsAchievement2.Resources.MVVM.View"
         mc:Ignorable="d"
         Title="RegistrationWindow" Height="450" Width="300"
-        WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+        WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize"
+        x:Name="AddNeUserWnd">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*"/>
@@ -35,7 +36,8 @@
                             HorizontalAlignment="Right">
                     <Button Name="ExitButton"
                             Width="25"
-                            Style="{StaticResource ExitButton}">
+                            Style="{StaticResource ExitButton}"
+                            Click="ExitButton_Click">
                     </Button>
                 </StackPanel>
             </Grid>
@@ -55,6 +57,7 @@
                  Grid.Row="2"
                  BorderBrush="PaleVioletRed"
                  MaxLength="20"
+                 Text="{Binding Login}"
                  Style="{StaticResource AutorizationTextBox}"/>
         <TextBlock Text="ПАРОЛЬ"
                    Grid.Row="3"
@@ -63,6 +66,7 @@
                  Grid.Row="4"
                  BorderBrush="PaleVioletRed"
                  MaxLength="30"
+                 Text="{Binding Password}"
                  Style="{StaticResource AutorizationTextBox}"/>
         <Button Name="RegistrationButton"
                 Grid.Row="5"
@@ -71,13 +75,16 @@
                 Background="PaleVioletRed"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center" 
-                Style="{StaticResource StartWindosButtonsMain}"/>
+                Command="{Binding AddNewUser}"
+                Style="{StaticResource StartWindosButtonsMain}"
+                CommandParameter="{Binding ElementName=AddNeUserWnd}"/>
         <Button Name="LoginButton"
                 Grid.Row="6"
                 Content="Войти"
                 Margin="100,7,100,7"
                 Opacity="1" 
                 Background="PaleVioletRed"
-                Style="{StaticResource StartWindosButtonsAlt}"/>
+                Style="{StaticResource StartWindosButtonsAlt}"
+                Command="{Binding OpenLoginWindow}"/>
     </Grid>
 </Window>

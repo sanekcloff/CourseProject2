@@ -314,9 +314,6 @@
         </Style.Triggers>
     </Style>
 
-    <ImageBrush x:Key="SettingsButtonImage" 
-                    ImageSource="\Resources\Images\SettingsGear.png" 
-                    Stretch="Uniform"/>
     <ImageBrush x:Key="HideButtonImage" 
                     ImageSource="\Resources\Images\HideButton_Icon.png" 
                     Stretch="Uniform"/>
@@ -341,23 +338,6 @@
     <ImageBrush x:Key="WorkWindowTitleImage_Light" 
                     ImageSource="\Resources\Images\WorkWindowTitle_Light.png" 
                     Stretch="Uniform"/>
-    <!--Настройки-->
-    <Style x:Key="WorkWindowSettings" TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{StaticResource SettingsButtonImage}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="Settings" 
-                                Background="{TemplateBinding Background}" />
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" TargetName="Settings" Value="{StaticResource WorkWindowTitleImage_Light}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
     <!--Главное название-->
     <Style x:Key="WorkWindowTitle" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="{StaticResource WorkWindowTitleImage}"/>

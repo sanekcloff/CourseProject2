@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:WPF_StudentsAchievement2.Resources.MVVM.View"
         mc:Ignorable="d"
         Title="LoginWindow" Height="450" Width="300"
-        WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+        WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize"
+        x:Name="LoginWnd">
     <Window.Resources>
     </Window.Resources>
     <Grid>
@@ -37,7 +38,7 @@
                             HorizontalAlignment="Right">
                     <Button Name="ExitButton"
                             Width="25"
-                            Style="{StaticResource ExitButton}">
+                            Style="{StaticResource ExitButton}" Click="ExitButton_Click">
                     </Button>
                 </StackPanel>
             </Grid>
@@ -55,19 +56,19 @@
                    Style="{StaticResource AutorizationTextBlock}"/>
         <TextBox Name="LoginTextBox"
                  Grid.Row="2"
-                 Text="Amogus"
+                 Text="{Binding Login}"
                  MaxLength="20"
                  BorderBrush="CadetBlue"
                  Style="{StaticResource AutorizationTextBox}"/>
         <TextBlock Text="ПАРОЛЬ"
                    Grid.Row="3"
                    Style="{StaticResource AutorizationTextBlock}"/>
-        <PasswordBox Name="PasswordTextBox"
+        <TextBox Name="PasswordTextBox"
                      Grid.Row="4"
-                     Password="usus"
+                     Text="{Binding Password}"
                      BorderBrush="CadetBlue"
                      MaxLength="30"
-                     Style="{StaticResource PasswordTextBox}"/>
+                     Style="{StaticResource AutorizationTextBox}"/>
         <Button Name="LoginButton"
                 Grid.Row="5"
                 Content="Вход"
@@ -77,14 +78,17 @@
                 VerticalContentAlignment="Center" 
                 Background="CadetBlue"
                 Style="{StaticResource StartWindosButtonsMain}"
-                />
+                Command="{Binding CheckAuthUser}"
+                CommandParameter="{Binding ElementName=LoginWnd}"/>
         <Button Name="RegistrationButton"
                 Grid.Row="6"
                 Content="Регистрация"
                 Margin="100,7,100,7"
                 Opacity="1" 
                 Background="CadetBlue"
-                Style="{StaticResource StartWindosButtonsAlt}"/>
+                Command="{Binding OpenRegisterWindow}"
+                Style="{StaticResource StartWindosButtonsAlt}"
+                CommandParameter="{Binding ElementName=LoginWnd}"/>
 
     </Grid>
 </Window>
