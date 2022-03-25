@@ -308,6 +308,19 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
         #endregion
 
         #region COMMANDS TO OPEN WINDOWS
+        private RelayCommand openWorkWindow;
+        public RelayCommand OpenWorkWindow
+        {
+            get
+            {
+                return openWorkWindow ?? new RelayCommand(obj =>
+                {
+                    OpenWorkWindowMethod();
+                }
+                    );
+            }
+        }
+
         private RelayCommand openAddNewDepartmentWnd;
         public RelayCommand OpenAddNewDepartmentWnd
         {
@@ -375,37 +388,50 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
 
         #region METHODS TO OPEN WINDOW
         //методы открытия окон
-        private void OpenAddDepartmentWindowMethod()
+        private void OpenWorkWindowMethod()
         {
-            AddNewDepartmentWindow newDepartmentWindow = new AddNewDepartmentWindow();
-            SetCenterPositionAndOpen(newDepartmentWindow);
+            WorkWindow newWorkWindow = new WorkWindow();
+            SetCenterPositionAndOpen(newWorkWindow);
         }
-        private void OpenAddPositionWindowMethod()
+        private void OpenRegisterWindowMethod()
         {
-            AddNewPositionWindow newPositionWindow = new AddNewPositionWindow();
-            SetCenterPositionAndOpen(newPositionWindow);
+            RegistrationWindow newRegisterWindow = new RegistrationWindow();
+            SetCenterPositionAndOpen(newRegisterWindow);
         }
-        private void OpenAddUserWindowMethod()
+        //окно удаления
+        private void OpenDeleteChoiceWindowMethod()
         {
-            AddNewUserWindow newUserWindow = new AddNewUserWindow();
-            SetCenterPositionAndOpen(newUserWindow);
+            DeleteChoiceWindow newDeleteChoiceWindow = new DeleteChoiceWindow();
+            SetCenterPositionAndOpen(newDeleteChoiceWindow);
+        }
+        //окно редактирования
+        private void OpenEditChoiceWindowMethod()
+        {
+            EditChoiceWindow newEditChoiceWindow = new EditChoiceWindow();
+            SetCenterPositionAndOpen(newEditChoiceWindow);
+        }
+        //окно добавления
+        private void OpenAddChoiceWindowMethod()
+        {
+            AddChoiceWindow newAddChoiceWindow = new AddChoiceWindow();
+            SetCenterPositionAndOpen(newAddChoiceWindow);
         }
         //окна редактирования
-        private void OpenEditDepartmentWindowMethod(Department department)
-        {
-            EditDepartmentWindow editDepartmentWindow = new EditDepartmentWindow(department);
-            SetCenterPositionAndOpen(editDepartmentWindow);
-        }
-        private void OpenEditPositionWindowMethod(Position position)
-        {
-            EditPositionWindow editPositionWindow = new EditPositionWindow(position);
-            SetCenterPositionAndOpen(editPositionWindow);
-        }
-        private void OpenEditUserWindowMethod(User user)
-        {
-            EditUserWindow editUserWindow = new EditUserWindow(user);
-            SetCenterPositionAndOpen(editUserWindow);
-        }
+        //private void OpenEditDepartmentWindowMethod(Department department)
+        //{
+        //    EditDepartmentWindow editDepartmentWindow = new EditDepartmentWindow(department);
+        //    SetCenterPositionAndOpen(editDepartmentWindow);
+        //}
+        //private void OpenEditPositionWindowMethod(Position position)
+        //{
+        //    EditPositionWindow editPositionWindow = new EditPositionWindow(position);
+        //    SetCenterPositionAndOpen(editPositionWindow);
+        //}
+        //private void OpenEditUserWindowMethod(User user)
+        //{
+        //    EditUserWindow editUserWindow = new EditUserWindow(user);
+        //    SetCenterPositionAndOpen(editUserWindow);
+        //}
         private void SetCenterPositionAndOpen(Window window)
         {
             window.Owner = Application.Current.MainWindow;
@@ -471,8 +497,9 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
 
         private void ShowMessageToUser(string message)
         {
-            MessageView messageView = new MessageView(message);
-            SetCenterPositionAndOpen(messageView);
+            MessageBox.Show(message,"Сообщение", MessageBoxButton.OK,MessageBoxImage.Information);
+            //MessageView messageView = new MessageView(message);
+            //SetCenterPositionAndOpen(messageView);
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
