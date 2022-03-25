@@ -51,7 +51,24 @@
             <ListView x:Name="GradeInfoListView"
                       Grid.Row="1"
                       Background="LightGray"
-                      ItemsSource="{Binding AllGrades}"/>
+                      ItemsSource="{Binding AllGrades}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Фамилия"                                            
+                                            DisplayMemberBinding="{Binding Path=GradeStudent.StudentLsatName}"/>
+                        <GridViewColumn Header="Имя"                                            
+                                            DisplayMemberBinding="{Binding Path=GradeStudent.StudentFirstName}"/>
+                        <GridViewColumn Header="Отчество"                                            
+                                            DisplayMemberBinding="{Binding Path=GradeStudent.StudentMiddleName}"/>
+                        <GridViewColumn Header="Дисциплина"                                            
+                                            DisplayMemberBinding="{Binding Path=GradeDiscipline.DisciplineName}"/>
+                        <GridViewColumn Header="Оценка"                                            
+                                            DisplayMemberBinding="{Binding Path=GradeValue}"/>
+                        <GridViewColumn Header="Дата"                                            
+                                            DisplayMemberBinding="{Binding Path=Date}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
 
         <Grid Grid.Column="0">
@@ -83,17 +100,24 @@
                 <TextBlock Text="Группа"
                            Style="{StaticResource WorkWindowTextBlock}"/>
                 <ComboBox Name="GroupComboBox"
-                          Style="{StaticResource WorkWindowComboBox}">
-                    <TextBlock Text="dfgjdfgghdghbdfgbhdhghdfghbdf"/>
-                </ComboBox>
+                          Style="{StaticResource WorkWindowComboBox}"
+                          ItemsSource="{Binding AllGroups}"
+                          SelectedItem="{Binding GroupName}"
+                          DisplayMemberPath="GroupName"/>
                 <TextBlock Text="Студент"
                            Style="{StaticResource WorkWindowTextBlock}"/>
                 <ComboBox Name="StudentComboBox"
-                          Style="{StaticResource WorkWindowComboBox}"/>
+                          Style="{StaticResource WorkWindowComboBox}"
+                          ItemsSource="{Binding AllStudents}"
+                          SelectedItem="{Binding StudentFirstName}"
+                          DisplayMemberPath="StudentFirstName"/>
                 <TextBlock Text="Дисциплина"
                            Style="{StaticResource WorkWindowTextBlock}"/>
                 <ComboBox Name="DisciplineComboBox"
-                          Style="{StaticResource WorkWindowComboBox}"/>
+                          Style="{StaticResource WorkWindowComboBox}"
+                          ItemsSource="{Binding AllDisciplines}"
+                          SelectedItem="{Binding DisciplineName}"
+                          DisplayMemberPath="DisciplineName"/>
             </StackPanel>
             <StackPanel Grid.Row="2"
                         VerticalAlignment="Center">

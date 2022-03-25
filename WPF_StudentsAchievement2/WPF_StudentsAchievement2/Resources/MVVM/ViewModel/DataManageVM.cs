@@ -70,7 +70,7 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
         public static string Password { get; set; }
         //свойства для Студента
         public static string StudentFirstName { get; set; }
-        public static string StudentLasttName { get; set; }
+        public static string StudentLastName { get; set; }
         public static string StudentMiddleName { get; set; }
         public static Group StudentGroup { get; set; }
 
@@ -79,6 +79,8 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
         public static Discipline GradeDiscipline { get; set; }
         public static int GradeValue { get; set; }
         public static DateTime Date { get; set; }
+
+        
 
         //свойства для выделенных элементов
         //public TabItem SelectedTabItem { get; set; }
@@ -209,6 +211,7 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
                             resultStr = "Успешный вход";
                             ShowMessageToUser(resultStr);
                             OpenWorkWindowMethod();
+                            UpdateInfoView();
                             wnd.Close();
                         }
                         else
@@ -515,8 +518,8 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
         {
             //для Студента
             StudentFirstName = null;
-            StudentFirstName = null;
-            StudentFirstName = null;
+            StudentLastName = null;
+            StudentMiddleName = null;
             StudentGroup = null;
             //для Оценки
             GradeStudent = null;
