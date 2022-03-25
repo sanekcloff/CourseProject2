@@ -44,7 +44,7 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
             set
             {
                 allGroups = value;
-                NotifyPropertyChanged("AllGroupss");
+                NotifyPropertyChanged("AllGroups");
             }
         }
 
@@ -53,17 +53,17 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
         public List<Grade> AllGrades
         {
             get { return allGrades; }
-            private set
+            set
             {
                 allGrades = value;
                 NotifyPropertyChanged("AllGrades");
             }
         }
 
-        //свойства для отдела
+        //свойства для групп
         public static string GroupName { get; set; }
         public static int Course { get; set; }
-        //свойства для отдела
+        //свойства для дисиплин
         public static string DisciplineName { get; set; }
         //свойства для пользователя
         public static string Login { get; set; }
