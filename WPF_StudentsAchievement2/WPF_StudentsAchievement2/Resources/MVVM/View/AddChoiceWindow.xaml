@@ -17,16 +17,8 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.2*"/>
-                    <RowDefinition Height="0.2*"/>
                     <RowDefinition/>
-                    <RowDefinition Height="0.1*"/>
                 </Grid.RowDefinitions>
-                <!--<Button Name="BackButton"
-                        Grid.Row="3"
-                        HorizontalAlignment="Left"
-                        Style="{StaticResource AddBackButton}" Click="BackButton_Click"
-                        Command="{Binding OpenWorkWindow}"
-                        CommandParameter="{Binding ElementName=AddWindow}"/>-->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -57,28 +49,25 @@
                 </Grid>
                 <Border Grid.Row="1"
                         Background="CadetBlue">
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Center">
-                        <Button Name="GradeButton"
-                                Content="Оценку"
-                                Command="{Binding AddGradeViewCommand}"
-                                Style="{StaticResource AddChoiceWindowButton}"/>
-                        <Button Name="GroupButton"
-                                Content="Группу"
-                                Command="{Binding AddGroupViewCommand}"
-                                Style="{StaticResource AddChoiceWindowButton}"/>
-                        <Button Name="StudentButton"
-                                Content="Студента"
-                                Command="{Binding AddStudentViewCommand}"
-                                Style="{StaticResource AddChoiceWindowButton}"/>
-                        <Button Name="DisciplineButton"
-                                Content="Дисциплину"
-                                Command="{Binding AddDisciplineViewCommand}"
-                                Style="{StaticResource AddChoiceWindowButton}"/>
-                    </StackPanel>
-                </Border>
-                <Border Grid.Row="2">
-                    <ContentControl Content="{Binding CurrentView}"/>
+                    <TabControl TabStripPlacement="Left">
+                        <TabItem Header="ОЦЕНКИ"
+                                 Style="{StaticResource AddChoiceWindowButton}">
+
+                        </TabItem>
+                        <TabItem Header="СТУДЕНТА"
+
+                                 Style="{StaticResource AddChoiceWindowButton}">
+
+                        </TabItem>
+                        <TabItem Header="ДИСЦИПЛИНЫ"
+                                 Style="{StaticResource AddChoiceWindowButton}">
+
+                        </TabItem>
+                        <TabItem Header="ГРУППЫ"
+                                 Style="{StaticResource AddChoiceWindowButton}">
+
+                        </TabItem>
+                    </TabControl>
                 </Border>
             </Grid>
         </Border>
