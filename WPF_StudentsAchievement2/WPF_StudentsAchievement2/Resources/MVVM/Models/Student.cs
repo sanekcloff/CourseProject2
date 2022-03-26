@@ -22,8 +22,16 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.Models
         [MaxLength(50)]
         public string StudentMiddleName { get; set; }
         [Required]
-        public int? GroupId { get; set; }
+        public int GroupId { get; set; }
         [ForeignKey("GroupId")]
         public Group Group { get; set; }
+        [NotMapped]
+        public Group StudentGroup 
+        {
+            get
+            {
+                return DataWorker.GetGroupById(GroupId);
+            }
+        }
     }
 }

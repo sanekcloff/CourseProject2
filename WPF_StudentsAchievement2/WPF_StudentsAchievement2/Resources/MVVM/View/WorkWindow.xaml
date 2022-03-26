@@ -55,7 +55,7 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Фамилия"                                            
-                                            DisplayMemberBinding="{Binding Path=GradeStudent.StudentLsatName}"/>
+                                            DisplayMemberBinding="{Binding Path=GradeStudent.StudentLastName}"/>
                         <GridViewColumn Header="Имя"                                            
                                             DisplayMemberBinding="{Binding Path=GradeStudent.StudentFirstName}"/>
                         <GridViewColumn Header="Отчество"                                            

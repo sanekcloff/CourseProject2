@@ -15,13 +15,13 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.Models
         public int Id { get; set; }
         
         [Required]
-        public int? StudentId { get; set; }
+        public int StudentId { get; set; }
         
         [ForeignKey("StudentId")]
         public Student Student { get; set; }
 
         [Required]
-        public int? DisciplineId { get; set; }
+        public int DisciplineId { get; set; }
         
         [ForeignKey("DisciplineId")]
         public Discipline Discipline { get; set; }
@@ -31,5 +31,21 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.Models
 
         [Required]
         public DateTime Date { get; set; }
+        [NotMapped]
+        public Student GradeStudent
+        {
+            get
+            {
+                return DataWorker.GetStudentById(StudentId);
+            }
+        }
+        [NotMapped]
+        public Discipline GradeDiscipline
+        {
+            get
+            {
+                return DataWorker.GetDisciplineById(DisciplineId);
+            }
+        }
     }
 }
