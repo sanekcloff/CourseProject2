@@ -1,5 +1,5 @@
-﻿using WPF_StudentsAchievement2.Resources.MVVM.Models;
-using WPF_StudentsAchievement2.Resources.MVVM.View;
+﻿using WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models;
+using WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
+namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
 {
     public class DataManageVM : INotifyPropertyChanged
     {
@@ -69,9 +69,7 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
         public static string Login { get; set; }
         public static string Password { get; set; }
         //свойства для Студента
-        public static string StudentFirstName { get; set; }
-        public static string StudentLastName { get; set; }
-        public static string StudentMiddleName { get; set; }
+        public static string StudentFIO { get; set; }
         public static Group StudentGroup { get; set; }
 
         //свойства для Оценки
@@ -153,6 +151,113 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
         //        );
         //    }
         //}
+        private RelayCommand addNewGrade;
+        public RelayCommand AddNewGrade
+        {
+            get
+            {
+                return addNewGrade ?? new RelayCommand(obj =>
+                {
+                    Window wnd = obj as Window;
+                    string resultStr = "";
+                    if (GradeStudent == null || GradeDiscipline == null || GradeValue == 0 || Date == null)
+                    {
+                        if (GradeStudent == null)
+                        {
+                            ShowMessageToUser("Некорректный студент");
+                        }
+                        if (GradeDiscipline == null)
+                        {
+                            ShowMessageToUser("Некорректное название дисциплины");
+                        }
+                        if (GradeValue == 0)
+                        {
+                            ShowMessageToUser("Некорректная оценка");
+                        }
+                        if (Date == null)
+                        {
+                            ShowMessageToUser("Некорректная дата");
+                        }
+                    }
+                    else
+                    {
+                        resultStr = DataWorker.CreateGrade(GradeValue,Date,GradeDiscipline,GradeStudent);
+                        UpdateInfoView();
+                        ShowMessageToUser(resultStr);
+                        SetNullValuesToProperties();
+                        wnd.Close();
+                    }
+                }
+                );
+            }
+        }
+        private RelayCommand addNewStudent;
+        public RelayCommand AddNewStudent
+        {
+            get
+            {
+                return addNewStudent ?? new RelayCommand(obj =>
+                {
+                    Window wnd = obj as Window;
+                    string resultStr = "";
+                    if (StudentGroup == null || StudentFIO == null || StudentFIO.Replace(" ", "").Length == 0)
+                    {
+                        if (StudentFIO == null || StudentFIO.Replace(" ", "").Length == 0)
+                        {
+                            ShowMessageToUser("Некорректное Ф.И.О.");
+                        }
+                        if (StudentGroup == null)
+                        {
+                            ShowMessageToUser("Укажите группу");
+                        }
+                    }
+                    else
+                    {
+                        resultStr = DataWorker.CreateStudent(StudentFIO, StudentGroup);
+                        UpdateInfoView();
+
+                        ShowMessageToUser(resultStr);
+                        SetNullValuesToProperties();
+                        wnd.Close();
+                    }
+                }
+                );
+            }
+        }
+        private RelayCommand addNewGroup;
+        public RelayCommand AddNewGroup
+        {
+            get
+            {
+                return addNewGroup ?? new RelayCommand(obj =>
+                {
+                    Window wnd = obj as Window;
+                    string resultStr = "";
+                    if (GroupName == null || GroupName.Replace(" ", "").Length == 0 || 
+                    GroupName == null || GroupName.Replace(" ", "").Length == 0)
+                    {
+                        if (GroupName == null || GroupName.Replace(" ", "").Length == 0)
+                        {
+                            ShowMessageToUser("Некорректное название");
+                        }
+                        if (Course == 0)
+                        {
+                            ShowMessageToUser("Укажите курс");
+                        }
+                    }
+                    else
+                    {
+                        resultStr = DataWorker.CreateGroup(GroupName,Course);
+                        UpdateInfoView();
+
+                        ShowMessageToUser(resultStr);
+                        SetNullValuesToProperties();
+                        wnd.Close();
+                    }
+                }
+                );
+            }
+        }
         private RelayCommand addNewDiscipline;
         public RelayCommand AddNewDiscipline
         {
@@ -160,6 +265,7 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
             {
                 return addNewDiscipline ?? new RelayCommand(obj =>
                 {
+                    Window wnd = obj as Window;
                     string resultStr = "";
                     if (DisciplineName == null || DisciplineName.Replace(" ", "").Length == 0)
                     {
@@ -171,7 +277,8 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
                         UpdateInfoView();
 
                         ShowMessageToUser(resultStr);
-                       // SetNullValuesToProperties();
+                        SetNullValuesToProperties();
+                        wnd.Close();
                     }
                 }
                 );
@@ -197,7 +304,6 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
                     else
                     {
                         resultStr = DataWorker.CreateUser(Login, Password);
-                        //UpdateInfoView();
 
                         ShowMessageToUser(resultStr);
                         wnd.Close();
@@ -378,6 +484,7 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
                 return openWorkWindow ?? new RelayCommand(obj =>
                 {
                     OpenWorkWindowMethod();
+                    UpdateInfoView();
                 }
                     );
             }
@@ -407,38 +514,50 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
                     );
             }
         }
-        private RelayCommand openAddChoiceWindow;
-        public RelayCommand OpenAddChoiceWindow
+        private RelayCommand openAddGradeWindow;
+        public RelayCommand OpenAddGradeWindow
         {
             get
             {
-                return openAddChoiceWindow ?? new RelayCommand(obj =>
+                return openAddGradeWindow ?? new RelayCommand(obj =>
                 {
-                    OpenAddChoiceWindowMethod();
+                    OpenAddGradeWindowMethod();
                 }
                 );
             }
         }
-        private RelayCommand openEditChoiceWindow;
-        public RelayCommand OpenEditChoiceWindow
+        private RelayCommand openAddDisciplineWindow;
+        public RelayCommand OpenAddDisciplineWindow
         {
             get
             {
-                return openEditChoiceWindow ?? new RelayCommand(obj =>
+                return openAddDisciplineWindow ?? new RelayCommand(obj =>
                 {
-                    OpenEditChoiceWindowMethod();
+                    OpenAddDisciplineWindowMethod();
                 }
                 );
             }
         }
-        private RelayCommand openDeleteChoiceWindow;
-        public RelayCommand OpenDeleteChoiceWindow
+        private RelayCommand openAddStudentWindow;
+        public RelayCommand OpenAddStudentWindow
         {
             get
             {
-                return openDeleteChoiceWindow ?? new RelayCommand(obj =>
+                return openAddStudentWindow ?? new RelayCommand(obj =>
                 {
-                    OpenDeleteChoiceWindowMethod();
+                    OpenAddStudentWindowMethod();
+                }
+                );
+            }
+        }
+        private RelayCommand openAddGroupWindow;
+        public RelayCommand OpenAddGroupWindow
+        {
+            get
+            {
+                return openAddGroupWindow ?? new RelayCommand(obj =>
+                {
+                    OpenAddGroupWindowMethod();
                 }
                 );
             }
@@ -489,43 +608,29 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
             RegistrationWindow newRegisterWindow = new RegistrationWindow();
             SetCenterPositionAndOpen(newRegisterWindow);
         }
-        //окно удаления
-        private void OpenDeleteChoiceWindowMethod()
-        {
-            DeleteChoiceWindow newDeleteChoiceWindow = new DeleteChoiceWindow();
-            SetCenterPositionAndOpen(newDeleteChoiceWindow);
-        }
-        //окно редактирования
-        private void OpenEditChoiceWindowMethod()
-        {
-            EditChoiceWindow newEditChoiceWindow = new EditChoiceWindow();
-            SetCenterPositionAndOpen(newEditChoiceWindow);
-        }
         //окно добавления
-        private void OpenAddChoiceWindowMethod()
+        private void OpenAddGradeWindowMethod()
         {
-            AddChoiceWindow newAddChoiceWindow = new AddChoiceWindow();
-            SetCenterPositionAndOpen(newAddChoiceWindow);   
+            AddGradeWindow newAddGradeWindow = new AddGradeWindow();
+            SetCenterPositionAndOpen(newAddGradeWindow);   
         }
-        //окна редактирования
-        //private void OpenEditDepartmentWindowMethod(Department department)
-        //{
-        //    EditDepartmentWindow editDepartmentWindow = new EditDepartmentWindow(department);
-        //    SetCenterPositionAndOpen(editDepartmentWindow);
-        //}
-        //private void OpenEditPositionWindowMethod(Position position)
-        //{
-        //    EditPositionWindow editPositionWindow = new EditPositionWindow(position);
-        //    SetCenterPositionAndOpen(editPositionWindow);
-        //}
-        //private void OpenEditUserWindowMethod(User user)
-        //{
-        //    EditUserWindow editUserWindow = new EditUserWindow(user);
-        //    SetCenterPositionAndOpen(editUserWindow);
-        //}
+        private void OpenAddDisciplineWindowMethod()
+        {
+            AddDisciplineWindow newAddDisciplineWindow = new AddDisciplineWindow();
+            SetCenterPositionAndOpen(newAddDisciplineWindow);
+        }
+        private void OpenAddStudentWindowMethod()
+        {
+            AddStudentWindow newAddStudentWindow = new AddStudentWindow();
+            SetCenterPositionAndOpen(newAddStudentWindow);
+        }
+        private void OpenAddGroupWindowMethod()
+        {
+            AddGroupWindow newAddGroupWindow = new AddGroupWindow();
+            SetCenterPositionAndOpen(newAddGroupWindow);
+        }
         private void SetCenterPositionAndOpen(Window window)
         {
-            //window.Owner = Application.Current.MainWindow;
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             window.Show();
         }
@@ -535,9 +640,7 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
         private void SetNullValuesToProperties()
         {
             //для Студента
-            StudentFirstName = null;
-            StudentLastName = null;
-            StudentMiddleName = null;
+            StudentFIO = null;
             StudentGroup = null;
             //для Оценки
             GradeStudent = null;
@@ -553,48 +656,16 @@ namespace WPF_StudentsAchievement2.Resources.MVVM.ViewModel
         }
         private void UpdateInfoView()
         {
-            UpdateStudentsInfo();
-            //UpdateAllDisciplinesView();
-            //UpdateAllGradesView();
-            //UpdateAllGroupsView();
-            //UpdateAllUserssView();
-
-            //WorkWindow.AllStudentsComboBox.Items.Clear();
-            //WorkWindow.AllStudentsComboBox.ItemsSource = AllStudents;
-            //WorkWindow.AllStudentsComboBox.Items.Refresh();
-
-            //WorkWindow.AllGroupsComboBox.Items.Clear();
-            //WorkWindow.AllGroupsComboBox.ItemsSource = AllGroups;
-            //WorkWindow.AllGroupsComboBox.Items.Refresh();
+            UpdateGradesInfo();
         }
-        private void RefreshComboBoxes()
+        private void UpdateGradesInfo()
         {
-
-        }
-        private void UpdateStudentsInfo()
-        {
-            AllStudents = DataWorker.GetAllStudents();
+            AllGrades=DataWorker.GetAllGrades();
             WorkWindow.AllGradeInfoListView.ItemsSource = null;
             WorkWindow.AllGradeInfoListView.Items.Clear();
             WorkWindow.AllGradeInfoListView.ItemsSource = AllGrades;
             WorkWindow.AllGradeInfoListView.Items.Refresh();
         }
-        //private void UpdateAllPositionsView()
-        //{
-        //    AllPositions = DataWorker.GetAllPositions();
-        //    MainWindow.AllPositionsView.ItemsSource = null;
-        //    MainWindow.AllPositionsView.Items.Clear();
-        //    MainWindow.AllPositionsView.ItemsSource = AllPositions;
-        //    MainWindow.AllPositionsView.Items.Refresh();
-        //}
-        //private void UpdateAllUsersView()
-        //{
-        //    AllUsers = DataWorker.GetAllUsers();
-        //    MainWindow.AllUsersView.ItemsSource = null;
-        //    MainWindow.AllUsersView.Items.Clear();
-        //    MainWindow.AllUsersView.ItemsSource = AllUsers;
-        //    MainWindow.AllUsersView.Items.Refresh();
-        //}
         #endregion
 
         private void ShowMessageToUser(string message)

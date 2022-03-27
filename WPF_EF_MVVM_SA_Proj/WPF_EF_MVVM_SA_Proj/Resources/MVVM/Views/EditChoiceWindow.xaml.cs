@@ -11,27 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WPF_StudentsAchievement2.Resources.MVVM.ViewModel;
+using WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels;
 
-
-namespace WPF_StudentsAchievement2.Resources.MVVM.View
+namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
 {
-    public partial class WorkWindow : Window
+    public partial class EditChoiceWindow : Window
     {
-        public static ListView AllGradeInfoListView;
-        public static ComboBox AllGroupsComboBox;
-        public static ComboBox AllStudentsComboBox;
-        public static ComboBox AllDisciplinesComboBox;
-        public WorkWindow()
+        public EditChoiceWindow()
         {
             InitializeComponent();
-            DataContext = new DataManageVM();
-            AllGradeInfoListView = GradeInfoListView;
-            AllGroupsComboBox = GroupComboBox;
-            AllStudentsComboBox = StudentComboBox;
-            AllDisciplinesComboBox = DisciplineComboBox;
+            //DataContext = new DataManageVM();
         }
-
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Close();

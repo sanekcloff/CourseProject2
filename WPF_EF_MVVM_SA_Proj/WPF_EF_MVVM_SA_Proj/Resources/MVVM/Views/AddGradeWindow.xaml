@@ -1,0 +1,57 @@
+﻿<Window x:Class="WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views.AddGradeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views"
+        xmlns:viewModels="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels"
+        mc:Ignorable="d"
+        Title="AddGradeWindow" Height="400" Width="300" x:Name="AddNewGradeWnd">
+    <Window.DataContext>
+        <viewModels:DataManageVM/>
+    </Window.DataContext>
+    <Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="1"
+                        VerticalAlignment="Center">
+                <TextBlock Text="СТУДЕНТ"
+                           Style="{StaticResource ActionWindowTextBlock}"/>
+                <ComboBox Name="StudentComboBox"
+                          SelectedItem="{Binding GradeStudent}"
+                          ItemsSource="{Binding AllStudents}"
+                          DisplayMemberPath="StudentFIO"/>
+                <TextBlock Text="ДИСЦИПЛИНА"
+                           Style="{StaticResource ActionWindowTextBlock}"/>
+                <ComboBox Name="DisciplineComboBox"
+                          SelectedItem="{Binding GradeDiscipline}"
+                          ItemsSource="{Binding AllDisciplines}"
+                          DisplayMemberPath="DisciplineName"/>
+                <TextBlock Text="ОЦЕНКА"
+                           Style="{StaticResource ActionWindowTextBlock}"/>
+                <ComboBox Name="GradeComboBox"
+                          Text="{Binding GradeValue}">
+                    <ComboBoxItem Content="2"
+                                  Foreground="Red"/>
+                    <ComboBoxItem Content="3"
+                                  Foreground="Orange"/>
+                    <ComboBoxItem Content="4"
+                                  Foreground="Green"/>
+                    <ComboBoxItem Content="5"
+                                  Foreground="Purple"/>
+                </ComboBox>
+                <TextBlock Text="ДАТА"
+                           Style="{StaticResource ActionWindowTextBlock}"/>
+                <DatePicker Name="DatePick"
+                            Text="{Binding Date}">
+                </DatePicker>
+                <Button Name="GradeReadyButton" 
+                        Style="{StaticResource AddReadyButton}"
+                        Command="{Binding AddNewGrade}"
+                        CommandParameter="{Binding ElementName=AddNewGradeWnd}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
