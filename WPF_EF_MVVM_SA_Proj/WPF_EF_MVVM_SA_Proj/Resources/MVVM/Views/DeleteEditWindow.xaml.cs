@@ -11,16 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels;
 
 namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
 {
-    public partial class AddChoiceWindow : Window
+    public partial class DeleteEditWindow : Window
     {
-        public AddChoiceWindow()
+        public DeleteEditWindow()
         {
             InitializeComponent();
-            //DataContext = new DataManageVM();
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -30,12 +28,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
 
         private void HideButton_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
+            WindowState = WindowState.Minimized; 
         }
     }
 }

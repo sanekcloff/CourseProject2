@@ -196,7 +196,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
             return result;
         }
         //удаление Группы
-        public static string DeleteGoup(Group group)
+        public static string DeleteGroup(Group group)
         {
             string result = "Такой группы не существует";
             using (ApplicationContext db = new ApplicationContext())

@@ -1,0 +1,133 @@
+﻿<Window x:Class="WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views.DeleteEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views"
+        xmlns:viewModels="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels"
+        mc:Ignorable="d"
+        Title="DeleteEditWindow" Height="450" Width="800" Background="CadetBlue" WindowStyle="None" ResizeMode="NoResize">
+    <Window.DataContext>
+        <viewModels:DataManageVM/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.06*"/>
+            <RowDefinition Height="0.08*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Name="DragDropBorder" Background="DarkSlateGray">
+            <Grid>
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <Button Name="HideButton"
+                            Width="25"
+                            Style="{StaticResource HideButton}" Click="HideButton_Click">
+                    </Button>
+                    <Button Name="ExitButton"
+                            Width="25"
+                            Style="{StaticResource ExitButton}" Click="ExitButton_Click">
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <TabControl TabStripPlacement="Left" Grid.Row="2" SelectedItem="{Binding SelectedTabItem}">
+            <TabItem Header="ГРУППЫ" 
+                     x:Name="GroupsTab"
+                     Style="{StaticResource AddChoiceWindowButton}">
+                <ListView x:Name="GroupInfoListView"
+                      Grid.Row="1"
+                      Background="LightGray"
+                      ItemsSource="{Binding AllGroups}"
+                      SelectedItem="{Binding SelectedGroup}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Название"                                            
+                                        DisplayMemberBinding="{Binding Path=GroupName}"/>
+                            <GridViewColumn Header="Курс"                                            
+                                        DisplayMemberBinding="{Binding Path=Course}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="СТУДЕНТЫ" 
+                     x:Name="StudentsTab"
+                     Style="{StaticResource AddChoiceWindowButton}">
+                <ListView x:Name="StudentInfoListView"
+                          Grid.Row="1"
+                          Background="LightGray"
+                          ItemsSource="{Binding AllStudents}"
+                          SelectedItem="{Binding SelectedStudent}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Ф.И.О"                                            
+                                        DisplayMemberBinding="{Binding Path=StudentFIO}"/>
+                            <GridViewColumn Header="Группа"                                            
+                                        DisplayMemberBinding="{Binding Path=StudentGroup.GroupName}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="ОЦЕНКИ"
+                     x:Name="GradesTab"
+                     Style="{StaticResource AddChoiceWindowButton}">
+                <!--<TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Удалить" Command="{Binding DeleteItem}"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>-->
+                <ListView x:Name="GradeInfoListView"
+                      Grid.Row="1"
+                      Background="LightGray"
+                      ItemsSource="{Binding AllGrades}"
+                          SelectedItem="{Binding SelectedGrade}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Ф.И.О"                                            
+                                        DisplayMemberBinding="{Binding Path=GradeStudent.StudentFIO}"/>
+                            <GridViewColumn Header="Дисциплина"                                            
+                                        DisplayMemberBinding="{Binding Path=GradeDiscipline.DisciplineName}"/>
+                            <GridViewColumn Header="Оценка"                                            
+                                        DisplayMemberBinding="{Binding Path=GradeValue}"/>
+                            <GridViewColumn Header="Дата"                                            
+                                        DisplayMemberBinding="{Binding Path=Date}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="ДИСЦИПЛИНЫ"
+                     x:Name="DisciplinesTab"
+                     Style="{StaticResource AddChoiceWindowButton}">
+                <ListView x:Name="DisciplineInfoListView"
+                          Grid.Row="1"
+                          Background="LightGray"
+                          ItemsSource="{Binding AllDisciplines}"
+                          SelectedItem="{Binding SelectedDiscipline}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Название"                                            
+                                        DisplayMemberBinding="{Binding Path=DisciplineName}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+        </TabControl>
+        <Border Grid.Row="1" Background="Gray">
+            <StackPanel Orientation="Horizontal"   
+                        HorizontalAlignment="Left">
+                <Button Name="EditButton"
+                    Content="РЕДАКТИРОВАТЬ"
+                    Grid.Row="2"
+                    Style="{StaticResource WorkWindowButton}"
+                    Command="{Binding OpenAddDisciplineWindow}"
+                    Margin="10,0,10,0"/>
+                <Button Name="DeleteButton"
+                    Content="УДАЛИТЬ"
+                    Style="{StaticResource WorkWindowButton}"
+                    Command="{Binding DeleteItem}"
+                    Margin="10,0,0,0"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -79,12 +79,13 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         public static DateTime Date { get; set; }
 
 
-
         //свойства для выделенных элементов
-        //public TabItem SelectedTabItem { get; set; }
-        //public static User SelectedUser { get; set; }
-        //public static Position SelectedPosition { get; set; }
-        //public static Department SelectedDepartment { get; set; }
+        public TabItem SelectedTabItem { get; set; }
+        public static Student SelectedStudent { get; set; }
+        public static Group SelectedGroup { get; set; }
+        public static Grade SelectedGrade { get; set; }
+        public static Discipline SelectedDiscipline { get; set; }
+
 
 
         #region COMMANDS TO ADD
@@ -355,39 +356,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             }
         }
         #endregion
-        //private RelayCommand deleteItem;
-        //public RelayCommand DeleteItem
-        //{
-        //    get
-        //    {
-        //        return deleteItem ?? new RelayCommand(obj =>
-        //        {
-        //            string resultStr = "Ничего не выбрано";
-        //            //если сотрудник
-        //            if(SelectedTabItem.Name == "UsersTab" && SelectedUser != null)
-        //            {
-        //                resultStr = DataWorker.DeleteUser(SelectedUser);
-        //                UpdateAllDataView();
-        //            }
-        //            //если позиция
-        //            if (SelectedTabItem.Name == "PositionsTab" && SelectedPosition != null)
-        //            {
-        //                resultStr = DataWorker.DeletePosition(SelectedPosition);
-        //                UpdateAllDataView();
-        //            }
-        //            //если отдел
-        //            if (SelectedTabItem.Name == "DepartmentsTab" && SelectedDepartment != null)
-        //            {
-        //                resultStr = DataWorker.DeleteDepartment(SelectedDepartment);
-        //                UpdateAllDataView();
-        //            }
-        //            //обновление
-        //            SetNullValuesToProperties();
-        //            ShowMessageToUser(resultStr);
-        //        }
-        //            );
-        //    }
-        //}
+
 
         //#region EDIT COMMANDS
         //private RelayCommand editUser;
@@ -474,8 +443,62 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         //    }
         //}
         //#endregion
+        #region Delete Commands
+        private RelayCommand deleteItem;
+        public RelayCommand DeleteItem
+        {
+            get
+            {
+                return deleteItem ?? new RelayCommand(obj =>
+                {
+                    string resultStr = "Ничего не выбрано";
+                    //если группа
+                    if (SelectedTabItem.Name == "GroupsTab" && SelectedGroup != null)
+                    {
+                        resultStr = DataWorker.DeleteGroup(SelectedGroup);
+                        UpdateInfoView();
+                    }
+                    //если студент
+                    if (SelectedTabItem.Name == "StudentsTab" && SelectedStudent != null)
+                    {
+                        resultStr = DataWorker.DeleteStudent(SelectedStudent);
+                        UpdateInfoView();
+                    }
+                    //если дисциплина
+                    if (SelectedTabItem.Name == "DisciplinesTab" && SelectedDiscipline != null)
+                    {
+                        resultStr = DataWorker.DeleteDiscipline(SelectedDiscipline);
+                        UpdateInfoView();
+                    }
+                    //если отдел
+                    if (SelectedTabItem.Name == "GradesTab" && SelectedGrade != null)
+                    {
+                        resultStr = DataWorker.DeleteGrade(SelectedGrade);
+                        UpdateInfoView();
+                    }
+                    //обновление
+                    SetNullValuesToProperties();
+                    ShowMessageToUser(resultStr);
+                }
+                    );
+            }
+        }
+        #endregion
 
         #region COMMANDS TO OPEN WINDOWS
+        private RelayCommand openDeleteEditWindow;
+        public RelayCommand OpenDeleteEditWindow
+        {
+            get
+            {
+                return openDeleteEditWindow ?? new RelayCommand(obj =>
+                {
+                    OpenDeleteEditWindowMethod();
+                    UpdateInfoView();
+                }
+                    );
+            }
+        }
         private RelayCommand openWorkWindow;
         public RelayCommand OpenWorkWindow
         {
@@ -593,6 +616,11 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
 
         #region METHODS TO OPEN WINDOW
         //методы открытия окон
+        private void OpenDeleteEditWindowMethod()
+        {
+            DeleteEditWindow newDeleteEditWindow = new DeleteEditWindow();
+            SetCenterPositionAndOpen(newDeleteEditWindow);
+        }
         private void OpenWorkWindowMethod()
         {
             WorkWindow newWorkWindow = new WorkWindow();
@@ -657,13 +685,43 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         private void UpdateInfoView()
         {
             UpdateGradesInfo();
+            UpdateDisciplinesInfo();
+            UpdateGroupsInfo();
+            UpdateStudentsInfo();
         }
         private void UpdateGradesInfo()
         {
             AllGrades=DataWorker.GetAllGrades();
+            AllGroups=DataWorker.GetAllGroups();
+            AllStudents = DataWorker.GetAllStudents();
+            AllDisciplines = DataWorker.GetAllDisciplines();
             WorkWindow.AllGradeInfoListView.ItemsSource = null;
             WorkWindow.AllGradeInfoListView.Items.Clear();
             WorkWindow.AllGradeInfoListView.ItemsSource = AllGrades;
+            WorkWindow.AllGradeInfoListView.Items.Refresh();
+        }
+        private void UpdateGroupsInfo()
+        {
+            AllGroups = DataWorker.GetAllGroups();
+            WorkWindow.AllGradeInfoListView.ItemsSource = null;
+            WorkWindow.AllGradeInfoListView.Items.Clear();
+            WorkWindow.AllGradeInfoListView.ItemsSource = AllGroups;
+            WorkWindow.AllGradeInfoListView.Items.Refresh();
+        }
+        private void UpdateStudentsInfo()
+        {
+            AllStudents = DataWorker.GetAllStudents();
+            WorkWindow.AllGradeInfoListView.ItemsSource = null;
+            WorkWindow.AllGradeInfoListView.Items.Clear();
+            WorkWindow.AllGradeInfoListView.ItemsSource = AllStudents;
+            WorkWindow.AllGradeInfoListView.Items.Refresh();
+        }
+        private void UpdateDisciplinesInfo()
+        {
+            AllDisciplines = DataWorker.GetAllDisciplines();
+            WorkWindow.AllGradeInfoListView.ItemsSource = null;
+            WorkWindow.AllGradeInfoListView.Items.Clear();
+            WorkWindow.AllGradeInfoListView.ItemsSource = AllDisciplines;
             WorkWindow.AllGradeInfoListView.Items.Refresh();
         }
         #endregion

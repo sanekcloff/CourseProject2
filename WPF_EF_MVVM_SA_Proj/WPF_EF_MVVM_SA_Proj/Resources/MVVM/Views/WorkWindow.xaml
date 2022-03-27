@@ -73,8 +73,8 @@
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.4*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="3*"/>
                 <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="3"
@@ -86,7 +86,6 @@
             <Button Name="WorkWindowTitle"
                     Style="{StaticResource WorkWindowTitle}">
             </Button>
-            
             <StackPanel Grid.Row="1"
                         VerticalAlignment="Center">
                 <TextBlock Grid.Row="1"
@@ -121,6 +120,10 @@
                         Content="ДОБАВИТЬ ДИСЦИПЛИНУ"
                         Style="{StaticResource WorkWindowButton}"
                         Command="{Binding OpenAddDisciplineWindow}"/>
+                <Button Name="DeleteEditButton"
+                        Content="УДАЛИТЬ / РЕДАКТИРОВАТЬ "
+                        Style="{StaticResource WorkWindowButton}"
+                        Command="{Binding OpenDeleteEditWindow}"/>
             </StackPanel>
         </Grid>
         
