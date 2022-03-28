@@ -238,13 +238,13 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
         }
 
         //редактирование Студента
-        public static string EditStudent(Student oldStudent, string newFirstName, string newLastName, string newMiddleName,Group newGroup)
+        public static string EditStudent(Student oldStudent, string newFIO,Group newGroup)
         {
             string result = "Такого студента не существует";
             using (ApplicationContext db = new ApplicationContext())
             {
                 Student student = db.Students.FirstOrDefault(student => student.Id == oldStudent.Id);
-                student.StudentFIO = newFirstName;
+                student.StudentFIO = newFIO;
                 student.GroupId = newGroup.Id;
                 db.SaveChanges();
                 result =  $"Сделано! Студент {student.StudentFIO} из группы {student.GroupId} изменен";

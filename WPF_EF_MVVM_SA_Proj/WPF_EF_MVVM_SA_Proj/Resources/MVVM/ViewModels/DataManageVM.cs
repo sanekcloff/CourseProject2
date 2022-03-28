@@ -89,69 +89,6 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
 
 
         #region COMMANDS TO ADD
-        //private RelayCommand addNewDepartment;
-        //public RelayCommand AddNewDepartment
-        //{
-        //    get
-        //    {
-        //        return addNewDepartment ?? new RelayCommand(obj =>
-        //        {
-        //            Window wnd = obj as Window;
-        //            string resultStr = "";
-        //            if (DepartmentName == null || DepartmentName.Replace(" ", "").Length == 0)
-        //            {
-        //                SetRedBlockControll(wnd, "NameBlock");
-        //            }
-        //            else
-        //            {
-        //                resultStr = DataWorker.CreateDepartment(DepartmentName);
-        //                UpdateAllDataView();
-        //                ShowMessageToUser(resultStr);
-        //                SetNullValuesToProperties();
-        //                wnd.Close();
-        //            }
-        //        }
-        //        );
-        //    }
-        //}
-        //private RelayCommand addNewPosition;
-        //public RelayCommand AddNewPosition
-        //{
-        //    get
-        //    {
-        //        return addNewPosition ?? new RelayCommand(obj =>
-        //        {
-        //            Window wnd = obj as Window;
-        //            string resultStr = "";
-        //            if(PositionName == null || PositionName.Replace(" ", "").Length == 0)
-        //            {
-        //                SetRedBlockControll(wnd, "NameBlock");
-        //            }
-        //            if (PositionSalary == 0)
-        //            {
-        //                SetRedBlockControll(wnd, "SalaryBlock");
-        //            }
-        //            if (PositionMaxNumber == 0)
-        //            {
-        //                SetRedBlockControll(wnd, "MaxNumberBlock");
-        //            }
-        //            if (PositionDepartment == null)
-        //            {
-        //                MessageBox.Show("Укажите отдел");
-        //            }
-        //            else
-        //            {
-        //                resultStr = DataWorker.CreatePosition(PositionName, PositionSalary, PositionMaxNumber, PositionDepartment);
-        //                UpdateAllDataView();
-
-        //                ShowMessageToUser(resultStr);
-        //                SetNullValuesToProperties();
-        //                wnd.Close();
-        //            }
-        //        }
-        //        );
-        //    }
-        //}
         private RelayCommand addNewGrade;
         public RelayCommand AddNewGrade
         {
@@ -358,91 +295,116 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         #endregion
 
 
-        //#region EDIT COMMANDS
-        //private RelayCommand editUser;
-        //public RelayCommand EditUser
-        //{
-        //    get
-        //    {
-        //        return editUser ?? new RelayCommand(obj =>
-        //        {
-        //            Window window = obj as Window;
-        //            string resultStr = "Не выбран сотрудник";
-        //            string noPositionStr = "Не выбрана новая должность";
-        //            if(SelectedUser != null)
-        //            {
-        //                if(UserPosition != null)
-        //                {
-        //                    resultStr = DataWorker.EditUser(SelectedUser, UserName, UserSurName, UserPhone, UserPosition);
+        #region EDIT COMMANDS
+        private RelayCommand editStudent;
+        public RelayCommand EditStudent
+        {
+            get
+            {
+                return editStudent ?? new RelayCommand(obj =>
+                {
+                    Window window = obj as Window;
+                    string resultStr = "Не выбран студент";
+                    string noGroupStr = "Не выбрана новая группа";
+                    if (SelectedStudent != null)
+                    {
+                        if (StudentGroup != null)
+                        {
+                            resultStr = DataWorker.EditStudent(SelectedStudent, StudentFIO, StudentGroup);
 
-        //                    UpdateAllDataView();
-        //                    SetNullValuesToProperties();
-        //                    ShowMessageToUser(resultStr);
-        //                    window.Close();
-        //                }
-        //                else ShowMessageToUser(noPositionStr);
-        //            }
-        //            else ShowMessageToUser(resultStr);
+                            UpdateInfoView();
+                            SetNullValuesToProperties();
+                            ShowMessageToUser(resultStr);
+                            window.Close();
+                        }
+                        else ShowMessageToUser(noGroupStr);
+                    }
+                    else ShowMessageToUser(resultStr);
 
-        //        }
-        //        );
-        //    }
-        //}
-        //private RelayCommand editPosition;
-        //public RelayCommand EditPosition
-        //{
-        //    get
-        //    {
-        //        return editPosition ?? new RelayCommand(obj =>
-        //        {
-        //            Window window = obj as Window;
-        //            string resultStr = "Не выбрана позиция";
-        //            string noDepartmentStr = "Не выбран новый отдел";
-        //            if (SelectedPosition != null)
-        //            {
-        //                if (PositionDepartment != null)
-        //                {
-        //                    resultStr = DataWorker.EditPosition(SelectedPosition, PositionName, PositionMaxNumber, PositionSalary, PositionDepartment);
+                }
+                );
+            }
+        }
+        private RelayCommand editDiscipline;
+        public RelayCommand EditDiscipline
+        {
+            get
+            {
+                return editDiscipline ?? new RelayCommand(obj =>
+                {
+                    Window window = obj as Window;
+                    string resultStr = "Не выбрана дисциплина";
+                    if (SelectedDiscipline != null)
+                    {
+                        resultStr = DataWorker.EditDiscipline(SelectedDiscipline, DisciplineName);
 
-        //                    UpdateAllDataView();
-        //                    SetNullValuesToProperties();
-        //                    ShowMessageToUser(resultStr);
-        //                    window.Close();
-        //                }
-        //                else ShowMessageToUser(noDepartmentStr);
-        //            }
-        //            else ShowMessageToUser(resultStr);
+                        UpdateInfoView();
+                        SetNullValuesToProperties();
+                        ShowMessageToUser(resultStr);
+                        window.Close();
+                    }
+                    else ShowMessageToUser(resultStr);
+                }
+                );
+            }
+        }
+        private RelayCommand editGrade;
+        public RelayCommand EditGrade
+        {
+            get
+            {
+                return editGrade ?? new RelayCommand(obj =>
+                {
+                    Window window = obj as Window;
+                    string resultStr = "Не выбрана Оценка";
+                    string noStudentStr = "Не выбран студент";
+                    string noDisciplineStr = "Не выбран студент";
+                    if (SelectedGrade != null)
+                    {
+                        if (GradeStudent != null)
+                        {
+                            if (GradeDiscipline != null)
+                            {
+                                resultStr = DataWorker.EditGrade(SelectedGrade, GradeStudent, GradeDiscipline, GradeValue, Date);
 
-        //        }
-        //        );
-        //    }
-        //}
+                                UpdateInfoView();
+                                SetNullValuesToProperties();
+                                ShowMessageToUser(resultStr);
+                                window.Close();
+                            }
+                            else ShowMessageToUser(noDisciplineStr);
+                        }
+                        else ShowMessageToUser(noStudentStr);
+                    }
+                    else ShowMessageToUser(resultStr);
+                }
+                );
+            }
+        }
+        private RelayCommand editGroup;
+        public RelayCommand EditGroup
+        {
+            get
+            {
+                return editGroup ?? new RelayCommand(obj =>
+                {
+                    Window window = obj as Window;
+                    string resultStr = "Не выбрана группа";
+                    if (SelectedGroup != null)
+                    {
+                        resultStr = DataWorker.EditGroup(SelectedGroup, GroupName, Course);
 
-        //private RelayCommand editDepartment;
-        //public RelayCommand EditDepartment
-        //{
-        //    get
-        //    {
-        //        return editDepartment ?? new RelayCommand(obj =>
-        //        {
-        //            Window window = obj as Window;
-        //            string resultStr = "Не выбран отдел";
-        //            if (SelectedDepartment != null)
-        //            {
-        //                resultStr = DataWorker.EditDepartment(SelectedDepartment, DepartmentName);
-
-        //                UpdateAllDataView();
-        //                SetNullValuesToProperties();
-        //                ShowMessageToUser(resultStr);
-        //                window.Close();
-        //            }
-        //            else ShowMessageToUser(resultStr);
-
-        //        }
-        //        );
-        //    }
-        //}
-        //#endregion
+                        UpdateInfoView();
+                        SetNullValuesToProperties();
+                        ShowMessageToUser(resultStr);
+                        window.Close();
+                    }
+                    else ShowMessageToUser(resultStr);
+                }
+                );
+            }
+        }
+        #endregion
         #region Delete Commands
         private RelayCommand deleteItem;
         public RelayCommand DeleteItem
@@ -585,37 +547,62 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                 );
             }
         }
-        //private RelayCommand openEditItemWnd;
-        //public RelayCommand OpenEditItemWnd
-        //{
-        //    get
-        //    {
-        //        return openEditItemWnd ?? new RelayCommand(obj =>
-        //        {
-        //            string resultStr = "Ничего не выбрано";
-        //            //если сотрудник
-        //            if (SelectedTabItem.Name == "UsersTab" && SelectedUser != null)
-        //            {
-        //                OpenEditUserWindowMethod(SelectedUser);
-        //            }
-        //            //если позиция
-        //            if (SelectedTabItem.Name == "PositionsTab" && SelectedPosition != null)
-        //            {
-        //                OpenEditPositionWindowMethod(SelectedPosition);
-        //            }
-        //            //если отдел
-        //            if (SelectedTabItem.Name == "DepartmentsTab" && SelectedDepartment != null)
-        //            {
-        //                OpenEditDepartmentWindowMethod(SelectedDepartment);
-        //            }
-        //        }
-        //            );
-        //    }
-        //}
+        private RelayCommand openEditItemWnd;
+        public RelayCommand OpenEditItemWnd
+        {
+            get
+            {
+                return openEditItemWnd ?? new RelayCommand(obj =>
+                {
+                    string resultStr = "Ничего не выбрано";
+                    //если группа
+                    if (SelectedTabItem.Name == "GroupsTab" && SelectedGroup != null)
+                    {
+                        OpenEditGroupWindowMethod(SelectedGroup);
+                    }
+                    //если оценка
+                    if (SelectedTabItem.Name == "GradesTab" && SelectedGrade != null)
+                    {
+                        OpenEditGradeWindowMethod(SelectedGrade);
+                    }
+                    //если дисциплина
+                    if (SelectedTabItem.Name == "DisciplinesTab" && SelectedDiscipline != null)
+                    {
+                        OpenEditDisciplineWindowMethod(SelectedDiscipline);
+                    }
+                    //если студент
+                    if (SelectedTabItem.Name == "StudentsTab" && SelectedStudent != null)
+                    {
+                        OpenEditStudentWindowMethod(SelectedStudent);
+                    }
+                }
+                    );
+            }
+        }
         #endregion
 
         #region METHODS TO OPEN WINDOW
         //методы открытия окон
+        private void OpenEditGroupWindowMethod(Group group)
+        {
+            EditGroupWindow newEditGroupWindow = new EditGroupWindow(group);
+            SetCenterPositionAndOpen(newEditGroupWindow);
+        }
+        private void OpenEditGradeWindowMethod(Grade grade)
+        {
+            EditGradeWindow newEditGradeWindow = new EditGradeWindow(grade);
+            SetCenterPositionAndOpen(newEditGradeWindow);
+        }
+        private void OpenEditStudentWindowMethod(Student student)
+        {
+            EditStudentWindow newEditStudentWindow = new EditStudentWindow(student);
+            SetCenterPositionAndOpen(newEditStudentWindow);
+        }
+        private void OpenEditDisciplineWindowMethod(Discipline discipline)
+        {
+            EditDisciplineWindow newEditDisciplineWindow = new EditDisciplineWindow(discipline);
+            SetCenterPositionAndOpen(newEditDisciplineWindow);
+        }
         private void OpenDeleteEditWindowMethod()
         {
             DeleteEditWindow newDeleteEditWindow = new DeleteEditWindow();
@@ -692,9 +679,6 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         private void UpdateGradesInfo()
         {
             AllGrades=DataWorker.GetAllGrades();
-            AllGroups=DataWorker.GetAllGroups();
-            AllStudents = DataWorker.GetAllStudents();
-            AllDisciplines = DataWorker.GetAllDisciplines();
             WorkWindow.AllGradeInfoListView.ItemsSource = null;
             WorkWindow.AllGradeInfoListView.Items.Clear();
             WorkWindow.AllGradeInfoListView.ItemsSource = AllGrades;
