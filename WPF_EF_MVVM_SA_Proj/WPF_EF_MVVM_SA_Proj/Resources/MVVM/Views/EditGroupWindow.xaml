@@ -21,8 +21,7 @@
                            Style="{StaticResource ActionWindowTextBlock}"/>
                 <TextBox Name="GroupTextBox"
                          MaxLength="50"
-                         Text="{Binding groupToEdit.GroupName}"/>
-                <TextBlock
+                         Text="{Binding GroupName}"/>
                 <TextBlock Text="НОВЫЙ КУРС"
                            Style="{StaticResource ActionWindowTextBlock}"/>
                 <ComboBox Name="CourseComboBox"

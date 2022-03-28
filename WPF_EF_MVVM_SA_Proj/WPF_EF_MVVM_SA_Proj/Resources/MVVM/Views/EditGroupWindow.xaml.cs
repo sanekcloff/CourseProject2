@@ -25,8 +25,8 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
         {
             InitializeComponent();
             DataManageVM.SelectedGroup = groupToEdit;
-            DataManageVM.GroupName = groupToEdit.GroupName;
-            MessageBox.Show(DataManageVM.GroupName);
+            this.GroupTextBox.Text = groupToEdit.GroupName;
+            //DataManageVM.GroupName = groupToEdit.GroupName;
             DataManageVM.Course=groupToEdit.Course;
         }
     }
