@@ -16,9 +16,17 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
 {
     public partial class DeleteEditWindow : Window
     {
+        public static ListView AllGradeInfoListView;
+        public static ListView AllGroupInfoListView;
+        public static ListView AllStudentInfoListView;
+        public static ListView AllDisciplineInfoListView;
         public DeleteEditWindow()
         {
             InitializeComponent();
+            AllGradeInfoListView = GradeInfoListView;
+            AllGroupInfoListView = GroupInfoListView;
+            AllStudentInfoListView = StudentInfoListView;
+            AllDisciplineInfoListView = DisciplineInfoListView;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

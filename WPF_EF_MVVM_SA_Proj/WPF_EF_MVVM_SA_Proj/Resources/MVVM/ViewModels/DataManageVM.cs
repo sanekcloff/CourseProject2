@@ -120,7 +120,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     else
                     {
                         resultStr = DataWorker.CreateGrade(GradeValue,Date,GradeDiscipline,GradeStudent);
-                        UpdateInfoView();
+                        UpdateWWInfoView();
                         ShowMessageToUser(resultStr);
                         SetNullValuesToProperties();
                         wnd.Close();
@@ -152,7 +152,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     else
                     {
                         resultStr = DataWorker.CreateStudent(StudentFIO, StudentGroup);
-                        UpdateInfoView();
+                        UpdateWWInfoView();
 
                         ShowMessageToUser(resultStr);
                         SetNullValuesToProperties();
@@ -186,7 +186,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     else
                     {
                         resultStr = DataWorker.CreateGroup(GroupName,Course);
-                        UpdateInfoView();
+                        UpdateWWInfoView();
 
                         ShowMessageToUser(resultStr);
                         SetNullValuesToProperties();
@@ -212,7 +212,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     else
                     {
                         resultStr = DataWorker.CreateDiscipline(DisciplineName);
-                        UpdateInfoView();
+                        UpdateWWInfoView();
 
                         ShowMessageToUser(resultStr);
                         SetNullValuesToProperties();
@@ -469,7 +469,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                 return openWorkWindow ?? new RelayCommand(obj =>
                 {
                     OpenWorkWindowMethod();
-                    UpdateInfoView();
+                    //UpdateInfoView();
                 }
                     );
             }
@@ -671,12 +671,17 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         }
         private void UpdateInfoView()
         {
-            UpdateGradesInfo();
+            UpdateWWInfoView();
             UpdateDisciplinesInfo();
             UpdateGroupsInfo();
             UpdateStudentsInfo();
+            UpdateGradesEDWInfo();
         }
-        private void UpdateGradesInfo()
+        private void UpdateWWInfoView()
+        {
+            UpdateGradesWWInfo();
+        }
+        private void UpdateGradesWWInfo()
         {
             AllGrades=DataWorker.GetAllGrades();
             WorkWindow.AllGradeInfoListView.ItemsSource = null;
@@ -684,29 +689,37 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             WorkWindow.AllGradeInfoListView.ItemsSource = AllGrades;
             WorkWindow.AllGradeInfoListView.Items.Refresh();
         }
+        private void UpdateGradesEDWInfo()
+        {
+            AllGrades = DataWorker.GetAllGrades();
+            DeleteEditWindow.AllGradeInfoListView.ItemsSource = null;
+            DeleteEditWindow.AllGradeInfoListView.Items.Clear();
+            DeleteEditWindow.AllGradeInfoListView.ItemsSource = AllGrades;
+            DeleteEditWindow.AllGradeInfoListView.Items.Refresh();
+        }
         private void UpdateGroupsInfo()
         {
             AllGroups = DataWorker.GetAllGroups();
-            WorkWindow.AllGradeInfoListView.ItemsSource = null;
-            WorkWindow.AllGradeInfoListView.Items.Clear();
-            WorkWindow.AllGradeInfoListView.ItemsSource = AllGroups;
-            WorkWindow.AllGradeInfoListView.Items.Refresh();
+            DeleteEditWindow.AllGroupInfoListView.ItemsSource = null;
+            DeleteEditWindow.AllGroupInfoListView.Items.Clear();
+            DeleteEditWindow.AllGroupInfoListView.ItemsSource = AllGroups;
+            DeleteEditWindow.AllGroupInfoListView.Items.Refresh();
         }
         private void UpdateStudentsInfo()
         {
             AllStudents = DataWorker.GetAllStudents();
-            WorkWindow.AllGradeInfoListView.ItemsSource = null;
-            WorkWindow.AllGradeInfoListView.Items.Clear();
-            WorkWindow.AllGradeInfoListView.ItemsSource = AllStudents;
-            WorkWindow.AllGradeInfoListView.Items.Refresh();
+            DeleteEditWindow.AllStudentInfoListView.ItemsSource = null;
+            DeleteEditWindow.AllStudentInfoListView.Items.Clear();
+            DeleteEditWindow.AllStudentInfoListView.ItemsSource = AllStudents;
+            DeleteEditWindow.AllStudentInfoListView.Items.Refresh();
         }
         private void UpdateDisciplinesInfo()
         {
             AllDisciplines = DataWorker.GetAllDisciplines();
-            WorkWindow.AllGradeInfoListView.ItemsSource = null;
-            WorkWindow.AllGradeInfoListView.Items.Clear();
-            WorkWindow.AllGradeInfoListView.ItemsSource = AllDisciplines;
-            WorkWindow.AllGradeInfoListView.Items.Refresh();
+            DeleteEditWindow.AllDisciplineInfoListView.ItemsSource = null;
+            DeleteEditWindow.AllDisciplineInfoListView.Items.Clear();
+            DeleteEditWindow.AllDisciplineInfoListView.ItemsSource = AllDisciplines;
+            DeleteEditWindow.AllDisciplineInfoListView.Items.Refresh();
         }
         #endregion
 

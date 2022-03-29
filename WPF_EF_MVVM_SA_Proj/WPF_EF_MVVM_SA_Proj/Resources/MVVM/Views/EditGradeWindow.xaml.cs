@@ -24,11 +24,11 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
         public EditGradeWindow(Grade gradeToEdit)
         {
             InitializeComponent();
-            DataManageVM.SelectedGrade = gradeToEdit;
-            DataManageVM.GradeStudent = gradeToEdit.GradeStudent;
-            DataManageVM.GradeDiscipline = gradeToEdit.GradeDiscipline;
-            DataManageVM.GradeValue = gradeToEdit.GradeValue;
-            DataManageVM.Date = gradeToEdit.Date;
+            //DataManageVM.SelectedGrade = gradeToEdit;
+            //DataManageVM.GradeStudent = gradeToEdit.GradeStudent;
+            //DataManageVM.GradeDiscipline = gradeToEdit.GradeDiscipline;
+            //DataManageVM.GradeValue = gradeToEdit.GradeValue;
+            //DataManageVM.Date = gradeToEdit.Date;
         }
     }
 }

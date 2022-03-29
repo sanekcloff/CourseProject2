@@ -25,7 +25,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
         {
             InitializeComponent();
             DataManageVM.SelectedDiscipline = disciplineToEdit;
-            DataManageVM.DisciplineName = disciplineToEdit.DisciplineName;
+            this.DisciplineTextBox.Text = disciplineToEdit.DisciplineName;
         }
     }
 }

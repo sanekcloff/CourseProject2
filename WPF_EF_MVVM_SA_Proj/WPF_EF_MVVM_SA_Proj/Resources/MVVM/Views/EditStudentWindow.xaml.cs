@@ -25,8 +25,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
         {
             InitializeComponent();
             DataManageVM.SelectedStudent = studentToEdit;
-            DataManageVM.StudentFIO = studentToEdit.StudentFIO;
-            DataManageVM.StudentGroup = studentToEdit.StudentGroup;
+            this.StudentFIO.Text = studentToEdit.StudentFIO;
         }
     }
 }
