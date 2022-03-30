@@ -59,6 +59,17 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                 NotifyPropertyChanged("AllGrades");
             }
         }
+        //все Оценки по группе
+        private List<Grade> allGradesByStudentId = DataWorker.GetAllGradesByStudentId(7);
+        public List<Grade> AllGradesByStudentId
+        {
+            get { return allGradesByStudentId; }
+            set
+            {
+                allGradesByStudentId = value;
+                NotifyPropertyChanged("AllGradesByStudent");
+            }
+        }
 
         //свойства для групп
         public static string GroupName { get; set; }
@@ -293,7 +304,21 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             }
         }
         #endregion
-
+        #region RefreshComands
+        private RelayCommand refreshWorkWindowView;
+        public RelayCommand RefreshWorkWindowView
+        {
+            get
+            {
+                return refreshWorkWindowView ?? new RelayCommand(obj =>
+                {
+                    
+                    UpdateGradesWWInfoSortedByGroup();
+                }
+                );
+            }
+        }
+        #endregion
 
         #region EDIT COMMANDS
         private RelayCommand editStudent;
@@ -687,6 +712,14 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             WorkWindow.AllGradeInfoListView.ItemsSource = null;
             WorkWindow.AllGradeInfoListView.Items.Clear();
             WorkWindow.AllGradeInfoListView.ItemsSource = AllGrades;
+            WorkWindow.AllGradeInfoListView.Items.Refresh();
+        }
+        private void UpdateGradesWWInfoSortedByGroup()
+        {
+            AllGradesByStudentId = DataWorker.GetAllGradesByStudentId(7);
+            WorkWindow.AllGradeInfoListView.ItemsSource = null;
+            WorkWindow.AllGradeInfoListView.Items.Clear();
+            WorkWindow.AllGradeInfoListView.ItemsSource = AllGradesByStudentId;
             WorkWindow.AllGradeInfoListView.Items.Refresh();
         }
         private void UpdateGradesEDWInfo()
