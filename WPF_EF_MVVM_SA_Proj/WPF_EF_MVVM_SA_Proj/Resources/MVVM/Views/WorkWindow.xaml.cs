@@ -19,11 +19,13 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
     public partial class WorkWindow : Window
     {
         public static ListView AllGradeInfoListView;
+        public static ComboBox WorkWindowSortComboBox;
 
         public WorkWindow()
         {
             InitializeComponent();
             AllGradeInfoListView = GradeInfoListView;
+            WorkWindowSortComboBox = SortComboBox;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

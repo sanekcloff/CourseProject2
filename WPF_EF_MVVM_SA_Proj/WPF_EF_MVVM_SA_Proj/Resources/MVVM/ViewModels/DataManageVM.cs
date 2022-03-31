@@ -60,7 +60,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             }
         }
         //все Оценки по группе
-        private List<Grade> allGradesByStudentId = DataWorker.GetAllGradesByStudentId(7);
+        private List<Grade> allGradesByStudentId;
         public List<Grade> AllGradesByStudentId
         {
             get { return allGradesByStudentId; }
@@ -80,6 +80,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         public static string Login { get; set; }
         public static string Password { get; set; }
         //свойства для Студента
+        public static Student StudentInf{ get; set; }
         public static string StudentFIO { get; set; }
         public static Group StudentGroup { get; set; }
 
@@ -164,6 +165,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     {
                         resultStr = DataWorker.CreateStudent(StudentFIO, StudentGroup);
                         UpdateWWInfoView();
+                        UpdateSortComboBoxItems();
 
                         ShowMessageToUser(resultStr);
                         SetNullValuesToProperties();
@@ -305,6 +307,20 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         }
         #endregion
         #region RefreshComands
+        private RelayCommand standartWorkWindowView;
+        public RelayCommand StandartWorkWindowView
+        {
+            get
+            {
+                return standartWorkWindowView ?? new RelayCommand(obj =>
+                {
+                    UpdateGradesWWInfo();
+                    WorkWindow.WorkWindowSortComboBox.SelectedValue = null;
+                    StudentInf = null;
+                }
+                );
+            }
+        }
         private RelayCommand refreshWorkWindowView;
         public RelayCommand RefreshWorkWindowView
         {
@@ -312,8 +328,14 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             {
                 return refreshWorkWindowView ?? new RelayCommand(obj =>
                 {
-                    
-                    UpdateGradesWWInfoSortedByGroup();
+                    if (StudentInf==null)
+                    {
+                        ShowMessageToUser("Выберите пункт!");
+                    }
+                    else
+                    {
+                        UpdateGradesWWInfoSortedByStudent();
+                    }
                 }
                 );
             }
@@ -714,9 +736,9 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             WorkWindow.AllGradeInfoListView.ItemsSource = AllGrades;
             WorkWindow.AllGradeInfoListView.Items.Refresh();
         }
-        private void UpdateGradesWWInfoSortedByGroup()
+        private void UpdateGradesWWInfoSortedByStudent()
         {
-            AllGradesByStudentId = DataWorker.GetAllGradesByStudentId(7);
+            AllGradesByStudentId = DataWorker.GetAllGradesByStudentId(StudentInf.Id);
             WorkWindow.AllGradeInfoListView.ItemsSource = null;
             WorkWindow.AllGradeInfoListView.Items.Clear();
             WorkWindow.AllGradeInfoListView.ItemsSource = AllGradesByStudentId;
@@ -745,6 +767,14 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             DeleteEditWindow.AllStudentInfoListView.Items.Clear();
             DeleteEditWindow.AllStudentInfoListView.ItemsSource = AllStudents;
             DeleteEditWindow.AllStudentInfoListView.Items.Refresh();
+        }
+        private void UpdateSortComboBoxItems()
+        {
+            AllStudents = DataWorker.GetAllStudents();
+            WorkWindow.WorkWindowSortComboBox.ItemsSource = null;
+            WorkWindow.WorkWindowSortComboBox.Items.Clear();
+            WorkWindow.WorkWindowSortComboBox.ItemsSource = AllStudents;
+            WorkWindow.WorkWindowSortComboBox.Items.Refresh();
         }
         private void UpdateDisciplinesInfo()
         {

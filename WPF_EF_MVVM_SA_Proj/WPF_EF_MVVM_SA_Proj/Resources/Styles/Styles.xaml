@@ -275,6 +275,35 @@
     <ImageBrush x:Key="WorkWindowTitleImage_Light" 
                     ImageSource="\Resources\Images\WorkWindowTitle_Light.png" 
                     Stretch="Uniform"/>
+    <ImageBrush x:Key="SearchButtonImage" 
+                    ImageSource="\Resources\Images\SearchButton.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="SearchButtonImage_Active" 
+                    ImageSource="\Resources\Images\SearchButton_Active.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="SearchButtonImage_Pressed" 
+                    ImageSource="\Resources\Images\SearchButton_Pressed.png" 
+                    Stretch="Uniform"/>
+    <!--Кнопка поиска-->
+    <Style x:Key="SearchButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource SearchButtonImage}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="SearchButton" 
+                                Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="SearchButton" Value="{StaticResource SearchButtonImage_Active}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="SearchButton" Value="{StaticResource SearchButtonImage_Pressed}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <!--Главное название-->
     <Style x:Key="WorkWindowTitle" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="{StaticResource WorkWindowTitleImage}"/>

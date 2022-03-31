@@ -15,6 +15,9 @@
     <None Remove="Resources\Images\HideButton_Icon_Active.png" />
     <None Remove="Resources\Images\HideButton_Icon_Pressed.png" />
     <None Remove="Resources\Images\Logo.png" />
+    <None Remove="Resources\Images\SearchButton.png" />
+    <None Remove="Resources\Images\SearchButton_Active.png" />
+    <None Remove="Resources\Images\SearchButton_Pressed.png" />
     <None Remove="Resources\Images\WorkWindowTitle.png" />
     <None Remove="Resources\Images\WorkWindowTitle_Light.png" />
   </ItemGroup>
@@ -40,6 +43,9 @@
     <Resource Include="Resources\Images\HideButton_Icon_Active.png" />
     <Resource Include="Resources\Images\HideButton_Icon_Pressed.png" />
     <Resource Include="Resources\Images\Logo.png" />
+    <Resource Include="Resources\Images\SearchButton.png" />
+    <Resource Include="Resources\Images\SearchButton_Active.png" />
+    <Resource Include="Resources\Images\SearchButton_Pressed.png" />
     <Resource Include="Resources\Images\WorkWindowTitle.png" />
     <Resource Include="Resources\Images\WorkWindowTitle_Light.png" />
   </ItemGroup>
