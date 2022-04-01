@@ -80,7 +80,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         public static string Login { get; set; }
         public static string Password { get; set; }
         //свойства для Студента
-        public static Student StudentInf{ get; set; }
+        public static Student StudentInf { get; set; }
         public static string StudentFIO { get; set; }
         public static Group StudentGroup { get; set; }
 
@@ -131,7 +131,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     }
                     else
                     {
-                        resultStr = DataWorker.CreateGrade(GradeValue,Date,GradeDiscipline,GradeStudent);
+                        resultStr = DataWorker.CreateGrade(GradeValue, Date, GradeDiscipline, GradeStudent);
                         UpdateWWInfoView();
                         ShowMessageToUser(resultStr);
                         SetNullValuesToProperties();
@@ -184,7 +184,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                 {
                     Window wnd = obj as Window;
                     string resultStr = "";
-                    if (GroupName == null || GroupName.Replace(" ", "").Length == 0 || 
+                    if (GroupName == null || GroupName.Replace(" ", "").Length == 0 ||
                     GroupName == null || GroupName.Replace(" ", "").Length == 0)
                     {
                         if (GroupName == null || GroupName.Replace(" ", "").Length == 0)
@@ -198,7 +198,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     }
                     else
                     {
-                        resultStr = DataWorker.CreateGroup(GroupName,Course);
+                        resultStr = DataWorker.CreateGroup(GroupName, Course);
                         UpdateWWInfoView();
 
                         ShowMessageToUser(resultStr);
@@ -328,7 +328,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             {
                 return refreshWorkWindowView ?? new RelayCommand(obj =>
                 {
-                    if (StudentInf==null)
+                    if (StudentInf == null)
                     {
                         ShowMessageToUser("Выберите пункт!");
                     }
@@ -674,7 +674,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         private void OpenAddGradeWindowMethod()
         {
             AddGradeWindow newAddGradeWindow = new AddGradeWindow();
-            SetCenterPositionAndOpen(newAddGradeWindow);   
+            SetCenterPositionAndOpen(newAddGradeWindow);
         }
         private void OpenAddDisciplineWindowMethod()
         {
@@ -708,7 +708,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             GradeStudent = null;
             GradeDiscipline = null;
             GradeValue = 0;
-            Date=DateTime.Today;
+            Date = DateTime.Today;
             //для Группы
             GroupName = null;
             Course = 0;
@@ -730,7 +730,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         }
         private void UpdateGradesWWInfo()
         {
-            AllGrades=DataWorker.GetAllGrades();
+            AllGrades = DataWorker.GetAllGrades();
             WorkWindow.AllGradeInfoListView.ItemsSource = null;
             WorkWindow.AllGradeInfoListView.Items.Clear();
             WorkWindow.AllGradeInfoListView.ItemsSource = AllGrades;
@@ -788,7 +788,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
 
         private void ShowMessageToUser(string message)
         {
-            MessageBox.Show(message,"Сообщение", MessageBoxButton.OK,MessageBoxImage.Information);
+            MessageBox.Show(message, "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         public event PropertyChangedEventHandler PropertyChanged;
 

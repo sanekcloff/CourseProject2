@@ -31,7 +31,7 @@
                                 Click="ExitButton_Click">
                         </Button>
                     </StackPanel>
-                    <TextBlock Text="ДОБАВЛЕНИЕ СТУДЕНТА" 
+                    <TextBlock Text="ДОБАВЛЕНИЕ ГРУППЫ" 
                                Grid.Row="1"
                                Style="{StaticResource ActionWindowHeader}"/>
                 </Grid>

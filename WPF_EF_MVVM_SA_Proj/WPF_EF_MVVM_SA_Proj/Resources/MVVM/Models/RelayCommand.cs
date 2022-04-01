@@ -3,10 +3,11 @@ using System.Windows.Input;
 
 namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
 {
-    public class RelayCommand: ICommand
+    public class RelayCommand : ICommand
     {
         private Action<object> _execute;
         private Func<object, bool> _canExecute;
+
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
