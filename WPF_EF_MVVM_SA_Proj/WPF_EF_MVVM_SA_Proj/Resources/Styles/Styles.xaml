@@ -363,10 +363,26 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ActionWindowTextBlock" TargetType="TextBlock">
+    <Style x:Key="ActionAddWindowTextBlock" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="0,5,0,5"/>
         <Setter Property="Foreground" Value="CadetBlue"/>
+        <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontSize" Value="14"/>
+    </Style>
+    <Style x:Key="ActionEditWindowTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,5,0,5"/>
+        <Setter Property="Foreground" Value="#8A2BE2"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    <Style x:Key="ActionWindowHeader" TargetType="TextBlock">
+        <Setter Property="Margin" Value="0,0,0,0"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="20"/>
     </Style>
 </ResourceDictionary>

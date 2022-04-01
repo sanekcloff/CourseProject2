@@ -27,5 +27,10 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
             DataManageVM.SelectedStudent = studentToEdit;
             this.StudentFIO.Text = studentToEdit.StudentFIO;
         }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

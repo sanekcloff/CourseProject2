@@ -258,7 +258,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
 
                         ShowMessageToUser(resultStr);
                         wnd.Close();
-                        //SetNullValuesToProperties();
+                        SetNullValuesToProperties();
                     }
                 }
                 );
@@ -291,7 +291,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                             resultStr = "Успешный вход";
                             ShowMessageToUser(resultStr);
                             OpenWorkWindowMethod();
-                            UpdateInfoView();
+                            //UpdateInfoView();
                             SetNullValuesToProperties();
                             wnd.Close();
                         }
@@ -299,7 +299,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                         {
                             ShowMessageToUser(resultStr);
                         }
-                        //SetNullValuesToProperties();
+                        SetNullValuesToProperties();
                     }
                 }
                 );
@@ -516,7 +516,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                 return openWorkWindow ?? new RelayCommand(obj =>
                 {
                     OpenWorkWindowMethod();
-                    //UpdateInfoView();
+                    SetNullValuesToProperties();
                 }
                     );
             }

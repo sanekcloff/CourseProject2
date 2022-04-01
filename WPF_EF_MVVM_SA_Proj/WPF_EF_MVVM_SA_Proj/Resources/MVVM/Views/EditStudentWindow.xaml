@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views"
         xmlns:viewModels="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels"
         mc:Ignorable="d"
-        Title="EditStudentWindow" Height="400" Width="300" x:Name="EditStudentWnd">
+        Title="EditStudentWindow" Height="300" Width="300" x:Name="EditStudentWnd" ResizeMode="NoResize" WindowStyle="None">
     <Window.DataContext>
         <viewModels:DataManageVM/>
     </Window.DataContext>
@@ -14,17 +14,39 @@
         <Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <Border Background="#8A2BE2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.4*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                            <Button Name="ExitButton"
+                                Width="25"
+                                Style="{StaticResource ExitButton}"
+                                Click="ExitButton_Click">
+                            </Button>
+                        </StackPanel>
+                        <TextBlock Text="ИЗМЕНЕНИЕ СТУДЕНТА" 
+                               Grid.Row="1"
+                               Style="{StaticResource ActionWindowHeader}"/>
+                    </Grid>
+                </Border>
                 <StackPanel Grid.Row="1"
-                            VerticalAlignment="Center">
+                            VerticalAlignment="Center"
+                            Margin="10">
                     <TextBlock Text="НОВОЕ Ф.И.О."
-                               Style="{StaticResource ActionWindowTextBlock}"/>
+                               Style="{StaticResource ActionEditWindowTextBlock}"/>
                     <TextBox Name="StudentFIO"
                              MaxLength="50"
                              Text="{Binding StudentFIO}"/>
                     <TextBlock Text="НОВАЯ ГРУППА"
-                               Style="{StaticResource ActionWindowTextBlock}"/>
+                               Style="{StaticResource ActionEditWindowTextBlock}"/>
                     <ComboBox Name="StudentGroupComboBox"
                               ItemsSource="{Binding AllGroups}"
                               DisplayMemberPath="GroupName"

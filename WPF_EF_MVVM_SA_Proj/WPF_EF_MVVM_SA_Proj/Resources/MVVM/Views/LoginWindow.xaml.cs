@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models.Data;
 using WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels;
 
 namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
@@ -21,7 +22,11 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
         public LoginWindow()
         {
             InitializeComponent();
-            //DataContext = new DataManageVM();
+            //using (ApplicationContext context = new ApplicationContext())
+            //{
+            //    context.Database.EnsureCreated();
+            //}
+
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
