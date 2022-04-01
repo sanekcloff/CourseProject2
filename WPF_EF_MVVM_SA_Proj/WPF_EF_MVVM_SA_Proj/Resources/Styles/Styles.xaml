@@ -284,6 +284,36 @@
     <ImageBrush x:Key="SearchButtonImage_Pressed" 
                     ImageSource="\Resources\Images\SearchButton_Pressed.png" 
                     Stretch="Uniform"/>
+    
+    <ImageBrush x:Key="ShowEditWindow" 
+                    ImageSource="\Resources\Images\ShowTableButton.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="ShowEditWindow_Active" 
+                    ImageSource="\Resources\Images\ShowTableButton_Active.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="ShowEditWindow_Pressed" 
+                    ImageSource="\Resources\Images\ShowTableButton_Pressed.png" 
+                    Stretch="Uniform"/>
+    
+    <ImageBrush x:Key="SearchDiscipline" 
+                    ImageSource="\Resources\Images\SearchDisciplineButton.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="SearchDiscipline_Active" 
+                    ImageSource="\Resources\Images\SearchDisciplineButton_Active.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="SearchDiscipline_Pressed" 
+                    ImageSource="\Resources\Images\SearchDisciplineButton_Pressed.png" 
+                    Stretch="Uniform"/>
+    
+    <ImageBrush x:Key="SearchStudent" 
+                    ImageSource="\Resources\Images\SearchStudentButton.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="SearchStudent_Active" 
+                    ImageSource="\Resources\Images\SearchStudentButton_Active.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="SearchStudent_Pressed" 
+                    ImageSource="\Resources\Images\SearchStudentButton_Pressed.png" 
+                    Stretch="Uniform"/>
     <!--Кнопка поиска-->
     <Style x:Key="SearchButton" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="{StaticResource SearchButtonImage}"/>
@@ -362,6 +392,69 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--Открыть редактирование-->
+    <Style x:Key="ShowEditWindowButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource ShowEditWindow}"/>
+        <Setter Property="Margin" Value="5,0,5,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="ShowEditWindowButton" 
+                                Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="ShowEditWindowButton" Value="{StaticResource ShowEditWindow_Active}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="ShowEditWindowButton" Value="{StaticResource ShowEditWindow_Pressed}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--Поиск студента-->
+    <Style x:Key="SearchStudentWindowButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource SearchStudent}"/>
+        <Setter Property="Margin" Value="5,0,5,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="SearchStudentWindowButton" 
+                                Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="SearchStudentWindowButton" Value="{StaticResource SearchStudent_Active}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="SearchStudentWindowButton" Value="{StaticResource SearchStudent_Pressed}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--Поиск дисциплины-->
+    <Style x:Key="SearchDisciplineWindowButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource SearchDiscipline}"/>
+        <Setter Property="Margin" Value="5,0,5,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="SearchDisciplineWindowButton" 
+                                Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="SearchDisciplineWindowButton" Value="{StaticResource SearchDiscipline_Active}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="SearchDisciplineWindowButton" Value="{StaticResource SearchDiscipline_Pressed}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style x:Key="ActionAddWindowTextBlock" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -384,5 +477,32 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="20"/>
+    </Style>
+    <Style x:Key="SortWorkWindowButton" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="SteelBlue"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="WindowIcon" TargetType="Image">
+        <Setter Property="Source" Value="\Resources\Images\Logo.png"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Margin" Value="4,0,0,0"/>
     </Style>
 </ResourceDictionary>

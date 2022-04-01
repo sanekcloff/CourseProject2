@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="AddDisciplineWindow" Height="300" Width="300" x:Name="AddDisciplineWnd" ResizeMode="NoResize" WindowStyle="None">
     <Window.DataContext>
-        <viewModels:DataManageVM/>
+        <viewModels:AddDisciplineViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid Grid.Column="1">

@@ -9,7 +9,7 @@
         Title="EditDisciplineWindow" Height="320" Width="300" x:Name="EditDisciplineWnd"
         ResizeMode="NoResize" WindowStyle="None">
     <Window.DataContext>
-        <viewModels:DataManageVM/>
+        <viewModels:EditDisciplineViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid Grid.Column="1">

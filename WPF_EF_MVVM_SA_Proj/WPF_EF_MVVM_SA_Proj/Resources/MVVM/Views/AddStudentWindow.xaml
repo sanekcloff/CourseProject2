@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="AddStudentWindow" Height="300" Width="300" x:Name="AddStudentWnd" ResizeMode="NoResize" WindowStyle="None">
     <Window.DataContext>
-        <viewModels:DataManageVM/>
+        <viewModels:AddStudentViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid>

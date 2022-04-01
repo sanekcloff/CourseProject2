@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="AddGroupWindow" Height="300" Width="300" x:Name="AddGroupWnd" ResizeMode="NoResize" WindowStyle="None">
     <Window.DataContext>
-        <viewModels:DataManageVM/>
+        <viewModels:AddGroupViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid Grid.Column="1">

@@ -17,8 +17,8 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models.Data
         {
 
             //optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=SAMVVMEF;Trusted_Connection=True;");
-            //optionsBuilder.UseSqlServer("Data Source=DESKTOP-I8L1GP6;Initial Catalog=SAMVVMEF;Integrated Security = True");
-            optionsBuilder.UseSqlServer(@"Data Source=PC-232-12\SQLEXPRESS;Initial Catalog=SAMVVMEF;Integrated Security = True;User ID=U-19;Password=19$RPEe");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-I8L1GP6;Initial Catalog=SAMVVMEF;Integrated Security = True");
+            //optionsBuilder.UseSqlServer(@"Data Source=PC-232-12\SQLEXPRESS;Initial Catalog=SAMVVMEF;Integrated Security = True;User ID=U-19;Password=19$RPEe");
         }
     }
 }

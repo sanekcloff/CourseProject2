@@ -25,7 +25,6 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
         {
             InitializeComponent();
             AllGradeInfoListView = GradeInfoListView;
-            WorkWindowSortComboBox = SortComboBox;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels;
 
 namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
 {
@@ -166,7 +167,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
             {
                 db.Grades.Remove(grade);
                 db.SaveChanges();
-                result = $"Сделано! Оценка {grade.GradeValue} студента {grade.StudentId} удалена";
+                result = $"Сделано! Оценка {grade.GradeValue} студента {GetStudentByGradeId((int)grade.StudentId)} удалена";
             }
             return result;
         }
@@ -178,7 +179,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
             {
                 db.Students.Remove(student);
                 db.SaveChanges();
-                result = $"Сделано! Студент {student.StudentFIO} из группы {student.GroupId} удален";
+                result = $"Сделано! Студент {student.StudentFIO} из группы {GetGroupByStudentId((int)student.GroupId)} удален";
             }
             return result;
         }
@@ -191,7 +192,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                 //check position is exist
                 db.Disciplines.Remove(discipline);
                 db.SaveChanges();
-                result = "Сделано! Дисциплина " + discipline.DisciplineName + " удалена";
+                result = $"Сделано! Дисциплина {discipline.DisciplineName} удалена";
             }
             return result;
         }
@@ -204,23 +205,10 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                 //check position is exist
                 db.Groups.Remove(group);
                 db.SaveChanges();
-                result = "Сделано! Группа " + group.GroupName + " удалена";
+                result = $"Сделано! Группа {group.GroupName} удалена";
             }
             return result;
         }
-
-        //удаление Пользователя
-        //public static string DeleteUser(User user)
-        //{
-        //    string result = "Такого сотрудника не существует";
-        //    using (ApplicationContext db = new ApplicationContext())
-        //    {
-        //        db.Users.Remove(user);
-        //        db.SaveChanges();
-        //        result = "Сделано! Сотрудник " + user.Name + " уволен";
-        //    }
-        //    return result;
-        //}
 
         //редактирование Группы
         public static string EditGroup(Group oldGroup, string newName, int newCourse)
@@ -232,7 +220,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                 group.GroupName = newName;
                 group.Course = newCourse;
                 db.SaveChanges();
-                result = "Сделано! Группа " + group.GroupName + " изменена";
+                result = $"Сделано! Группа {group.GroupName} изменена";
             }
             return result;
         }
@@ -247,7 +235,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                 student.StudentFIO = newFIO;
                 student.GroupId = newGroup.Id;
                 db.SaveChanges();
-                result =  $"Сделано! Студент {student.StudentFIO} из группы {student.GroupId} изменен";
+                result =  $"Сделано! Студент {student.StudentFIO} из группы {GetGroupByStudentId((int)student.GroupId)} изменен";
             }
             return result;
         }
@@ -279,7 +267,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                     grade.GradeValue = newGradeValue;
                     grade.Date = newDate;
                     db.SaveChanges();
-                    result = $"Сделано! Оценка {grade.GradeValue} студента {grade.StudentId} изменен";
+                    result = $"Сделано! Оценка {grade.GradeValue} студента {GetStudentByGradeId((int)grade.StudentId)} изменен";
                 }
             }
             return result;
@@ -356,5 +344,25 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                 return grades;
             }
         }
+        #region USEFUL METHODS
+        //получение студента по id оценки
+        public static string GetStudentByGradeId(int gradeId)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                Student student = db.Students.FirstOrDefault(student => student.Id == gradeId);
+                return student.StudentFIO;
+            }
+        }
+        //получение группы по id студента
+        public static string GetGroupByStudentId(int studentGroupId)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                Group group = db.Groups.FirstOrDefault(group => group.Id == studentGroupId);
+                return group.GroupName;
+            }
+        }
+        #endregion
     }
 }

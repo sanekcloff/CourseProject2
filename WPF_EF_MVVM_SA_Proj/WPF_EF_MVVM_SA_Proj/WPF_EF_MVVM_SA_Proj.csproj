@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\disciplineLogo.png" />
+    <None Remove="Resources\Images\EditButton.png" />
+    <None Remove="Resources\Images\EditButton_Active.png" />
+    <None Remove="Resources\Images\EditButton_Pressed.png" />
     <None Remove="Resources\Images\ExitButton_Icon.png" />
     <None Remove="Resources\Images\ExitButton_Icon_Active.png" />
     <None Remove="Resources\Images\ExitButton_Icon_Pressed.png" />
@@ -18,13 +22,23 @@
     <None Remove="Resources\Images\SearchButton.png" />
     <None Remove="Resources\Images\SearchButton_Active.png" />
     <None Remove="Resources\Images\SearchButton_Pressed.png" />
+    <None Remove="Resources\Images\SearchDisciplineButton.png" />
+    <None Remove="Resources\Images\SearchDisciplineButton_Active.png" />
+    <None Remove="Resources\Images\SearchDisciplineButton_Pressed.png" />
+    <None Remove="Resources\Images\searchLogo.png" />
+    <None Remove="Resources\Images\SearchStudentButton.png" />
+    <None Remove="Resources\Images\SearchStudentButton_Active.png" />
+    <None Remove="Resources\Images\SearchStudentButton_Pressed.png" />
+    <None Remove="Resources\Images\ShowTableButton.png" />
+    <None Remove="Resources\Images\ShowTableButton_Active.png" />
+    <None Remove="Resources\Images\ShowTableButton_Pressed.png" />
+    <None Remove="Resources\Images\tableLogo.png" />
     <None Remove="Resources\Images\WorkWindowTitle.png" />
     <None Remove="Resources\Images\WorkWindowTitle_Light.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Resources\MVVM\Models\" />
-    <Folder Include="Resources\MVVM\ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +51,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\disciplineLogo.png" />
+    <Resource Include="Resources\Images\EditButton.png" />
+    <Resource Include="Resources\Images\EditButton_Active.png" />
+    <Resource Include="Resources\Images\EditButton_Pressed.png" />
     <Resource Include="Resources\Images\ExitButton_Icon.png" />
     <Resource Include="Resources\Images\ExitButton_Icon_Active.png" />
     <Resource Include="Resources\Images\ExitButton_Icon_Pressed.png" />
@@ -47,6 +65,17 @@
     <Resource Include="Resources\Images\SearchButton.png" />
     <Resource Include="Resources\Images\SearchButton_Active.png" />
     <Resource Include="Resources\Images\SearchButton_Pressed.png" />
+    <Resource Include="Resources\Images\SearchDisciplineButton.png" />
+    <Resource Include="Resources\Images\SearchDisciplineButton_Active.png" />
+    <Resource Include="Resources\Images\SearchDisciplineButton_Pressed.png" />
+    <Resource Include="Resources\Images\searchLogo.png" />
+    <Resource Include="Resources\Images\SearchStudentButton.png" />
+    <Resource Include="Resources\Images\SearchStudentButton_Active.png" />
+    <Resource Include="Resources\Images\SearchStudentButton_Pressed.png" />
+    <Resource Include="Resources\Images\ShowTableButton.png" />
+    <Resource Include="Resources\Images\ShowTableButton_Active.png" />
+    <Resource Include="Resources\Images\ShowTableButton_Pressed.png" />
+    <Resource Include="Resources\Images\tableLogo.png" />
     <Resource Include="Resources\Images\WorkWindowTitle.png" />
     <Resource Include="Resources\Images\WorkWindowTitle_Light.png" />
   </ItemGroup>

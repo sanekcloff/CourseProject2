@@ -11,7 +11,7 @@
         WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize"
         x:Name="AddNeUserWnd">
     <Window.DataContext>
-        <viewModels:DataManageVM/>
+        <viewModels:RegisterViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>

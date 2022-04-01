@@ -9,7 +9,7 @@
         Title="EditGradeWindow" Height="400" Width="300" x:Name="EditGradeWnd"
         ResizeMode="NoResize" WindowStyle="None">
     <Window.DataContext>
-        <viewModels:DataManageVM/>
+        <viewModels:EditGradeViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid Grid.Column="1">
