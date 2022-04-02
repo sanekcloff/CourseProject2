@@ -56,7 +56,8 @@
                 </Grid.ColumnDefinitions>
                 <Button Name="WorkWindowTitle"
                         Style="{StaticResource WorkWindowTitle}"
-                        Grid.Column="0"/>
+                        Grid.Column="0"
+                        Width="100"/>
                 <StackPanel Grid.Column="1" 
                             Orientation="Horizontal"
                             HorizontalAlignment="Left">
@@ -72,18 +73,31 @@
         </Border>
         <ListView  x:Name="GradeInfoListView"
                       Grid.Row="2"
-                      Foreground="#226F6F"
+                      Foreground="Black"
+                   Background="LightGray"
                       ItemsSource="{Binding AllGrades}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Ф.И.О" 
-                                        DisplayMemberBinding="{Binding Path=GradeStudent.StudentFIO}"/>
-                    <GridViewColumn Header="Дисциплина"                                            
-                                        DisplayMemberBinding="{Binding Path=GradeDiscipline.DisciplineName}"/>
-                    <GridViewColumn Header="Оценка"                                            
-                                        DisplayMemberBinding="{Binding Path=GradeValue}"/>
-                    <GridViewColumn Header="Дата"                                            
-                                        DisplayMemberBinding="{Binding Path=Date}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=GradeStudent.StudentFIO}">
+                        <Border>
+                            <TextBlock Text="Ф.И.О" FontWeight="Bold" FontSize="16"/>
+                        </Border>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=GradeDiscipline.DisciplineName}">
+                        <Border>
+                            <TextBlock Text="Дисциплина" FontWeight="Bold" FontSize="16"/>
+                        </Border>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=GradeValue}">
+                        <Border>
+                            <TextBlock Text="Оценка" FontWeight="Bold" FontSize="16"/>
+                        </Border>
+                    </GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding Path=Date}">
+                        <Border>
+                            <TextBlock Text="Дата" FontWeight="Bold" FontSize="16"/>
+                        </Border>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

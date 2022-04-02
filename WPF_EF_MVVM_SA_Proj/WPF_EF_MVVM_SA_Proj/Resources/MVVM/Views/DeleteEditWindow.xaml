@@ -123,22 +123,20 @@
             <StackPanel Orientation="Horizontal"   
                         HorizontalAlignment="Left">
                 <Button Name="AddButton"
-                    Content="ДОБАВИТЬ"
-                    Grid.Row="2"
-                    Style="{StaticResource WorkWindowButton}"
-                    Command="{Binding OpenAddItemWnd}"
-                    Margin="10,0,10,0"/>
+                        Grid.Row="2"
+                        Style="{StaticResource AddWindowButton}"
+                        Command="{Binding OpenAddItemWnd}"
+                        Tag="ДОБАВИТЬ"/>
                 <Button Name="EditButton"
-                    Content="РЕДАКТИРОВАТЬ"
-                    Grid.Row="2"
-                    Style="{StaticResource WorkWindowButton}"
-                    Command="{Binding OpenEditItemWnd}"
-                    Margin="10,0,10,0"/>
+                        Grid.Row="2"
+                        Style="{StaticResource EditWindowButton}"
+                        Command="{Binding OpenEditItemWnd}"
+                        Tag="РЕДАКТИРОВАТЬ"/>
                 <Button Name="DeleteButton"
-                    Content="УДАЛИТЬ"
-                    Style="{StaticResource WorkWindowButton}"
-                    Command="{Binding DeleteItem}"
-                    Margin="10,0,0,0"/>
+                        Grid.Row="2"
+                        Style="{StaticResource DeleteWindowButton}"
+                        Command="{Binding DeleteItem}"
+                        Tag="УДАЛИТЬ"/>
             </StackPanel>
         </Border>
     </Grid>

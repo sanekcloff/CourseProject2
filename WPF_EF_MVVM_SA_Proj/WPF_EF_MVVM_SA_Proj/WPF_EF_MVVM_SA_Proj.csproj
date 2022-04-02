@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\AddButton.png" />
+    <None Remove="Resources\Images\AddButtonLogo.png" />
+    <None Remove="Resources\Images\AddButton_Active.png" />
+    <None Remove="Resources\Images\AddButton_Pressed.png" />
+    <None Remove="Resources\Images\DeleteButton.png" />
+    <None Remove="Resources\Images\DeleteButton_Active.png" />
+    <None Remove="Resources\Images\DeleteButton_Pressed.png" />
     <None Remove="Resources\Images\disciplineLogo.png" />
     <None Remove="Resources\Images\EditButton.png" />
     <None Remove="Resources\Images\EditButton_Active.png" />
@@ -51,6 +58,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\AddButton.png" />
+    <Resource Include="Resources\Images\AddButtonLogo.png" />
+    <Resource Include="Resources\Images\AddButton_Active.png" />
+    <Resource Include="Resources\Images\AddButton_Pressed.png" />
+    <Resource Include="Resources\Images\DeleteButton.png" />
+    <Resource Include="Resources\Images\DeleteButton_Active.png" />
+    <Resource Include="Resources\Images\DeleteButton_Pressed.png" />
     <Resource Include="Resources\Images\disciplineLogo.png" />
     <Resource Include="Resources\Images\EditButton.png" />
     <Resource Include="Resources\Images\EditButton_Active.png" />
