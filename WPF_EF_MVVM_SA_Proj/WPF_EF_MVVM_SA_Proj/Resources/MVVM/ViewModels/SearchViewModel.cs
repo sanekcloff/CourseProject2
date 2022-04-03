@@ -11,6 +11,27 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
 {
     public class SearchViewModel:DataManageVM
     {
+        private RelayCommand sortDisciplineWorkWindowView;
+        public RelayCommand SortDisciplineWorkWindowView
+        {
+            get
+            {
+                return sortDisciplineWorkWindowView ?? new RelayCommand(obj =>
+                {
+                    Window wnd = obj as Window;
+                    if (DisciplineInf == null)
+                    {
+                        ShowMessageToUser("Выберите студента!");
+                    }
+                    else
+                    {
+                        UpdateGradesWWInfoSortedByDiscipline();
+                        wnd.Close();
+                    }
+                }
+                );
+            }
+        }
         private RelayCommand sortStudentWorkWindowView;
         public RelayCommand SortStudentWorkWindowView
         {
@@ -51,6 +72,22 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                 }
                 );
             }
+        }
+        private void UpdateGradesWWInfoSortedByDiscipline()
+        {
+            AllGradesByDisciplineId = DataWorker.GetAllGradesByDisciplineId(DisciplineInf.Id);
+            WorkWindow.AllGradeInfoListView.ItemsSource = null;
+            WorkWindow.AllGradeInfoListView.Items.Clear();
+            WorkWindow.AllGradeInfoListView.ItemsSource = AllGradesByDisciplineId;
+            WorkWindow.AllGradeInfoListView.Items.Refresh();
+        }
+        private void UpdateGradesWWInfoSortedByStudent()
+        {
+            AllGradesByStudentId = DataWorker.GetAllGradesByStudentId(StudentInf.Id);
+            WorkWindow.AllGradeInfoListView.ItemsSource = null;
+            WorkWindow.AllGradeInfoListView.Items.Clear();
+            WorkWindow.AllGradeInfoListView.ItemsSource = AllGradesByStudentId;
+            WorkWindow.AllGradeInfoListView.Items.Refresh();
         }
         private void UpdateStudentComboBoxInfo()
         {

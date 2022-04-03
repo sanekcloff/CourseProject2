@@ -13,7 +13,7 @@
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.06*"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="0.08*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -24,7 +24,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="0.3*"/>
                 </Grid.ColumnDefinitions>
-                <Image Style="{StaticResource WindowIcon}"/>
+                <Image Source="\Resources\Images\tableLogo.png"
+                       Margin="5,2,0,2"/>
                 <Label Name="WindowName"
                    Grid.Column="1"
                    Content="ПРОСМОТР ТАБЛИЦ"

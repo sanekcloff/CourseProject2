@@ -1,4 +1,4 @@
-﻿<Window x:Class="WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views.SearchStudentWindow"
+﻿<Window x:Class="WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views.SearchDisciplineWindow"
         Icon="\Resources\Images\SearchLogo.png"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views"
         xmlns:viewModel="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels"
         mc:Ignorable="d"
-        Title="SearchStudentWindow" Height="130" Width="300" x:Name="SearchStudentWnd"
+        Title="SearchDisciplineWindow" Height="90" Width="300" x:Name="SearchDisciplineWnd"
         ResizeMode="NoResize" WindowStyle="None" Background="#1F2833">
     <Window.DataContext>
         <viewModel:SearchViewModel/>
@@ -27,7 +27,7 @@
                 <Image Style="{StaticResource SortIcon}"/>
                 <Label Name="WindowName"
                    Grid.Column="1"
-                   Content="СОРТИРОВКА ПО СТУДЕНТАМ"
+                   Content="СОРТИРОВКА ПО ДИСЦИПЛИНАМ"
                    Foreground="White"/>
                 <StackPanel Grid.Column="2"
                             Orientation="Horizontal"
@@ -44,38 +44,20 @@
             </Grid>
         </Border>
         <StackPanel Grid.Row="1" Margin="5">
-            <TextBlock Text="Отсортировать по группам" Style="{StaticResource SortText}"/>
+            <TextBlock Text="Дисциплина" Style="{StaticResource SortText}"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Name="GroupComboBox"
-                          SelectedItem="{Binding GroupInf}"
-                          ItemsSource="{Binding AllGroups}"
-                          DisplayMemberPath="GroupName"
-                          Style="{StaticResource SortBox}"/>
-                <Button x:Name="SearchGroup" 
-                        Grid.Column="1"
-                        Content="ПРИМЕНИТЬ"
-                        FontSize="9"
-                        Command="{Binding SortStudentComboBox}"
-                        Style="{StaticResource AltSortButton}"/>
-            </Grid>
-            <TextBlock Text="Студент" Style="{StaticResource SortText}"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <ComboBox Name="StudentComboBox"
-                          SelectedItem="{Binding StudentInf}"
-                          ItemsSource="{Binding AllStudents}"
-                          DisplayMemberPath="StudentFIO"
+                <ComboBox Name="DisciplineComboBox"
+                          SelectedItem="{Binding DisciplineInf}"
+                          ItemsSource="{Binding AllDisciplines}"
+                          DisplayMemberPath="DisciplineName"
                           Style="{StaticResource SortBox}"/>
                 <Button Grid.Column="1"
-                        Command="{Binding SortStudentWorkWindowView}"
-                        CommandParameter="{Binding ElementName=SearchStudentWnd}"
+                        Command="{Binding SortDisciplineWorkWindowView}"
+                        CommandParameter="{Binding ElementName=SearchDisciplineWnd}"
                         Content="СОРТИРОВАТЬ"
                         Style="{StaticResource SortButton}"/>
             </Grid>

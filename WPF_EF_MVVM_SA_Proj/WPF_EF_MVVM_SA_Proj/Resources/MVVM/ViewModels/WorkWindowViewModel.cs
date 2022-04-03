@@ -50,7 +50,18 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                 return openSearchStudentWindow ?? new RelayCommand(obj =>
                 {
                     OpenSearchStudentWindowMethod();
-                    //UpdateInfoView();
+                }
+                    );
+            }
+        }
+        private RelayCommand openSearchDisciplineWindow;
+        public RelayCommand OpenSearchDisciplineWindow
+        {
+            get
+            {
+                return openSearchDisciplineWindow ?? new RelayCommand(obj =>
+                {
+                    OpenSearchDisciplineWindowMethod();
                 }
                     );
             }
@@ -66,6 +77,11 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         {
             SearchStudentWindow newSearchStudentWindow = new SearchStudentWindow();
             SetCenterPositionAndOpen(newSearchStudentWindow);
+        }
+        private void OpenSearchDisciplineWindowMethod()
+        {
+            SearchDisciplineWindow newSearchDisciplineWindow = new SearchDisciplineWindow();
+            SetCenterPositionAndOpen(newSearchDisciplineWindow);
         }
         #endregion
     }

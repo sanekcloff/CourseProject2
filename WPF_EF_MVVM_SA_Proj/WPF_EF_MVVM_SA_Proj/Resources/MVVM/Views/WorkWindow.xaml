@@ -16,7 +16,7 @@
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.06*"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="0.1*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -71,7 +71,8 @@
                             Command="{Binding OpenSearchStudentWindow}"/>
                     <!--Оценка по (Дисциплине)-->
                     <Button x:Name="SearchDiscipline" Width="37"
-                            Style="{StaticResource SearchDisciplineWindowButton}"/>
+                            Style="{StaticResource SearchDisciplineWindowButton}"
+                            Command="{Binding OpenSearchDisciplineWindow}"/>
                     <!--Оценка по (Группе)-->
                     <Button x:Name="SearchGroup" Width="37"
                             Style="{StaticResource SearchGroupWindowButton}"/>

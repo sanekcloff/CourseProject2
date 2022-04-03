@@ -339,10 +339,10 @@
                     ImageSource="\Resources\Images\CleanView.png" 
                     Stretch="Uniform"/>
     <ImageBrush x:Key="CleanViewImg_Active" 
-                    ImageSource="\Resources\Images\CleanView.png" 
+                    ImageSource="\Resources\Images\CleanView_Active.png" 
                     Stretch="Uniform"/>
     <ImageBrush x:Key="CleanViewImg_Pressed" 
-                    ImageSource="\Resources\Images\CleanView.png" 
+                    ImageSource="\Resources\Images\CleanView_Pressed.png" 
                     Stretch="Uniform"/>
 
     <Image x:Key="EditButtonImage" 
@@ -746,5 +746,63 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    
+    <!--СОРТИРОВКА-->
+    <Style x:Key="SortIcon" TargetType="Image">
+        <Setter Property="Source" Value="\Resources\Images\SearchLogo.png"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Margin" Value="4,0,0,0"/>
+    </Style>
+    <Style x:Key="SortBox" TargetType="ComboBox">
+        <Setter Property="Margin" Value="5,2,5,5"/>
+    </Style>
+    <Style x:Key="SortText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="5,2,5,0"/>
+    </Style>
+    <Style x:Key="SortButton" TargetType="Button">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="5,2,5,0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="AltSortButton" TargetType="Button">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="5,2,5,0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="Opacity" Value="0.5"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

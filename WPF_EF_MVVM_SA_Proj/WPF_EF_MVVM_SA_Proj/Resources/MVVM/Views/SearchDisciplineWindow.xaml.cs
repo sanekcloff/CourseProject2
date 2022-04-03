@@ -14,13 +14,11 @@ using System.Windows.Shapes;
 
 namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
 {
-    public partial class SearchStudentWindow : Window
+    public partial class SearchDisciplineWindow : Window
     {
-        public static ComboBox SortStudentComboBox;
-        public SearchStudentWindow()
+        public SearchDisciplineWindow()
         {
             InitializeComponent();
-            SortStudentComboBox = StudentComboBox;
         }
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {

@@ -81,12 +81,24 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                 NotifyPropertyChanged("AllStudentsByGroupId");
             }
         }
+        //все Оценки по дисциплине
+        private List<Grade> allGradesByDisciplineId;
+        public List<Grade> AllGradesByDisciplineId
+        {
+            get { return allGradesByDisciplineId; }
+            set
+            {
+                allGradesByDisciplineId = value;
+                NotifyPropertyChanged("AllGradesByDisciplineId");
+            }
+        }
 
         //свойства для групп
         public static Group GroupInf { get; set; }
         public static string GroupName { get; set; }
         public static int Course { get; set; }
         //свойства для дисциплин
+        public static Discipline DisciplineInf { get; set; }
         public static string DisciplineName { get; set; }
         //свойства для пользователя
         public static string Login { get; set; }
@@ -155,14 +167,6 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             WorkWindow.AllGradeInfoListView.ItemsSource = null;
             WorkWindow.AllGradeInfoListView.Items.Clear();
             WorkWindow.AllGradeInfoListView.ItemsSource = AllGrades;
-            WorkWindow.AllGradeInfoListView.Items.Refresh();
-        }
-        protected void UpdateGradesWWInfoSortedByStudent()
-        {
-            AllGradesByStudentId = DataWorker.GetAllGradesByStudentId(StudentInf.Id);
-            WorkWindow.AllGradeInfoListView.ItemsSource = null;
-            WorkWindow.AllGradeInfoListView.Items.Clear();
-            WorkWindow.AllGradeInfoListView.ItemsSource = AllGradesByStudentId;
             WorkWindow.AllGradeInfoListView.Items.Refresh();
         }
         protected void UpdateGradesEDWInfo()
