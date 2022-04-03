@@ -19,32 +19,15 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                 return standartWorkWindowView ?? new RelayCommand(obj =>
                 {
                     UpdateGradesWWInfo();
-                    WorkWindow.WorkWindowSortComboBox.SelectedValue = null;
                     StudentInf = null;
+                    GroupInf = null;
                 }
                 );
             }
         }
-        private RelayCommand refreshWorkWindowView;
-        public RelayCommand RefreshWorkWindowView
-        {
-            get
-            {
-                return refreshWorkWindowView ?? new RelayCommand(obj =>
-                {
-                    if (StudentInf == null)
-                    {
-                        ShowMessageToUser("Выберите пункт!");
-                    }
-                    else
-                    {
-                        UpdateGradesWWInfoSortedByStudent();
-                    }
-                }
-                );
-            }
-        }
+        
         #endregion
+
         #region Commands To Open Window
         private RelayCommand openDeleteEditWindow;
         public RelayCommand OpenDeleteEditWindow
@@ -59,12 +42,30 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     );
             }
         }
+        private RelayCommand openSearchStudentWindow;
+        public RelayCommand OpenSearchStudentWindow
+        {
+            get
+            {
+                return openSearchStudentWindow ?? new RelayCommand(obj =>
+                {
+                    OpenSearchStudentWindowMethod();
+                    //UpdateInfoView();
+                }
+                    );
+            }
+        }
         #endregion
         #region Methods To Open Window
         private void OpenDeleteEditWindowMethod()
         {
             DeleteEditWindow newDeleteEditWindow = new DeleteEditWindow();
             SetCenterPositionAndOpen(newDeleteEditWindow);
+        }
+        private void OpenSearchStudentWindowMethod()
+        {
+            SearchStudentWindow newSearchStudentWindow = new SearchStudentWindow();
+            SetCenterPositionAndOpen(newSearchStudentWindow);
         }
         #endregion
     }

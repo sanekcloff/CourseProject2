@@ -61,13 +61,27 @@
                 <StackPanel Grid.Column="1" 
                             Orientation="Horizontal"
                             HorizontalAlignment="Left">
+                    <!--Открыть окно редактирования-->
                     <Button x:Name="ShowEditWindow" Width="37"
                             Style="{StaticResource ShowEditWindowButton}"
                             Command="{Binding OpenDeleteEditWindow}"/>
+                    <!--Оценка по (студент по группе)-->
                     <Button x:Name="SearchStudent" Width="37"
-                            Style="{StaticResource SearchStudentWindowButton}"/>
+                            Style="{StaticResource SearchStudentWindowButton}"
+                            Command="{Binding OpenSearchStudentWindow}"/>
+                    <!--Оценка по (Дисциплине)-->
                     <Button x:Name="SearchDiscipline" Width="37"
                             Style="{StaticResource SearchDisciplineWindowButton}"/>
+                    <!--Оценка по (Группе)-->
+                    <Button x:Name="SearchGroup" Width="37"
+                            Style="{StaticResource SearchGroupWindowButton}"/>
+                    <!--Оценка по (Дисциплине и Студенту)-->
+                    <Button x:Name="SearchStudentDiscipline" Width="37"
+                            Style="{StaticResource SearchDisciplineStudentWindowButton}"/>
+                    <!--Убрать фильтр-->
+                    <Button x:Name="StandartView" Width="37"
+                            Style="{StaticResource CleanViewButton}"
+                            Command="{Binding StandartWorkWindowView}"/>
                 </StackPanel>
             </Grid>
         </Border>

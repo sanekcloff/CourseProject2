@@ -315,6 +315,36 @@
                     ImageSource="\Resources\Images\SearchStudentButton_Pressed.png" 
                     Stretch="Uniform"/>
     
+    <ImageBrush x:Key="SearchGroup" 
+                    ImageSource="\Resources\Images\SearchGroupButton.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="SearchGroup_Active" 
+                    ImageSource="\Resources\Images\SearchGroupButton_Active.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="SearchGroup_Pressed" 
+                    ImageSource="\Resources\Images\SearchGroupButton_Pressed.png" 
+                    Stretch="Uniform"/>
+
+    <ImageBrush x:Key="SearchStudentDiscipline" 
+                    ImageSource="\Resources\Images\SearchStudentDisciplineButton.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="SearchStudentDiscipline_Active" 
+                    ImageSource="\Resources\Images\SearchStudentDisciplineButton_Active.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="SearchStudentDiscipline_Pressed" 
+                    ImageSource="\Resources\Images\SearchStudentDisciplineButton_Pressed.png" 
+                    Stretch="Uniform"/>
+    
+    <ImageBrush x:Key="CleanViewImg" 
+                    ImageSource="\Resources\Images\CleanView.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="CleanViewImg_Active" 
+                    ImageSource="\Resources\Images\CleanView.png" 
+                    Stretch="Uniform"/>
+    <ImageBrush x:Key="CleanViewImg_Pressed" 
+                    ImageSource="\Resources\Images\CleanView.png" 
+                    Stretch="Uniform"/>
+
     <Image x:Key="EditButtonImage" 
                     Source="\Resources\Images\EditButton.png" 
                     Stretch="Uniform"/>
@@ -344,6 +374,8 @@
     <ImageBrush x:Key="DeleteButtonImage_Pressed" 
                     ImageSource="\Resources\Images\DeleteButton_Pressed.png" 
                     Stretch="Uniform"/>
+    
+    
     <!--Кнопка поиска-->
     <Style x:Key="SearchButton" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="{StaticResource SearchButtonImage}"/>
@@ -485,6 +517,69 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--Поиск группы-->
+    <Style x:Key="SearchGroupWindowButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource SearchGroup}"/>
+        <Setter Property="Margin" Value="5,0,5,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="SearchGroupWindowButton" 
+                                Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="SearchGroupWindowButton" Value="{StaticResource SearchGroup_Active}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="SearchGroupWindowButton" Value="{StaticResource SearchGroup_Pressed}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--Поиск Дисциплины студента-->
+    <Style x:Key="SearchDisciplineStudentWindowButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource SearchStudentDiscipline}"/>
+        <Setter Property="Margin" Value="5,0,5,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="SearchDisciplineStudentWindowButton" 
+                                Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="SearchDisciplineStudentWindowButton" Value="{StaticResource SearchStudentDiscipline_Active}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="SearchDisciplineStudentWindowButton" Value="{StaticResource SearchStudentDiscipline_Pressed}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--Очистка сортировки-->
+    <Style x:Key="CleanViewButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource CleanViewImg}"/>
+        <Setter Property="Margin" Value="5,0,5,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="CleanViewButton" 
+                                Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="CleanViewButton" Value="{StaticResource CleanViewImg_Active}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="CleanViewButton" Value="{StaticResource CleanViewImg_Pressed}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style x:Key="ActionAddWindowTextBlock" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -558,7 +653,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Source" TargetName="Image" Value="\Resources\Images\AddButton_Pressed.png"/>
+                            <Setter Property="Source" TargetName="Image" Value="\Resources\Images\AddButton_Active.png"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
                             <Setter Property="Opacity" TargetName="Border" Value="0.7"/>

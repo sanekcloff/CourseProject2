@@ -43,6 +43,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     {
                         resultStr = DataWorker.CreateGrade(GradeValue, Date, GradeDiscipline, GradeStudent);
                         UpdateWWInfoView();
+                        UpdateGradesEDWInfo();
                         ShowMessageToUser(resultStr);
                         SetNullValuesToProperties();
                         wnd.Close();

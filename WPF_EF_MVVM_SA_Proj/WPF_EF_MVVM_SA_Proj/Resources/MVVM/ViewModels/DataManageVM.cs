@@ -59,7 +59,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                 NotifyPropertyChanged("AllGrades");
             }
         }
-        //все Оценки по группе
+        //все Оценки по студенту
         private List<Grade> allGradesByStudentId;
         public List<Grade> AllGradesByStudentId
         {
@@ -67,11 +67,23 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             set
             {
                 allGradesByStudentId = value;
-                NotifyPropertyChanged("AllGradesByStudent");
+                NotifyPropertyChanged("AllGradesByStudentId");
+            }
+        }
+        //все Студенты по группе
+        private List<Student> allStudentsByGroupId;
+        public List<Student> AllStudentsByGroupId
+        {
+            get { return allStudentsByGroupId; }
+            set
+            {
+                allStudentsByGroupId = value;
+                NotifyPropertyChanged("AllStudentsByGroupId");
             }
         }
 
         //свойства для групп
+        public static Group GroupInf { get; set; }
         public static string GroupName { get; set; }
         public static int Course { get; set; }
         //свойства для дисциплин
