@@ -327,6 +327,24 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
             }
         }
         //получение всех оценок по id студента
+        public static List<Grade> GetAllGradesByGroupId(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                List<Grade> grades = (from grade in GetAllGrades() where grade.GradeStudent.GroupId == id select grade).ToList();
+                return grades;
+            }
+        }
+        //получение всех оценок по id студента и дсициплины
+        public static List<Grade> GetAllGradesByStudentDisciplineId(int studentId, int disciplineId)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                List<Grade> grades = (from grade in GetAllGrades() where grade.StudentId == studentId && grade.DisciplineId == disciplineId select grade).ToList();
+                return grades;
+            }
+        }
+        //получение всех оценок по id студента
         public static List<Grade> GetAllGradesByStudentId(int id)
         {
             using (ApplicationContext db = new ApplicationContext())

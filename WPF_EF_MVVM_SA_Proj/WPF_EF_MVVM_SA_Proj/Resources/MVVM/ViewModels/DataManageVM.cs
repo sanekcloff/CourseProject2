@@ -92,6 +92,28 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                 NotifyPropertyChanged("AllGradesByDisciplineId");
             }
         }
+        //все Оценки по группе
+        private List<Grade> allGradesByGroupId;
+        public List<Grade> AllGradesByGroupId
+        {
+            get { return allGradesByGroupId; }
+            set
+            {
+                allGradesByGroupId = value;
+                NotifyPropertyChanged("AllGradesByGroupId");
+            }
+        }
+        //все Оценки по студенту и дисциплине
+        private List<Grade> allGradesByStudentDisciplineId;
+        public List<Grade> AllGradesByStudentDisciplineId
+        {
+            get { return allGradesByStudentDisciplineId; }
+            set
+            {
+                allGradesByStudentDisciplineId = value;
+                NotifyPropertyChanged("AllGradesByStudentDisciplineId");
+            }
+        }
 
         //свойства для групп
         public static Group GroupInf { get; set; }

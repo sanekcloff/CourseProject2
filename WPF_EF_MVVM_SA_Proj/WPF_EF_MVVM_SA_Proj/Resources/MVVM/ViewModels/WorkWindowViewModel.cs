@@ -66,6 +66,30 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     );
             }
         }
+        private RelayCommand openSearchGroupWindow;
+        public RelayCommand OpenSearchGroupWindow
+        {
+            get
+            {
+                return openSearchGroupWindow ?? new RelayCommand(obj =>
+                {
+                    OpenSearchGroupWindowMethod();
+                }
+                    );
+            }
+        }
+        private RelayCommand openSearchStudentDisciplineWindow;
+        public RelayCommand OpenSearchStudentDisciplineWindow
+        {
+            get
+            {
+                return openSearchStudentDisciplineWindow ?? new RelayCommand(obj =>
+                {
+                    OpenSearchStudentDisciplineWindowMethod();
+                }
+                    );
+            }
+        }
         #endregion
         #region Methods To Open Window
         private void OpenDeleteEditWindowMethod()
@@ -82,6 +106,16 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         {
             SearchDisciplineWindow newSearchDisciplineWindow = new SearchDisciplineWindow();
             SetCenterPositionAndOpen(newSearchDisciplineWindow);
+        }
+        private void OpenSearchGroupWindowMethod()
+        {
+            SearchGroupWindow newSearchGroupWindow = new SearchGroupWindow();
+            SetCenterPositionAndOpen(newSearchGroupWindow);
+        }
+        private void OpenSearchStudentDisciplineWindowMethod()
+        {
+            SearchStudentDisciplineWindow newSearchStudentDisciplineWindow = new SearchStudentDisciplineWindow();
+            SetCenterPositionAndOpen(newSearchStudentDisciplineWindow);
         }
         #endregion
     }

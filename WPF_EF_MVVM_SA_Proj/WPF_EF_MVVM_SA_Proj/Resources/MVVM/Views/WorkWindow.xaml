@@ -75,10 +75,12 @@
                             Command="{Binding OpenSearchDisciplineWindow}"/>
                     <!--Оценка по (Группе)-->
                     <Button x:Name="SearchGroup" Width="37"
-                            Style="{StaticResource SearchGroupWindowButton}"/>
+                            Style="{StaticResource SearchGroupWindowButton}"
+                            Command="{Binding OpenSearchGroupWindow}"/>
                     <!--Оценка по (Дисциплине и Студенту)-->
                     <Button x:Name="SearchStudentDiscipline" Width="37"
-                            Style="{StaticResource SearchDisciplineStudentWindowButton}"/>
+                            Style="{StaticResource SearchDisciplineStudentWindowButton}"
+                            Command="{Binding OpenSearchStudentDisciplineWindow}"/>
                     <!--Убрать фильтр-->
                     <Button x:Name="StandartView" Width="37"
                             Style="{StaticResource CleanViewButton}"

@@ -128,6 +128,9 @@
     <Compile Update="Resources\MVVM\Views\SearchDisciplineWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Resources\MVVM\Views\SearchStudentDisciplineWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -155,6 +158,10 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Resources\MVVM\Views\SearchStudentDisciplineWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
 

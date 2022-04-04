@@ -1,0 +1,65 @@
+﻿<Window x:Class="WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views.SearchGroupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views"
+        xmlns:viewModel="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels"
+        mc:Ignorable="d"
+        Title="SearchGroupWindow" Height="90" Width="300" x:Name="SearchGroupWnd"
+        ResizeMode="NoResize" WindowStyle="None" Background="#1F2833">
+    <Window.DataContext>
+        <viewModel:SearchViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Border Name="DragDropBorder" Background="#226F6F" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.10*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+                <Image Style="{StaticResource SortIcon}"/>
+                <Label Name="WindowName"
+                   Grid.Column="1"
+                   Content="СОРТИРОВКА ПО ГРУППАМ"
+                   Foreground="White"/>
+                <StackPanel Grid.Column="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <Button Name="HideButton"
+                            Width="25"
+                            Style="{StaticResource HideButton}" Click="HideButton_Click">
+                    </Button>
+                    <Button Name="ExitButton"
+                            Width="25"
+                            Style="{StaticResource ExitButton}" Click="ExitButton_Click">
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <StackPanel Grid.Row="1" Margin="5">
+            <TextBlock Text="ГРУППА" Style="{StaticResource SortText}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Name="GroupComboBox"
+                          SelectedItem="{Binding GroupInf}"
+                          ItemsSource="{Binding AllGroups}"
+                          DisplayMemberPath="GroupName"
+                          Style="{StaticResource SortBox}"/>
+                <Button Grid.Column="1"
+                        Command="{Binding SortGroupWorkWindowView}"
+                        CommandParameter="{Binding ElementName=SearchGroupWnd}"
+                        Content="СОРТИРОВАТЬ"
+                        Style="{StaticResource SortButton}"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
