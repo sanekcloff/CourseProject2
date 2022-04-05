@@ -34,7 +34,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     else
                     {
                         resultStr = DataWorker.CreateStudent(StudentFIO, StudentGroup);
-                        UpdateWWInfoView();
+                        UpdateInfoView();
 
                         ShowMessageToUser(resultStr);
                         SetNullValuesToProperties();

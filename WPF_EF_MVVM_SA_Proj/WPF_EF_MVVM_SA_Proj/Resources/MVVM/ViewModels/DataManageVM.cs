@@ -149,7 +149,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         protected void SetCenterPositionAndOpen(Window window)
         {
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            window.Show();
+            window.ShowDialog();
         }
         #endregion
 
