@@ -33,5 +33,10 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
         {
             Close();
         }
+
+        private void HideButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
     }
 }

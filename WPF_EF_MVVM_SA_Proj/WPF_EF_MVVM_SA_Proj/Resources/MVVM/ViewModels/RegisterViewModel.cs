@@ -41,6 +41,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                 );
             }
         }
+        
         #endregion
         #region Commands To Open Window
         private RelayCommand openLoginWindow;

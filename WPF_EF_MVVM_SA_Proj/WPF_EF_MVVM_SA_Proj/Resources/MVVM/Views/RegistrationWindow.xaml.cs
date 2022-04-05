@@ -20,7 +20,6 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
         public RegistrationWindow()
         {
             InitializeComponent();
-            DataContext = new DataManageVM();
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

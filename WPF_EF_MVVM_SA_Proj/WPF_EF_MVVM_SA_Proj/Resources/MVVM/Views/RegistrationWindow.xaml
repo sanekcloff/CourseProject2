@@ -7,88 +7,55 @@
         xmlns:local="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views"
         xmlns:viewModels="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels"
         mc:Ignorable="d"
-        Title="RegistrationWindow" Height="450" Width="300"
+        Title="RegistrationWindow" Height="160" Width="200" Background="#1F2833"
         WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize"
-        x:Name="AddNeUserWnd">
+        x:Name="AddNewUserWnd">
     <Window.DataContext>
         <viewModels:RegisterViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
-
-        <Border Background="PaleVioletRed">
+        <Border Name="DragDropBorder" Background="#226F6F" Grid.Row="0">
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.10*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.3*"/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.3*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <StackPanel Grid.Column="1"
-                            Grid.Row="0"
+                <Image Style="{StaticResource WindowIcon}"/>
+                <Label Name="WindowName"
+                   Grid.Column="1"
+                   Content="РЕГИСТРАЦИЯ"
+                   Foreground="White"
+                       FontSize="9.5"
+                       VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="2"
                             Orientation="Horizontal"
                             HorizontalAlignment="Right">
                     <Button Name="ExitButton"
                             Width="25"
-                            Style="{StaticResource ExitButton}"
-                            Click="ExitButton_Click">
+                            Style="{StaticResource ExitButton}" Click="ExitButton_Click">
                     </Button>
                 </StackPanel>
             </Grid>
         </Border>
-
-        <TextBlock Text="Регистрация"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontSize="40"
-                   Margin="10"
-                   Grid.Row="0"/>
-
-        <TextBlock Text="ЛОГИН"
-                   Grid.Row="1"
-                   Style="{StaticResource AutorizationTextBlock}"/>
-        <TextBox Name="LoginTextBox"
-                 Grid.Row="2"
-                 BorderBrush="PaleVioletRed"
-                 MaxLength="20"
+        <StackPanel Grid.Row="1" Margin="5">
+            <TextBlock Text="ЛОГИН" Style="{StaticResource LoginText}"/>
+            <TextBox Name="LoginTextBox"
                  Text="{Binding Login}"
+                 MaxLength="20"
                  Style="{StaticResource AutorizationTextBox}"/>
-        <TextBlock Text="ПАРОЛЬ"
-                   Grid.Row="3"
-                   Style="{StaticResource AutorizationTextBlock}"/>
-        <TextBox Name="PasswordTextBox"
-                 Grid.Row="4"
-                 BorderBrush="PaleVioletRed"
-                 MaxLength="30"
+            <TextBlock Text="ПАРОЛЬ" Style="{StaticResource LoginText}"/>
+            <TextBox Name="PsswordTextBox"
                  Text="{Binding Password}"
+                 MaxLength="20"
                  Style="{StaticResource AutorizationTextBox}"/>
-        <Button Name="RegistrationButton"
-                Grid.Row="5"
-                Content="ЗАРЕГИСТРИРОВАТЬ"
-                Margin="25,7,25,7"
-                Background="PaleVioletRed"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center" 
-                Command="{Binding AddNewUser}"
-                Style="{StaticResource StartWindosButtonsMain}"
-                CommandParameter="{Binding ElementName=AddNeUserWnd}"/>
-        <Button Name="LoginButton"
-                Grid.Row="6"
-                Content="Войти"
-                Margin="100,7,100,7"
-                Opacity="1" 
-                Background="PaleVioletRed"
-                Style="{StaticResource StartWindosButtonsAlt}"
-                Command="{Binding OpenLoginWindow}"/>
+            <Button Content="РЕГИСТРАЦИЯ" Style="{StaticResource MainButton}"
+                    Command="{Binding AddNewUser}"
+                CommandParameter="{Binding ElementName=AddNewUserWnd}"/>
+        </StackPanel>
     </Grid>
 </Window>

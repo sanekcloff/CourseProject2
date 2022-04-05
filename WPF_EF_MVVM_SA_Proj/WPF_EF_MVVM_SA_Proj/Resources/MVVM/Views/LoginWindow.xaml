@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views"
         xmlns:viewModels="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="300"
+        Title="LoginWindow" Height="180" Width="200" Background="#1F2833"
         WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize"
         x:Name="LoginWnd">
     <Window.DataContext>
@@ -15,29 +15,30 @@
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
-
-        <Border Background="CadetBlue">
+        <Border Name="DragDropBorder" Background="#226F6F" Grid.Row="0">
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.10*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.3*"/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.3*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <StackPanel Grid.Column="1"
-                            Grid.Row="0"
+                <Image Style="{StaticResource WindowIcon}"/>
+                <Label Name="WindowName"
+                   Grid.Column="1"
+                   Content="ВХОД В АККАУНТ"
+                   Foreground="White"
+                       FontSize="9.5"
+                       VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="2"
                             Orientation="Horizontal"
                             HorizontalAlignment="Right">
+                    <Button Name="HideButton"
+                            Width="25"
+                            Style="{StaticResource HideButton}" Click="HideButton_Click">
+                    </Button>
                     <Button Name="ExitButton"
                             Width="25"
                             Style="{StaticResource ExitButton}" Click="ExitButton_Click">
@@ -45,62 +46,23 @@
                 </StackPanel>
             </Grid>
         </Border>
-
-        <TextBlock Text="Авторизация"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontSize="40"
-                   Margin="10"
-                   Grid.Row="0"/>
-
-        <TextBlock Text="ЛОГИН"
-                   Grid.Row="1"
-                   Style="{StaticResource AutorizationTextBlock}"/>
-        <TextBox Name="LoginTextBox"
-                 Grid.Row="2"
+        <StackPanel Grid.Row="1" Margin="5">
+            <TextBlock Text="ЛОГИН" Style="{StaticResource LoginText}"/>
+            <TextBox Name="LoginTextBox"
                  Text="{Binding Login}"
                  MaxLength="20"
-                 BorderBrush="CadetBlue"
                  Style="{StaticResource AutorizationTextBox}"/>
-        <TextBlock Text="ПАРОЛЬ"
-                   Grid.Row="3"
-                   Style="{StaticResource AutorizationTextBlock}"/>
-        <TextBox Name="PasswordTextBox"
-                     Grid.Row="4"
-                     Text="{Binding Password}"
-                     BorderBrush="CadetBlue"
-                     MaxLength="30"
-                     Style="{StaticResource AutorizationTextBox}"/>
-        <Button Name="LoginButton"
-                Grid.Row="5"
-                Content="Вход"
-                Margin="80,7,80,7"
-                Opacity="1"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center" 
-                Background="CadetBlue"
-                Style="{StaticResource StartWindosButtonsMain}"
-                Command="{Binding CheckAuthUser}"
-                CommandParameter="{Binding ElementName=LoginWnd}"/>
-        <Button Name="LoginButton2"
-                Grid.Row="5"
-                Content="Вход"
-                Height="20"
-                Width="20"
-                Opacity="1"
-                HorizontalContentAlignment="Left"
-                Background="CadetBlue"
-                Command="{Binding OpenWorkWindow}"
-                CommandParameter="{Binding ElementName=LoginWnd}" Margin="254,14,26,15"/>
-        <Button Name="RegistrationButton"
-                Grid.Row="6"
-                Content="Регистрация"
-                Margin="100,7,100,7"
-                Opacity="1" 
-                Background="CadetBlue"
-                Command="{Binding OpenRegisterWindow}"
-                Style="{StaticResource StartWindosButtonsAlt}"
-                CommandParameter="{Binding ElementName=LoginWnd}"/>
-
+            <TextBlock Text="ПАРОЛЬ" Style="{StaticResource LoginText}"/>
+            <TextBox Name="PsswordTextBox"
+                 Text="{Binding Password}"
+                 MaxLength="20"
+                 Style="{StaticResource AutorizationTextBox}"/>
+            <Button Content="ВХОД" Style="{StaticResource MainButton}"
+                    Command="{Binding CheckAuthUser}"
+                    CommandParameter="{Binding ElementName=LoginWnd}"/>
+            <Button Content="РЕГИСТРАЦИЯ" Style="{StaticResource AltMainButton}"
+                    Command="{Binding OpenRegisterWindow}"
+                    CommandParameter="{Binding ElementName=LoginWnd}"/>
+        </StackPanel>
     </Grid>
 </Window>
