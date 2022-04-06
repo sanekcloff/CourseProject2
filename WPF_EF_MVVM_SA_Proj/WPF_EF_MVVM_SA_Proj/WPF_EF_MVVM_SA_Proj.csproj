@@ -20,6 +20,7 @@
     <None Remove="Resources\Images\DeleteButton_Pressed.png" />
     <None Remove="Resources\Images\disciplineLogo.png" />
     <None Remove="Resources\Images\EditButton.png" />
+    <None Remove="Resources\Images\EditButtonLogo.png" />
     <None Remove="Resources\Images\EditButton_Active.png" />
     <None Remove="Resources\Images\EditButton_Pressed.png" />
     <None Remove="Resources\Images\ExitButton_Icon.png" />
@@ -79,6 +80,7 @@
     <Resource Include="Resources\Images\DeleteButton_Pressed.png" />
     <Resource Include="Resources\Images\disciplineLogo.png" />
     <Resource Include="Resources\Images\EditButton.png" />
+    <Resource Include="Resources\Images\EditButtonLogo.png" />
     <Resource Include="Resources\Images\EditButton_Active.png" />
     <Resource Include="Resources\Images\EditButton_Pressed.png" />
     <Resource Include="Resources\Images\ExitButton_Icon.png" />

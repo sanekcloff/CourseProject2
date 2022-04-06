@@ -47,7 +47,7 @@
         <TabControl TabStripPlacement="Left" Grid.Row="2" SelectedItem="{Binding SelectedTabItem}">
             <TabItem Header="ГРУППЫ" 
                      x:Name="GroupsTab"
-                     Style="{StaticResource AddChoiceWindowButton}">
+                     Style="{StaticResource TabItemTables}">
                 <ListView x:Name="GroupInfoListView"
                       Grid.Row="1"
                       Background="LightGray"
@@ -65,7 +65,7 @@
             </TabItem>
             <TabItem Header="СТУДЕНТЫ" 
                      x:Name="StudentsTab"
-                     Style="{StaticResource AddChoiceWindowButton}">
+                     Style="{StaticResource TabItemTables}">
                 <ListView x:Name="StudentInfoListView"
                           Grid.Row="1"
                           Background="LightGray"
@@ -83,7 +83,7 @@
             </TabItem>
             <TabItem Header="ОЦЕНКИ"
                      x:Name="GradesTab"
-                     Style="{StaticResource AddChoiceWindowButton}">
+                     Style="{StaticResource TabItemTables}">
                 <ListView x:Name="GradeInfoListView"
                       Grid.Row="1"
                       Background="LightGray"
@@ -105,7 +105,7 @@
             </TabItem>
             <TabItem Header="ДИСЦИПЛИНЫ"
                      x:Name="DisciplinesTab"
-                     Style="{StaticResource AddChoiceWindowButton}">
+                     Style="{StaticResource TabItemTables}">
                 <ListView x:Name="DisciplineInfoListView"
                           Grid.Row="1"
                           Background="LightGray"

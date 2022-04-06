@@ -53,7 +53,7 @@
                  MaxLength="20"
                  Style="{StaticResource AutorizationTextBox}"/>
                 <TextBlock Text="ПАРОЛЬ" Style="{StaticResource LoginText}"/>
-                <TextBox Name="PsswordTextBox"
+                <TextBox Name="PasswordTextBox"
                  Text="{Binding Password}"
                  MaxLength="20"
                  Style="{StaticResource AutorizationTextBox}"/>
