@@ -16,19 +16,22 @@ using WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels;
 
 namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для AddGradeWindow.xaml
-    /// </summary>
     public partial class EditGradeWindow : Window
     {
         public EditGradeWindow(Grade gradeToEdit)
         {
             InitializeComponent();
+            this.DatePick.SelectedDate = DateTime.Today;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void DragDropBorder_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

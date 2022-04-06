@@ -1,62 +1,61 @@
 ﻿<Window x:Class="WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views.AddStudentWindow"
+        Icon="/Resources/Images/AddButtonLogo.png"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views"
         xmlns:viewModels="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels"
-        mc:Ignorable="d"
-        Title="AddStudentWindow" Height="300" Width="300" x:Name="AddStudentWnd" ResizeMode="NoResize" WindowStyle="None">
+        mc:Ignorable="d" Background="#1F2833"
+        Title="AddStudentWindow" Height="230" Width="300" x:Name="AddStudentWnd" ResizeMode="NoResize" WindowStyle="None">
     <Window.DataContext>
         <viewModels:AddStudentViewModel/>
     </Window.DataContext>
     <Grid>
-        <Grid>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Border Background="CadetBlue">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.4*"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <StackPanel Grid.Row="0"
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                            <Button Name="ExitButton"
-                                Width="25"
-                                Style="{StaticResource ExitButton}"
-                                Click="ExitButton_Click">
-                            </Button>
-                        </StackPanel>
-                        <TextBlock Text="ДОБАВЛЕНИЕ СТУДЕНТА" 
-                               Grid.Row="1"
-                               Style="{StaticResource ActionWindowHeader}"/>
-                    </Grid>
-                </Border>
-                <StackPanel Grid.Row="1"
-                            VerticalAlignment="Center"
-                            Margin="10">
-                    <TextBlock Text="Ф.И.О."
-                               Style="{StaticResource ActionAddWindowTextBlock}"/>
-                    <TextBox Name="StudentFIO"
-                             MaxLength="50"
-                             Text="{Binding StudentFIO}"/>
-                    <TextBlock Text="ГРУППА"
-                               Style="{StaticResource ActionAddWindowTextBlock}"/>
-                    <ComboBox Name="StudentGroupComboBox"
-                              ItemsSource="{Binding AllGroups}"
-                              DisplayMemberPath="GroupName"
-                              SelectedItem="{Binding StudentGroup}"/>
-                    <Button Name="StudentReadyButton" 
-                            Style="{StaticResource AddReadyButton}"
-                            Command="{Binding AddNewStudent}"
-                            CommandParameter="{Binding ElementName=AddStudentWnd}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Border Name="DragDropBorder" Background="#226F6F" Grid.Row="0" MouseLeftButtonDown="DragDropBorder_MouseLeftButtonDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.10*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+                <Image Style="{StaticResource AddIcon}"/>
+                <Label Name="WindowName"
+                   Grid.Column="1"
+                   Content="ДОБАВЛЕНИЕ СТУДЕНТА"
+                   Foreground="White"
+                       VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <Button Name="ExitButton"
+                            Width="25"
+                            Style="{StaticResource ExitButton}" Click="ExitButton_Click">
+                    </Button>
                 </StackPanel>
             </Grid>
-        </Grid>
+        </Border>
+        <StackPanel Grid.Row="1" Margin="5">
+            <TextBlock Text="Ф.И.О."
+                       Style="{StaticResource AddText}"/>
+            <TextBox Name="StudentFIO"
+                     MaxLength="50"
+                     Text="{Binding StudentFIO}"
+                     Style="{StaticResource AutorizationTextBox}"/>
+            <TextBlock Text="ГРУППА"
+                           Style="{StaticResource AddText}"/>
+            <ComboBox Name="StudentGroupComboBox"
+                              ItemsSource="{Binding AllGroups}"
+                              DisplayMemberPath="GroupName"
+                              SelectedItem="{Binding StudentGroup}"
+                      Style="{StaticResource AddBox}"/>
+            <Button Content="ДОБАВИТЬ" Style="{StaticResource MainButton}"
+                    Command="{Binding AddNewStudent}"
+                    CommandParameter="{Binding ElementName=AddStudentWnd}"/>
+        </StackPanel>
     </Grid>
 </Window>
