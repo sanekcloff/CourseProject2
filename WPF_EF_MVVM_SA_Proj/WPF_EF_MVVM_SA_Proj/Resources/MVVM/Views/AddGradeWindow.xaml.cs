@@ -23,6 +23,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
         public AddGradeWindow()
         {
             InitializeComponent();
+            this.DatePick.SelectedDate=DateTime.Today;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

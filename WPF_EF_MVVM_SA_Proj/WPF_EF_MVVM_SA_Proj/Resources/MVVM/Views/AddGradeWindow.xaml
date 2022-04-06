@@ -5,75 +5,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views"
         xmlns:viewModels="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Background="#1F2833"
         Title="AddGradeWindow" Height="360" Width="300" x:Name="AddNewGradeWnd" ResizeMode="NoResize" WindowStyle="None">
     <Window.DataContext>
         <viewModels:AddGradeViewModel/>
     </Window.DataContext>
     <Grid>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Border Background="CadetBlue">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="0.4*"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0"
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <Button Name="ExitButton"
-                                Width="25"
-                                Style="{StaticResource ExitButton}"
-                                Click="ExitButton_Click">
-                        </Button>
-                    </StackPanel>
-                    <TextBlock Text="ДОБАВЛЕНИЕ ОЦЕНКИ" 
-                               Grid.Row="1"
-                               Style="{StaticResource ActionWindowHeader}"/>
-                </Grid>
-            </Border>
-            <StackPanel Grid.Row="1"
-                        VerticalAlignment="Center"
-                        Margin="10">
-                <TextBlock Text="СТУДЕНТ"
-                           Style="{StaticResource ActionAddWindowTextBlock}"/>
-                <ComboBox Name="StudentComboBox"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Border Name="DragDropBorder" Background="#226F6F" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.10*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+                <Image Style="{StaticResource AddIcon}"/>
+                <Label Name="WindowName"
+                   Grid.Column="1"
+                   Content="ДОБАВЛЕНИЕ ОЦЕНКИ"
+                   Foreground="White"
+                       VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <Button Name="ExitButton"
+                            Width="25"
+                            Style="{StaticResource ExitButton}" Click="ExitButton_Click">
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <StackPanel Grid.Row="1" Margin="5">
+            <TextBlock Text="СТУДЕНТ"
+                           Style="{StaticResource AddText}"/>
+            <ComboBox Name="StudentComboBox"
                           SelectedItem="{Binding GradeStudent}"
                           ItemsSource="{Binding AllStudents}"
-                          DisplayMemberPath="StudentFIO"/>
-                <TextBlock Text="ДИСЦИПЛИНА"
-                           Style="{StaticResource ActionAddWindowTextBlock}"/>
-                <ComboBox Name="DisciplineComboBox"
+                          DisplayMemberPath="StudentFIO"
+                      Style="{StaticResource AddBox}"/>
+            <TextBlock Text="ДИСЦИПЛИНА"
+                           Style="{StaticResource AddText}"/>
+            <ComboBox Name="DisciplineComboBox"
                           SelectedItem="{Binding GradeDiscipline}"
                           ItemsSource="{Binding AllDisciplines}"
-                          DisplayMemberPath="DisciplineName"/>
-                <TextBlock Text="ОЦЕНКА"
-                           Style="{StaticResource ActionAddWindowTextBlock}"/>
-                <ComboBox Name="GradeComboBox"
-                          Text="{Binding GradeValue}">
-                    <ComboBoxItem Content="2"
+                          DisplayMemberPath="DisciplineName"
+                      Style="{StaticResource AddBox}"/>
+            <TextBlock Text="ОЦЕНКА"
+                           Style="{StaticResource AddText}"/>
+            <ComboBox Name="GradeComboBox"
+                          Text="{Binding GradeValue}"
+                      Style="{StaticResource AddBox}">
+                <ComboBoxItem Content="2"
                                   Foreground="Red"/>
-                    <ComboBoxItem Content="3"
+                <ComboBoxItem Content="3"
                                   Foreground="Orange"/>
-                    <ComboBoxItem Content="4"
+                <ComboBoxItem Content="4"
                                   Foreground="Green"/>
-                    <ComboBoxItem Content="5"
+                <ComboBoxItem Content="5"
                                   Foreground="Purple"/>
-                </ComboBox>
-                <TextBlock Text="ДАТА"
-                           Style="{StaticResource ActionAddWindowTextBlock}"/>
-                <DatePicker Name="DatePick"
-                            Text="{Binding Date}">
-                </DatePicker>
-                <Button Name="GradeReadyButton" 
-                        Style="{StaticResource AddReadyButton}"
-                        Command="{Binding AddNewGrade}"
+            </ComboBox>
+            <TextBlock Text="ДАТА"
+                           Style="{StaticResource AddText}"/>
+            <DatePicker Name="DatePick"
+                        SelectedDate="{Binding Date}"
+                        Margin="5,2,5,5">
+            </DatePicker>
+            <Button Content="ДОБАВИТЬ" Style="{StaticResource MainButton}"
+                    Command="{Binding AddNewGrade}"
                         CommandParameter="{Binding ElementName=AddNewGradeWnd}"/>
-            </StackPanel>
-        </Grid>
+        </StackPanel>
     </Grid>
 </Window>
