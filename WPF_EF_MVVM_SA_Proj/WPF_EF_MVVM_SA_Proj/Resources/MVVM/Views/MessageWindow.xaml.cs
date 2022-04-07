@@ -11,22 +11,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models;
-using WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels;
 
 namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
 {
     /// <summary>
-    /// Логика взаимодействия для AddStudentWindow.xaml
+    /// Логика взаимодействия для MessageWindow.xaml
     /// </summary>
-    public partial class EditStudentWindow : Window
+    public partial class MessageWindow : Window
     {
-        public EditStudentWindow(Student studentToEdit)
+        public MessageWindow(string message)
         {
             InitializeComponent();
-            DataManageVM.SelectedStudent = studentToEdit;
-            this.StudentFIO.Text = studentToEdit.StudentFIO;
-            DataManageVM.StudentFIO = studentToEdit.StudentFIO;
+            MessageText.Text=message;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

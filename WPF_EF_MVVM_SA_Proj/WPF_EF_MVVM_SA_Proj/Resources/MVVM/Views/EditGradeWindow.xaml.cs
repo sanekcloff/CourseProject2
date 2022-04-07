@@ -29,7 +29,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
             Close();
         }
 
-        private void DragDropBorder_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        private void DragDropBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
         }

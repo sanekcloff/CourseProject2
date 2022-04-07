@@ -167,7 +167,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
             {
                 db.Grades.Remove(grade);
                 db.SaveChanges();
-                result = $"Сделано! Оценка {grade.GradeValue} студента {GetStudentByGradeId((int)grade.StudentId)} удалена";
+                result = $"Сделано! Оценка {grade.GradeValue} студента {GetStudentByGradeId((int)grade.StudentId)} удалена!";
             }
             return result;
         }
@@ -179,7 +179,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
             {
                 db.Students.Remove(student);
                 db.SaveChanges();
-                result = $"Сделано! Студент {student.StudentFIO} из группы {GetGroupByStudentId((int)student.GroupId)} удален";
+                result = $"Сделано! Студент {student.StudentFIO} из группы {GetGroupByStudentId((int)student.GroupId)} удален!";
             }
             return result;
         }
@@ -192,7 +192,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                 //check position is exist
                 db.Disciplines.Remove(discipline);
                 db.SaveChanges();
-                result = $"Сделано! Дисциплина {discipline.DisciplineName} удалена";
+                result = $"Сделано! Дисциплина {discipline.DisciplineName} удалена!";
             }
             return result;
         }
@@ -205,7 +205,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                 //check position is exist
                 db.Groups.Remove(group);
                 db.SaveChanges();
-                result = $"Сделано! Группа {group.GroupName} удалена";
+                result = $"Сделано! Группа {group.GroupName} удалена!";
             }
             return result;
         }
@@ -220,7 +220,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                 group.GroupName = newName;
                 group.Course = newCourse;
                 db.SaveChanges();
-                result = $"Сделано! Группа {group.GroupName} изменена";
+                result = $"Сделано! Группа {group.GroupName} изменена!";
             }
             return result;
         }
@@ -235,7 +235,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                 student.StudentFIO = newFIO;
                 student.GroupId = newGroup.Id;
                 db.SaveChanges();
-                result =  $"Сделано! Студент {student.StudentFIO} из группы {GetGroupByStudentId((int)student.GroupId)} изменен";
+                result =  $"Сделано! Студент {student.StudentFIO} из группы {GetGroupByStudentId((int)student.GroupId)} изменен!";
             }
             return result;
         }
@@ -248,7 +248,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                 Discipline discipline = db.Disciplines.FirstOrDefault(discipline => discipline.Id == oldDiscipline.Id);
                 discipline.DisciplineName = newDisciplineName;
                 db.SaveChanges();
-                result = $"Сделано! Дисциплина {discipline.DisciplineName} изменена";
+                result = $"Сделано! Дисциплина {discipline.DisciplineName} изменена!";
             }
             return result;
         }
@@ -267,7 +267,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                     grade.GradeValue = newGradeValue;
                     grade.Date = newDate;
                     db.SaveChanges();
-                    result = $"Сделано! Оценка {grade.GradeValue} студента {GetStudentByGradeId((int)grade.StudentId)} изменен";
+                    result = $"Сделано! Оценка {grade.GradeValue} студента {GetStudentByGradeId((int)grade.StudentId)} изменена!";
                 }
             }
             return result;

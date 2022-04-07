@@ -1,0 +1,51 @@
+﻿<Window x:Class="WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views.MessageWindow"
+        Icon="\Resources\Images\MessageLogo.png"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views"
+        mc:Ignorable="d" Background="#1F2833" x:Name="MessageWnd"
+        Title="MessageWindow" Height="180" Width="320" ResizeMode="NoResize" WindowStyle="None">
+    <StackPanel>
+        <Border Name="DragDropBorder" 
+                Background="#226F6F"
+                MouseLeftButtonDown="DragDropBorder_MouseLeftButtonDown"
+                Height="25">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.15*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+                <Image Style="{StaticResource MessageIcon}"/>
+                <Label Name="WindowName"
+                   Grid.Column="1"
+                   Content="СООБЩЕНИЕ"
+                   Foreground="White"
+                       VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <Button Name="ExitButton"
+                            Width="25"
+                            Style="{StaticResource ExitButton}" Click="ExitButton_Click">
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <StackPanel Margin="0,10,0,0">
+            <TextBlock Text="СООБЩЕНИЕ"
+                           Style="{StaticResource AltLoginText}"
+                           x:Name="MessageText"
+                       Height="70"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"/>
+        </StackPanel>
+        <Button x:Name="OkButton" Grid.Row="1" Content="ОК" Style="{StaticResource MainButton}"
+                    Command="{Binding CheckAuthUser}"
+                    CommandParameter="{Binding ElementName=MessageWnd}"
+                    VerticalAlignment="Bottom"
+                Margin="0,15,0,9" Click="ExitButton_Click"/>
+    </StackPanel>
+</Window>

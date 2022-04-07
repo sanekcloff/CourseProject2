@@ -19,6 +19,12 @@
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
+    <Style x:Key="AltLoginText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="5,10,5,0"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="18"/>
+    </Style>
     <Style x:Key="MainButton" TargetType="Button">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="White"/>
@@ -596,6 +602,11 @@
     </Style>
     <Style x:Key="EditIcon" TargetType="Image">
         <Setter Property="Source" Value="\Resources\Images\EditButtonLogo.png"/>
+        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="Margin" Value="4,0,0,0"/>
+    </Style>
+    <Style x:Key="MessageIcon" TargetType="Image">
+        <Setter Property="Source" Value="\Resources\Images\MessageLogo.png"/>
         <Setter Property="Stretch" Value="Uniform"/>
         <Setter Property="Margin" Value="4,0,0,0"/>
     </Style>

@@ -17,7 +17,7 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
-        <Border Name="DragDropBorder" Background="#226F6F" Grid.Row="0" MouseRightButtonDown="DragDropBorder_MouseRightButtonDown">
+        <Border Name="DragDropBorder" Background="#226F6F" Grid.Row="0" MouseLeftButtonDown="DragDropBorder_MouseLeftButtonDown">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.10*"/>

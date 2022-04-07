@@ -224,10 +224,12 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             DeleteEditWindow.AllDisciplineInfoListView.Items.Refresh();
         }
         #endregion
-
         public static void ShowMessageToUser(string message)
         {
-            MessageBox.Show(message, "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageWindow newMessageWindow = new MessageWindow(message);
+            newMessageWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            newMessageWindow.ShowDialog();
+            //MessageBox.Show(message, "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         public event PropertyChangedEventHandler PropertyChanged;
 

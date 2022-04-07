@@ -26,6 +26,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
             InitializeComponent();
             DataManageVM.SelectedGroup = groupToEdit;
             this.GroupTextBox.Text = groupToEdit.GroupName;
+            DataManageVM.GroupName = groupToEdit.GroupName;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
