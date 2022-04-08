@@ -94,8 +94,6 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
             string result = "Уже существует";
             using (ApplicationContext db = new ApplicationContext())
             {
-                //проверяем сущесвует ли позиция
-                //bool checkIsExist = db.Positions.Any(el => el.Name == name && el.Salary == salary);
                 Grade newGrade = new Grade
                 {
                     StudentId = student.Id,

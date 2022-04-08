@@ -229,7 +229,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             MessageWindow newMessageWindow = new MessageWindow(message);
             newMessageWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             newMessageWindow.ShowDialog();
-            //MessageBox.Show(message, "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+            
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
