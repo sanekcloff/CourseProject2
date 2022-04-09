@@ -98,7 +98,7 @@
                             <GridViewColumn Header="Оценка"                                            
                                         DisplayMemberBinding="{Binding Path=GradeValue}"/>
                             <GridViewColumn Header="Дата"                                            
-                                        DisplayMemberBinding="{Binding Path=Date}"/>
+                                        DisplayMemberBinding="{Binding Path=Date, StringFormat=\{0:dd.MM.yyyy\}}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

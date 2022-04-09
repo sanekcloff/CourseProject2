@@ -110,7 +110,7 @@
                             <TextBlock Text="Оценка" FontWeight="Bold" FontSize="16"/>
                         </Border>
                     </GridViewColumn>
-                    <GridViewColumn  DisplayMemberBinding="{Binding Path=Date}">
+                    <GridViewColumn  DisplayMemberBinding="{Binding Path=Date, StringFormat=\{0:dd.MM.yyyy\}}">
                         <Border>
                             <TextBlock Text="Дата" FontWeight="Bold" FontSize="16"/>
                         </Border>
