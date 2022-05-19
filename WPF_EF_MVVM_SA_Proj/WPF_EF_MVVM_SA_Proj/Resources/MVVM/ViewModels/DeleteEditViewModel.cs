@@ -119,6 +119,98 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     );
             }
         }
+
+        private RelayCommand openSearchGroupWindow;
+        public RelayCommand OpenSearchGroupWindow
+        {
+            get
+            {
+                return openSearchGroupWindow ?? new RelayCommand(obj =>
+                {
+                    WindowSelect = 2;
+                    OpenSearchGroupWindowMethod();
+                }
+                    );
+            }
+        }
+        private RelayCommand openGradeSearchGroupWindow;
+        public RelayCommand OpenGradeSearchGroupWindow
+        {
+            get
+            {
+                return openGradeSearchGroupWindow ?? new RelayCommand(obj =>
+                {
+                    WindowSelect = 3;
+                    OpenSearchGroupWindowMethod();
+                }
+                    );
+            }
+        }
+        private RelayCommand openSearchDisciplineWindow;
+        public RelayCommand OpenSearchDisciplineWindow
+        {
+            get
+            {
+                return openSearchDisciplineWindow ?? new RelayCommand(obj =>
+                {
+                    WindowSelect = 2;
+                    OpenSearchDisciplineWindowMethod();
+                }
+                    );
+            }
+        }
+        private RelayCommand openSearchStudentDisciplineWindow;
+        public RelayCommand OpenSearchStudentDisciplineWindow
+        {
+            get
+            {
+                return openSearchStudentDisciplineWindow ?? new RelayCommand(obj =>
+                {
+                    WindowSelect = 2;
+                    OpenSearchStudentDisciplineWindowMethod();
+                }
+                    );
+            }
+        }
+        private RelayCommand openSearchStudentWindow;
+        public RelayCommand OpenSearchStudentWindow
+        {
+            get
+            {
+                return openSearchStudentWindow ?? new RelayCommand(obj =>
+                {
+                    WindowSelect = 2;
+                    OpenSearchStudentWindowMethod();
+                }
+                    );
+            }
+        }
+
+        public RelayCommand ClearSortStudents
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    SetWindowNull();
+                    ClearStudents();
+                }
+                    );
+            }
+        }
+        public RelayCommand ClearSortGrades
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    SetWindowNull();
+                    ClearsGrades();
+                }
+                    );
+            }
+        }
+
         #endregion
         #region METHODS TO OPEN WINDOW
         //методы открытия окон
@@ -162,6 +254,43 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
         {
             AddGroupWindow newAddGroupWindow = new AddGroupWindow();
             SetCenterPositionAndOpen(newAddGroupWindow);
+        }
+        private void OpenSearchGroupWindowMethod()
+        {
+            SearchGroupWindow newSearchGroupWindow = new SearchGroupWindow();
+            SetCenterPositionAndOpen(newSearchGroupWindow);
+        }
+        private void OpenSearchDisciplineWindowMethod()
+        {
+            SearchDisciplineWindow newSearchDisciplineWindow = new SearchDisciplineWindow();
+            SetCenterPositionAndOpen(newSearchDisciplineWindow);
+        }
+        private void OpenSearchStudentWindowMethod()
+        {
+            SearchStudentWindow newSearchStudentWindow = new SearchStudentWindow();
+            SetCenterPositionAndOpen(newSearchStudentWindow);
+        }
+        private void OpenSearchStudentDisciplineWindowMethod()
+        {
+            SearchStudentDisciplineWindow newSearchStudentDisciplineWindow = new SearchStudentDisciplineWindow();
+            SetCenterPositionAndOpen(newSearchStudentDisciplineWindow);
+        }
+        #endregion
+
+        #region clears
+        private void ClearStudents()
+        {
+            DeleteEditWindow.AllStudentInfoListView.ItemsSource = null;
+            DeleteEditWindow.AllStudentInfoListView.Items.Clear();
+            DeleteEditWindow.AllStudentInfoListView.ItemsSource = DataWorker.GetAllStudents();
+            DeleteEditWindow.AllStudentInfoListView.Items.Refresh();
+        }
+        private void ClearsGrades()
+        {
+            DeleteEditWindow.AllGradeInfoListView.ItemsSource = null;
+            DeleteEditWindow.AllGradeInfoListView.Items.Clear();
+            DeleteEditWindow.AllGradeInfoListView.ItemsSource = DataWorker.GetAllGrades();
+            DeleteEditWindow.AllGradeInfoListView.Items.Refresh();
         }
         #endregion
     }

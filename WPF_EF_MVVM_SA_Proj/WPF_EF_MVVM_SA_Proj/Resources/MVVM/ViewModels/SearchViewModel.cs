@@ -25,7 +25,19 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     }
                     else
                     {
-                        UpdateGradesWWInfoSortedByGroup();
+                        switch (WindowSelect)
+                        {
+                            case 1:
+                                UpdateGradesWWInfoSortedByGroup();
+                                break;
+                            case 2:
+                                UpdateStudentsEDInfoSortedByGroup();
+                                break;
+                            case 3:
+                                UpdateGradesEDInfoSortedByGroup();
+                                break;
+                        }
+                        SetWindowNull();
                         wnd.Close();
                     }
                 }
@@ -50,7 +62,17 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     }
                     else
                     {
-                        UpdateGradesWWInfoSortedByStudentDiscipline();
+                        switch (WindowSelect)
+                        {
+                            case 1:
+                                UpdateGradesWWInfoSortedByStudentDiscipline();
+                                break;
+                            case 2:
+                                UpdateGradesEDInfoSortedByStudentDiscipline();
+                                break;
+                        }
+                        SetWindowNull();
+                        
                         wnd.Close();
                     }
                 }
@@ -71,7 +93,17 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     }
                     else
                     {
-                        UpdateGradesWWInfoSortedByDiscipline();
+                        switch (WindowSelect)
+                        {
+                            case 1:
+                                UpdateGradesWWInfoSortedByDiscipline();
+                                break;
+                            case 2:
+                                UpdateGradesEDInfoSortedByDiscipline();
+                                break;
+                        }
+                        SetWindowNull();
+                        
                         wnd.Close();
                     }
                 }
@@ -92,7 +124,17 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     }
                     else
                     {
-                        UpdateGradesWWInfoSortedByStudent();
+                        switch (WindowSelect)
+                        {
+                            case 1:
+                                UpdateGradesWWInfoSortedByStudent();
+                                break;
+                            case 2:
+                                UpdateGradesEDInfoSortedByStudent();
+                                break;
+                        }
+                        SetWindowNull();
+                        
                         wnd.Close();
                     }
                 }
@@ -133,12 +175,14 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
                     }
                     else
                     {
+
                         UpdateStudentDisciplineComboBoxInfo();
                     }
                 }
                 );
             }
         }
+        #region WorkWindowSort
         private void UpdateGradesWWInfoSortedByGroup()
         {
             AllGradesByGroupId = DataWorker.GetAllGradesByGroupId(GroupInf.Id);
@@ -171,6 +215,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             WorkWindow.AllGradeInfoListView.ItemsSource = AllGradesByStudentId;
             WorkWindow.AllGradeInfoListView.Items.Refresh();
         }
+        //НЕ ТРОГАТЬ
         private void UpdateStudentComboBoxInfo()
         {
             AllStudentsByGroupId = DataWorker.GetAllStudentsByGroupId(GroupInf.Id);
@@ -179,6 +224,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             SearchStudentWindow.SortStudentComboBox.ItemsSource = AllStudentsByGroupId;
             SearchStudentWindow.SortStudentComboBox.Items.Refresh();
         }
+        //НЕ ТРОГАТЬ
         private void UpdateStudentDisciplineComboBoxInfo()
         {
             AllStudentsByGroupId = DataWorker.GetAllStudentsByGroupId(GroupInf.Id);
@@ -187,5 +233,43 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             SearchStudentDisciplineWindow.SortStudentComboBox.ItemsSource = AllStudentsByGroupId;
             SearchStudentDisciplineWindow.SortStudentComboBox.Items.Refresh();
         }
+        #endregion
+        #region sorts
+        private void UpdateStudentsEDInfoSortedByGroup()
+        {
+            DeleteEditWindow.AllStudentInfoListView.ItemsSource = null;
+            DeleteEditWindow.AllStudentInfoListView.Items.Clear();
+            DeleteEditWindow.AllStudentInfoListView.ItemsSource = DataWorker.GetAllStudentsByGroupId(GroupInf.Id);
+            DeleteEditWindow.AllStudentInfoListView.Items.Refresh();
+        }
+        private void UpdateGradesEDInfoSortedByGroup()
+        {
+            DeleteEditWindow.AllGradeInfoListView.ItemsSource = null;
+            DeleteEditWindow.AllGradeInfoListView.Items.Clear();
+            DeleteEditWindow.AllGradeInfoListView.ItemsSource = DataWorker.GetAllGradesByGroupId(GroupInf.Id);
+            DeleteEditWindow.AllGradeInfoListView.Items.Refresh();
+        }
+        private void UpdateGradesEDInfoSortedByStudentDiscipline()
+        {
+            DeleteEditWindow.AllGradeInfoListView.ItemsSource = null;
+            DeleteEditWindow.AllGradeInfoListView.Items.Clear();
+            DeleteEditWindow.AllGradeInfoListView.ItemsSource = DataWorker.GetAllGradesByStudentDisciplineId(StudentInf.Id, DisciplineInf.Id);
+            DeleteEditWindow.AllGradeInfoListView.Items.Refresh();
+        }
+        private void UpdateGradesEDInfoSortedByDiscipline()
+        {
+            DeleteEditWindow.AllGradeInfoListView.ItemsSource = null;
+            DeleteEditWindow.AllGradeInfoListView.Items.Clear();
+            DeleteEditWindow.AllGradeInfoListView.ItemsSource = DataWorker.GetAllGradesByDisciplineId(DisciplineInf.Id);
+            DeleteEditWindow.AllGradeInfoListView.Items.Refresh();
+        }
+        private void UpdateGradesEDInfoSortedByStudent()
+        {
+            DeleteEditWindow.AllGradeInfoListView.ItemsSource = null;
+            DeleteEditWindow.AllGradeInfoListView.Items.Clear();
+            DeleteEditWindow.AllGradeInfoListView.ItemsSource = DataWorker.GetAllGradesByStudentId(StudentInf.Id);
+            DeleteEditWindow.AllGradeInfoListView.Items.Refresh();
+        }
+        #endregion
     }
 }

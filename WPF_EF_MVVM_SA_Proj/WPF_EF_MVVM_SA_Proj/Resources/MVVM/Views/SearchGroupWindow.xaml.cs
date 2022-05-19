@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels;
 
 namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
 {
@@ -19,6 +20,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
     /// </summary>
     public partial class SearchGroupWindow : Window
     {
+        
         public SearchGroupWindow()
         {
             InitializeComponent();

@@ -22,10 +22,8 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Views
         public LoginWindow()
         {
             InitializeComponent();
-            //using (ApplicationContext context = new ApplicationContext())
-            //{
-            //    context.Database.EnsureCreated();
-            //}
+            DataManageVM.Login = "amogus";
+            DataManageVM.Password = "usus";
 
         }
 

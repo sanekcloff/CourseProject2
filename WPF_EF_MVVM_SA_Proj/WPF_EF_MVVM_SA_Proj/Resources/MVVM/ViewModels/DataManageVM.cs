@@ -115,6 +115,9 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             }
         }
 
+
+        //выбор окна
+        public static int WindowSelect { get; set; }
         //свойства для групп
         public static Group GroupInf { get; set; }
         public static string GroupName { get; set; }
@@ -171,6 +174,8 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             Login = null;
             Password = null;
         }
+
+        protected void SetWindowNull() => WindowSelect = 0;
         protected void UpdateInfoView()
         {
             UpdateWWInfoView();

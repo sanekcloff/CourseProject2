@@ -49,6 +49,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             {
                 return openSearchStudentWindow ?? new RelayCommand(obj =>
                 {
+                    WindowSelect = 1;
                     OpenSearchStudentWindowMethod();
                 }
                     );
@@ -61,6 +62,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             {
                 return openSearchDisciplineWindow ?? new RelayCommand(obj =>
                 {
+                    WindowSelect = 1;
                     OpenSearchDisciplineWindowMethod();
                 }
                     );
@@ -73,6 +75,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             {
                 return openSearchGroupWindow ?? new RelayCommand(obj =>
                 {
+                    WindowSelect = 1;
                     OpenSearchGroupWindowMethod();
                 }
                     );
@@ -85,6 +88,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels
             {
                 return openSearchStudentDisciplineWindow ?? new RelayCommand(obj =>
                 {
+                    WindowSelect = 1;
                     OpenSearchStudentDisciplineWindowMethod();
                 }
                     );

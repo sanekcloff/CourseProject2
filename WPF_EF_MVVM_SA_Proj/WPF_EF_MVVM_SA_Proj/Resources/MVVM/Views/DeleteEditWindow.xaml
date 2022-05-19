@@ -44,10 +44,12 @@
                 </StackPanel>
             </Grid>
         </Border>
-        <TabControl TabStripPlacement="Left" Grid.Row="2" SelectedItem="{Binding SelectedTabItem}">
+        <TabControl x:Name="TabControler" TabStripPlacement="Left" Grid.Row="2" SelectedItem="{Binding SelectedTabItem}">
+
             <TabItem Header="ГРУППЫ" 
                      x:Name="GroupsTab"
                      Style="{StaticResource TabItemTables}">
+                
                 <ListView x:Name="GroupInfoListView"
                       Grid.Row="1"
                       Background="LightGray"
@@ -66,6 +68,13 @@
             <TabItem Header="СТУДЕНТЫ" 
                      x:Name="StudentsTab"
                      Style="{StaticResource TabItemTables}">
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Отсортировать по группам"
+                                  Command="{Binding OpenSearchGroupWindow}"/>
+                        <MenuItem Header="Убрать сортировку" Command="{Binding ClearSortStudents}"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
                 <ListView x:Name="StudentInfoListView"
                           Grid.Row="1"
                           Background="LightGray"
@@ -84,6 +93,15 @@
             <TabItem Header="ОЦЕНКИ"
                      x:Name="GradesTab"
                      Style="{StaticResource TabItemTables}">
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Отсортировать по группам" Command="{Binding OpenGradeSearchGroupWindow}"/>
+                        <MenuItem Header="Отсортировать по дисциплинам" Command="{Binding OpenSearchDisciplineWindow}"/>
+                        <MenuItem Header="Отсортировать по студенту" Command="{Binding OpenSearchStudentWindow}"/>
+                        <MenuItem Header="Отсортировать по студенту и дисциплине" Command="{Binding OpenSearchStudentDisciplineWindow}"/>
+                        <MenuItem Header="Убрать сортировку" Command="{Binding ClearSortGrades}"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
                 <ListView x:Name="GradeInfoListView"
                       Grid.Row="1"
                       Background="LightGray"
