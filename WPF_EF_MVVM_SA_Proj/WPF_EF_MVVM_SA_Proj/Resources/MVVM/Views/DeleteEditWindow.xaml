@@ -69,10 +69,13 @@
                      x:Name="StudentsTab"
                      Style="{StaticResource TabItemTables}">
                 <TabItem.ContextMenu>
-                    <ContextMenu>
+                    <ContextMenu Background="#1F2833">
                         <MenuItem Header="Отсортировать по группам"
-                                  Command="{Binding OpenSearchGroupWindow}"/>
-                        <MenuItem Header="Убрать сортировку" Command="{Binding ClearSortStudents}"/>
+                                  Command="{Binding OpenSearchGroupWindow}"
+                                  Style="{StaticResource MenuItem}"/>
+                        <MenuItem Header="Убрать сортировку" 
+                                  Command="{Binding ClearSortStudents}"
+                                  Style="{StaticResource MenuItem}"/>
                     </ContextMenu>
                 </TabItem.ContextMenu>
                 <ListView x:Name="StudentInfoListView"
@@ -94,12 +97,22 @@
                      x:Name="GradesTab"
                      Style="{StaticResource TabItemTables}">
                 <TabItem.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Отсортировать по группам" Command="{Binding OpenGradeSearchGroupWindow}"/>
-                        <MenuItem Header="Отсортировать по дисциплинам" Command="{Binding OpenSearchDisciplineWindow}"/>
-                        <MenuItem Header="Отсортировать по студенту" Command="{Binding OpenSearchStudentWindow}"/>
-                        <MenuItem Header="Отсортировать по студенту и дисциплине" Command="{Binding OpenSearchStudentDisciplineWindow}"/>
-                        <MenuItem Header="Убрать сортировку" Command="{Binding ClearSortGrades}"/>
+                    <ContextMenu Background="#1F2833">
+                        <MenuItem Header="Отсортировать по группам" 
+                                  Command="{Binding OpenGradeSearchGroupWindow}" 
+                                  Style="{StaticResource MenuItem}"/>
+                        <MenuItem Header="Отсортировать по дисциплинам"
+                                  Command="{Binding OpenSearchDisciplineWindow}"
+                                  Style="{StaticResource MenuItem}"/>
+                        <MenuItem Header="Отсортировать по студенту" 
+                                  Command="{Binding OpenSearchStudentWindow}"
+                                  Style="{StaticResource MenuItem}"/>
+                        <MenuItem Header="Отсортировать по студенту и дисциплине"
+                                  Command="{Binding OpenSearchStudentDisciplineWindow}"
+                                  Style="{StaticResource MenuItem}"/>
+                        <MenuItem Header="Убрать сортировку" 
+                                  Command="{Binding ClearSortGrades}"
+                                  Style="{StaticResource MenuItem}"/>
                     </ContextMenu>
                 </TabItem.ContextMenu>
                 <ListView x:Name="GradeInfoListView"
