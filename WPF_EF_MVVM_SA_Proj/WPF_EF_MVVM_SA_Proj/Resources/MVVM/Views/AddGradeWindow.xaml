@@ -48,10 +48,6 @@
                           ItemsSource="{Binding AllStudents}"
                           DisplayMemberPath="StudentFIO"
                       Style="{StaticResource AddBox}">
-                <ComboBox.ContextMenu>
-                    <ContextMenu>
-                    </ContextMenu>
-                </ComboBox.ContextMenu>
             </ComboBox>
             <TextBlock Text="ДИСЦИПЛИНА"
                            Style="{StaticResource AddText}"/>
