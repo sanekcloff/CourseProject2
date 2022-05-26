@@ -12,6 +12,7 @@
         <viewModels:AddGradeViewModel/>
     </Window.DataContext>
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="0.1*"/>
@@ -46,7 +47,12 @@
                           SelectedItem="{Binding GradeStudent}"
                           ItemsSource="{Binding AllStudents}"
                           DisplayMemberPath="StudentFIO"
-                      Style="{StaticResource AddBox}"/>
+                      Style="{StaticResource AddBox}">
+                <ComboBox.ContextMenu>
+                    <ContextMenu>
+                    </ContextMenu>
+                </ComboBox.ContextMenu>
+            </ComboBox>
             <TextBlock Text="ДИСЦИПЛИНА"
                            Style="{StaticResource AddText}"/>
             <ComboBox Name="DisciplineComboBox"

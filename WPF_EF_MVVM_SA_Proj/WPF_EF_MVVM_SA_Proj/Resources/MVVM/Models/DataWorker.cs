@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using WPF_EF_MVVM_SA_Proj.Resources.MVVM.ViewModels;
+using System.Windows.Controls;
 
 namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
 {
     public static class DataWorker
     {
+        #region Вывод
         //получить всех студентов
         public static List<Student> GetAllStudents()
         {
@@ -44,6 +46,8 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                 return result;
             }
         }
+        #endregion
+        #region Creates
         //создать Студента
         public static string CreateStudent(string firstName,Group group)
         {
@@ -157,6 +161,8 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                 return result;
             }
         }
+        #endregion
+        #region Nadoelo
         //удаление Оценку
         public static string DeleteGrade(Grade grade)
         {
@@ -360,6 +366,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
                 return grades;
             }
         }
+        #endregion
         #region USEFUL METHODS
         //получение студента по id оценки
         public static string GetStudentByGradeId(int gradeId)
@@ -380,5 +387,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
             }
         }
         #endregion
+
+
     }
 }

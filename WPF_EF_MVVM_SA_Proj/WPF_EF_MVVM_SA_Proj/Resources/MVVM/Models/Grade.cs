@@ -30,7 +30,7 @@ namespace WPF_EF_MVVM_SA_Proj.Resources.MVVM.Models
         public int GradeValue { get; set; }
 
         [Required]
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; }=DateTime.Now;
         [NotMapped]
         public Student GradeStudent
         {
