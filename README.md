@@ -3,12 +3,12 @@
 
 [![Followers](https://img.shields.io/github/followers/SaneKCLOFF?color=red&style=for-the-badge)](https://github.com/SaneKCLOFF)
 
+## Special Thanks
+  
+Thanks to ME and ME: 
 
-
-> В это приложении
- >> Реализована
- >>> Нереальная проблема
- >>>> Выставления оценок
- >>>>> В каких-то база данных
-
-
+- В это приложении.
+- Реализована.  
+- Нереальная проблема. 
+- Выставления оценок.
+- В каких-то база данных.
